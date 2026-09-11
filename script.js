@@ -3,6 +3,7 @@
 ================================= */
 
 const scenes = document.querySelectorAll(".scene");
+console.log("BIRTHDAY SCRIPT IS WORKING!");
 
 function showScene(sceneId) {
 
