@@ -1,10 +1,487 @@
-    <!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>My Personal Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>A Little Birthday Garden</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <h1>Hello, I'm Sadman</h1>
-    <p>Welcome to my personal website.</p>
+
+    <!-- ============================= -->
+    <!-- SCENE 1 — INTRO -->
+    <!-- ============================= -->
+
+    <section id="intro" class="scene active">
+
+        <div class="intro-content">
+
+            <div class="intro-icon">🌱</div>
+
+            <h1>A Little Birthday Garden</h1>
+
+            <p>I made something for you.</p>
+
+            <button id="enterGarden">
+                Enter the Garden
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ============================= -->
+    <!-- SCENE 2 — GARDEN -->
+    <!-- ============================= -->
+
+    <section id="garden" class="scene">
+
+        <div class="garden-content">
+
+            <h2>Birthday Mission 🌷</h2>
+
+            <p>
+                There are five little flowers<br>
+                waiting to be found.
+            </p>
+
+            <div id="flowerCounter">
+                0 / 5
+            </div>
+
+            <button id="startMission">
+                Start Exploring
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ============================= -->
+    <!-- SCENE 3 — FLOWER HUNT -->
+    <!-- ============================= -->
+
+    <section id="flowerHunt" class="scene">
+
+        <div class="mission-ui">
+
+            <h2>Find the flowers 🌷</h2>
+
+            <div id="progress">
+                Flowers found: <span id="foundCount">0</span> / 5
+            </div>
+
+        </div>
+
+        <!-- These will become actual flowers later -->
+
+        <button class="flower flower-1" data-flower="1">
+            🌷
+        </button>
+
+        <button class="flower flower-2" data-flower="2">
+            🌻
+        </button>
+
+        <button class="flower flower-3" data-flower="3">
+            🌼
+        </button>
+
+        <button class="flower flower-4" data-flower="4">
+            🌸
+        </button>
+
+        <button class="flower flower-5" data-flower="5">
+            🌹
+        </button>
+
+    </section>
+
+
+    <!-- ============================= -->
+    <!-- FLOWER MESSAGE -->
+    <!-- ============================= -->
+
+    <div id="flowerMessage" class="popup hidden">
+
+        <div class="popup-card">
+
+            <span id="flowerNumber">
+                Flower #1
+            </span>
+
+            <p id="flowerText">
+                A little message.
+            </p>
+
+            <button id="closeFlowerMessage">
+                Continue
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ============================= -->
+    <!-- SCENE 4 — LILY -->
+    <!-- ============================= -->
+
+    <section id="lilyScene" class="scene">
+
+        <div class="lily-content">
+
+            <p id="lilyIntro">
+                Wait...
+            </p>
+
+            <p id="lilyText">
+                There's still one plant that hasn't bloomed.
+            </p>
+
+            <div id="lilyPlant">
+                🌱
+            </div>
+
+            <button id="bloomLily">
+                Watch it grow
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ============================= -->
+    <!-- SCENE 5 — BIRTHDAY -->
+    <!-- ============================= -->
+
+    <section id="birthday" class="scene">
+
+        <div class="birthday-content">
+
+            <div class="cake">
+                🎂
+            </div>
+
+            <h1>HAPPY BIRTHDAY!</h1>
+
+            <p>
+                Mission Complete. 🌷
+            </p>
+
+            <button id="openLetter">
+                One more thing...
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ============================= -->
+    <!-- SCENE 6 — LETTER -->
+    <!-- ============================= -->
+
+    <section id="letter" class="scene">
+
+        <div class="letter-card">
+
+            <h2>Hey,</h2>
+
+            <p>
+                I could've just wished you Happy Birthday normally,
+                but I wanted to make you something instead.
+            </p>
+
+            <p>
+                And I remembered the story you told me about your lily...
+            </p>
+
+            <p>
+                <!-- WE WILL WRITE THIS PROPERLY LATER -->
+            </p>
+
+            <p>
+                Happy Birthday. 🤍
+            </p>
+
+            <p>
+                I hope this year brings you lots of happiness,
+                good memories, random laughs, and plenty of things
+                to look forward to.
+            </p>
+
+            <p>
+                I hope you have a really, really good year.
+            </p>
+
+            <div class="signature">
+                — Sadat
+            </div>
+
+            <button id="finish">
+                Return to the Garden
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ============================= -->
+    <!-- JAVASCRIPT -->
+    <!-- ============================= -->
+
+    <script src="script.js"></script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>A Little Birthday Garden</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ============================= -->
+    <!-- SCENE 1 — INTRO -->
+    <!-- ============================= -->
+
+    <section id="intro" class="scene active">
+
+        <div class="intro-content">
+
+            <div class="intro-icon">🌱</div>
+
+            <h1>A Little Birthday Garden</h1>
+
+            <p>I made something for you.</p>
+
+            <button id="enterGarden">
+                Enter the Garden
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ============================= -->
+    <!-- SCENE 2 — GARDEN -->
+    <!-- ============================= -->
+
+    <section id="garden" class="scene">
+
+        <div class="garden-content">
+
+            <h2>Birthday Mission 🌷</h2>
+
+            <p>
+                There are five little flowers<br>
+                waiting to be found.
+            </p>
+
+            <div id="flowerCounter">
+                0 / 5
+            </div>
+
+            <button id="startMission">
+                Start Exploring
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ============================= -->
+    <!-- SCENE 3 — FLOWER HUNT -->
+    <!-- ============================= -->
+
+    <section id="flowerHunt" class="scene">
+
+        <div class="mission-ui">
+
+            <h2>Find the flowers 🌷</h2>
+
+            <div id="progress">
+                Flowers found: <span id="foundCount">0</span> / 5
+            </div>
+
+        </div>
+
+        <!-- These will become actual flowers later -->
+
+        <button class="flower flower-1" data-flower="1">
+            🌷
+        </button>
+
+        <button class="flower flower-2" data-flower="2">
+            🌻
+        </button>
+
+        <button class="flower flower-3" data-flower="3">
+            🌼
+        </button>
+
+        <button class="flower flower-4" data-flower="4">
+            🌸
+        </button>
+
+        <button class="flower flower-5" data-flower="5">
+            🌹
+        </button>
+
+    </section>
+
+
+    <!-- ============================= -->
+    <!-- FLOWER MESSAGE -->
+    <!-- ============================= -->
+
+    <div id="flowerMessage" class="popup hidden">
+
+        <div class="popup-card">
+
+            <span id="flowerNumber">
+                Flower #1
+            </span>
+
+            <p id="flowerText">
+                A little message.
+            </p>
+
+            <button id="closeFlowerMessage">
+                Continue
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ============================= -->
+    <!-- SCENE 4 — LILY -->
+    <!-- ============================= -->
+
+    <section id="lilyScene" class="scene">
+
+        <div class="lily-content">
+
+            <p id="lilyIntro">
+                Wait...
+            </p>
+
+            <p id="lilyText">
+                There's still one plant that hasn't bloomed.
+            </p>
+
+            <div id="lilyPlant">
+                🌱
+            </div>
+
+            <button id="bloomLily">
+                Watch it grow
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ============================= -->
+    <!-- SCENE 5 — BIRTHDAY -->
+    <!-- ============================= -->
+
+    <section id="birthday" class="scene">
+
+        <div class="birthday-content">
+
+            <div class="cake">
+                🎂
+            </div>
+
+            <h1>HAPPY BIRTHDAY!</h1>
+
+            <p>
+                Mission Complete. 🌷
+            </p>
+
+            <button id="openLetter">
+                One more thing...
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ============================= -->
+    <!-- SCENE 6 — LETTER -->
+    <!-- ============================= -->
+
+    <section id="letter" class="scene">
+
+        <div class="letter-card">
+
+            <h2>Hey,</h2>
+
+            <p>
+                I could've just wished you Happy Birthday normally,
+                but I wanted to make you something instead.
+            </p>
+
+            <p>
+                And I remembered the story you told me about your lily...
+            </p>
+
+            <p>
+                <!-- WE WILL WRITE THIS PROPERLY LATER -->
+            </p>
+
+            <p>
+                Happy Birthday. 🤍
+            </p>
+
+            <p>
+                I hope this year brings you lots of happiness,
+                good memories, random laughs, and plenty of things
+                to look forward to.
+            </p>
+
+            <p>
+                I hope you have a really, really good year.
+            </p>
+
+            <div class="signature">
+                — Sadat
+            </div>
+
+            <button id="finish">
+                Return to the Garden
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ============================= -->
+    <!-- JAVASCRIPT -->
+    <!-- ============================= -->
+
+    <script src="script.js"></script>
+
 </body>
 </html>
