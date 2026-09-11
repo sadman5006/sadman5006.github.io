@@ -882,3 +882,289 @@ button:active {
         opacity: .55;
     }
 }
+/* =========================================
+   REAL FLOWERS
+========================================= */
+
+#flowerHunt .flower {
+    width: 100px;
+    height: 150px;
+
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+
+    overflow: visible;
+
+    transform-origin: bottom center;
+}
+
+
+/* =========================================
+   STEM
+========================================= */
+
+#flowerHunt .stem {
+    position: absolute;
+
+    width: 6px;
+    height: 72px;
+
+    left: 50%;
+    bottom: 13px;
+
+    transform: translateX(-50%);
+
+    border-radius: 10px;
+
+    background: linear-gradient(
+        to right,
+        #245d35,
+        #4e9a54,
+        #245d35
+    );
+
+    box-shadow: 0 0 8px rgba(70, 160, 80, .25);
+}
+
+
+/* =========================================
+   LEAVES
+========================================= */
+
+#flowerHunt .leaf {
+    position: absolute;
+
+    width: 34px;
+    height: 15px;
+
+    bottom: 35px;
+
+    border-radius: 100% 0 100% 0;
+
+    background: linear-gradient(
+        135deg,
+        #5da866,
+        #245d35
+    );
+}
+
+#flowerHunt .leaf-left {
+    left: 23px;
+    transform: rotate(25deg);
+}
+
+#flowerHunt .leaf-right {
+    right: 23px;
+    transform: scaleX(-1) rotate(25deg);
+}
+
+
+/* =========================================
+   FLOWER HEAD
+========================================= */
+
+#flowerHunt .flower-head {
+    position: absolute;
+
+    width: 58px;
+    height: 58px;
+
+    left: 50%;
+    top: 10px;
+
+    transform: translateX(-50%);
+
+    z-index: 5;
+}
+
+
+/* =========================================
+   PETALS
+========================================= */
+
+#flowerHunt .petal {
+    position: absolute;
+
+    width: 27px;
+    height: 38px;
+
+    left: 50%;
+    top: 50%;
+
+    transform-origin: 50% 90%;
+
+    border-radius: 55% 55% 45% 45%;
+}
+
+
+/* Petal positions */
+
+#flowerHunt .p1 {
+    transform: translate(-50%, -90%);
+}
+
+#flowerHunt .p2 {
+    transform: translate(-50%, -90%) rotate(72deg);
+}
+
+#flowerHunt .p3 {
+    transform: translate(-50%, -90%) rotate(144deg);
+}
+
+#flowerHunt .p4 {
+    transform: translate(-50%, -90%) rotate(216deg);
+}
+
+#flowerHunt .p5 {
+    transform: translate(-50%, -90%) rotate(288deg);
+}
+
+#flowerHunt .p6 {
+    transform: translate(-50%, -90%) rotate(60deg);
+}
+
+
+/* =========================================
+   FLOWER COLORS
+========================================= */
+
+/* Pink */
+
+.flower-pink .petal {
+    background: linear-gradient(
+        145deg,
+        #ff8fc4,
+        #e94d91
+    );
+    box-shadow: 0 0 10px rgba(255, 100, 170, .25);
+}
+
+
+/* Yellow */
+
+.flower-yellow .petal {
+    background: linear-gradient(
+        145deg,
+        #ffe878,
+        #e6a82f
+    );
+    box-shadow: 0 0 10px rgba(255, 220, 80, .25);
+}
+
+
+/* White */
+
+.flower-white .petal {
+    background: linear-gradient(
+        145deg,
+        #ffffff,
+        #d9e9dd
+    );
+    box-shadow: 0 0 10px rgba(230, 255, 235, .35);
+}
+
+
+/* Coral */
+
+.flower-coral .petal {
+    background: linear-gradient(
+        145deg,
+        #ff8f9f,
+        #ef5268
+    );
+    box-shadow: 0 0 10px rgba(255, 100, 120, .25);
+}
+
+
+/* Red */
+
+.flower-red .petal {
+    background: linear-gradient(
+        145deg,
+        #ff6670,
+        #d93646
+    );
+    box-shadow: 0 0 10px rgba(255, 70, 80, .25);
+}
+
+
+/* =========================================
+   FLOWER CENTERS
+========================================= */
+
+#flowerHunt .flower-center {
+    position: absolute;
+
+    width: 17px;
+    height: 17px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background: #f6c84a;
+
+    box-shadow:
+        0 0 6px rgba(255, 220, 80, .8),
+        0 0 14px rgba(255, 220, 80, .3);
+
+    z-index: 10;
+}
+
+
+/* =========================================
+   FLOWER GLOW
+========================================= */
+
+#flowerHunt .flower:hover .flower-head {
+    filter:
+        drop-shadow(0 0 7px rgba(255,255,255,.8))
+        drop-shadow(0 0 18px rgba(255,200,220,.5));
+}
+
+#flowerHunt .flower:hover .stem {
+    box-shadow:
+        0 0 8px rgba(80,180,100,.5);
+}
+
+
+/* =========================================
+   GENTLE WIND
+========================================= */
+
+#flowerHunt .flower-head {
+    animation: flowerSway 4s ease-in-out infinite;
+}
+
+@keyframes flowerSway {
+    0%, 100% {
+        transform: translateX(-50%) rotate(-2deg);
+    }
+
+    50% {
+        transform: translateX(-50%) rotate(3deg);
+    }
+}
+
+
+/* Different wind timing */
+
+#flowerHunt .flower-2 .flower-head {
+    animation-delay: .6s;
+}
+
+#flowerHunt .flower-3 .flower-head {
+    animation-delay: 1.1s;
+}
+
+#flowerHunt .flower-4 .flower-head {
+    animation-delay: 1.7s;
+}
+
+#flowerHunt .flower-5 .flower-head {
+    animation-delay: 2.3s;
+}
