@@ -1040,5 +1040,47 @@ if (finish) {
 
         }
     );
+/* =========================================================
+   BACKGROUND MUSIC
+   ========================================================= */
 
+const bgMusic = document.getElementById("bgMusic");
+const musicToggle = document.getElementById("musicToggle");
+
+let musicStarted = false;
+let musicMuted = false;
+
+function startMusic() {
+    if (musicStarted) return;
+
+    bgMusic.volume = 0.22;
+
+    bgMusic.play()
+        .then(() => {
+            musicStarted = true;
+        })
+        .catch(() => {
+            // Browser may block playback until another user interaction
+        });
+}
+
+if (musicToggle) {
+    musicToggle.addEventListener("click", () => {
+        if (!musicStarted) {
+            startMusic();
+        }
+
+        musicMuted = !musicMuted;
+
+        if (musicMuted) {
+            bgMusic.pause();
+            musicToggle.textContent = "🔇";
+            musicToggle.classList.add("muted");
+        } else {
+            bgMusic.play();
+            musicToggle.textContent = "🔊";
+            musicToggle.classList.remove("muted");
+        }
+    });
+}
 }
