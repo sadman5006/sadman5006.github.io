@@ -23,7 +23,8 @@ function showScene(sceneId) {
 // INTRO → GARDEN
 // =========================================================
 
-const enterGarden = document.getElementById("enterGarden");
+const enterGarden =
+    document.getElementById("enterGarden");
 
 enterGarden.addEventListener("click", () => {
 
@@ -36,7 +37,8 @@ enterGarden.addEventListener("click", () => {
 // GARDEN → FLOWER HUNT
 // =========================================================
 
-const startMission = document.getElementById("startMission");
+const startMission =
+    document.getElementById("startMission");
 
 startMission.addEventListener("click", () => {
 
@@ -46,7 +48,7 @@ startMission.addEventListener("click", () => {
 
 
 // =========================================================
-// FLOWER HUNT VARIABLES
+// FLOWER HUNT
 // =========================================================
 
 let flowersFound = 0;
@@ -74,11 +76,8 @@ const flowerMessages = {
 };
 
 
-// =========================================================
-// FLOWER ELEMENTS
-// =========================================================
-
-const flowers = document.querySelectorAll(".flower");
+const flowers =
+    document.querySelectorAll(".flower");
 
 const flowerMessage =
     document.getElementById("flowerMessage");
@@ -97,7 +96,7 @@ const foundCount =
 
 
 // =========================================================
-// SPARKLE CREATION
+// SPARKLES
 // =========================================================
 
 function createSparkles(flower) {
@@ -111,8 +110,6 @@ function createSparkles(flower) {
 
         sparkle.textContent = "✦";
 
-
-        // Spread sparkles around the flower
 
         const angle =
             (Math.PI * 2 * i) / 7;
@@ -139,12 +136,8 @@ function createSparkles(flower) {
         flower.appendChild(sparkle);
 
 
-        // Remove sparkle after animation
-
         setTimeout(() => {
-
             sparkle.remove();
-
         }, 900);
 
     }
@@ -164,20 +157,12 @@ flowers.forEach(flower => {
             flower.dataset.flower;
 
 
-        // Prevent the same flower
-        // from being collected twice
-
         if (clickedFlowers.includes(number)) {
             return;
         }
 
 
-        // Remember this flower
-
         clickedFlowers.push(number);
-
-
-        // Increase counter
 
         flowersFound++;
 
@@ -186,18 +171,11 @@ flowers.forEach(flower => {
             flowersFound;
 
 
-        // Bloom animation
-
         flower.classList.add("blooming");
 
 
-        // Create sparkle effect
-
         createSparkles(flower);
 
-
-        // After the bloom animation,
-        // keep the flower glowing
 
         setTimeout(() => {
 
@@ -208,16 +186,12 @@ flowers.forEach(flower => {
         }, 750);
 
 
-        // Set popup information
-
         flowerNumber.textContent =
             `Flower #${number}`;
 
         flowerText.textContent =
             flowerMessages[number];
 
-
-        // Show popup
 
         setTimeout(() => {
 
@@ -239,9 +213,6 @@ closeFlowerMessage.addEventListener("click", () => {
     flowerMessage.classList.add("hidden");
 
 
-    // Once all five flowers are found,
-    // continue to the lily scene
-
     if (flowersFound === 5) {
 
         setTimeout(() => {
@@ -256,54 +227,118 @@ closeFlowerMessage.addEventListener("click", () => {
 
 
 // =========================================================
-// LILY SCENE
+// LILY STORY
 // =========================================================
 
 const bloomLily =
     document.getElementById("bloomLily");
 
+const lilyScene =
+    document.getElementById("lilyScene");
+
+const lilyPlant =
+    document.getElementById("lilyPlant");
+
+const lilyIntro =
+    document.getElementById("lilyIntro");
+
+const lilyText =
+    document.getElementById("lilyText");
+
+
+let lilyStarted = false;
+
 
 bloomLily.addEventListener("click", () => {
 
-    const lily =
-        document.getElementById("lilyPlant");
+    if (lilyStarted) {
+        return;
+    }
 
-    const lilyIntro =
-        document.getElementById("lilyIntro");
-
-    const lilyText =
-        document.getElementById("lilyText");
+    lilyStarted = true;
 
 
-    // Start lily bloom
+    // Hide button
+    lilyScene.classList.add("lily-growing");
 
-    lily.classList.add("bloomed");
 
-
-    // Change story text
+    // -----------------------------------------------------
+    // PHASE 1
+    // The plant begins growing
+    // -----------------------------------------------------
 
     lilyIntro.textContent =
-        "Some things take a little longer to bloom.";
-
+        "It didn't look like much at first.";
 
     lilyText.textContent =
-        "And sometimes, the wait makes them even more special.";
+        "But maybe it was just taking its time.";
 
 
-    // Change the little plant
-    // into the white lily
-
-    lily.textContent = "🤍";
+    lilyPlant.classList.add("growing");
 
 
-    // Wait for the bloom animation
-    // before revealing the birthday
+    // -----------------------------------------------------
+    // PHASE 2
+    // Horizontal shoot appears
+    // -----------------------------------------------------
+
+    setTimeout(() => {
+
+        lilyIntro.textContent =
+            "Then something started to change...";
+
+        lilyText.textContent =
+            "A little shoot reached out from the plant.";
+
+    }, 2200);
+
+
+    // -----------------------------------------------------
+    // PHASE 3
+    // Bud appears
+    // -----------------------------------------------------
+
+    setTimeout(() => {
+
+        lilyPlant.classList.add("budding");
+
+        lilyIntro.textContent =
+            "And then...";
+
+        lilyText.textContent =
+            "Something was finally beginning to bloom.";
+
+    }, 4500);
+
+
+    // -----------------------------------------------------
+    // PHASE 4
+    // Lily opens
+    // -----------------------------------------------------
+
+    setTimeout(() => {
+
+        lilyPlant.classList.add("bloomed");
+
+        lilyIntro.textContent =
+            "Some things take a little longer to bloom.";
+
+        lilyText.textContent =
+            "And sometimes, the wait makes them even more special.";
+
+    }, 6500);
+
+
+    // -----------------------------------------------------
+    // PHASE 5
+    // Birthday reveal
+    // -----------------------------------------------------
 
     setTimeout(() => {
 
         showScene("birthday");
 
-    }, 2500);
+    }, 9500);
 
 });
 
@@ -314,7 +349,6 @@ bloomLily.addEventListener("click", () => {
 
 const openLetter =
     document.getElementById("openLetter");
-
 
 openLetter.addEventListener("click", () => {
 
@@ -329,7 +363,6 @@ openLetter.addEventListener("click", () => {
 
 const finish =
     document.getElementById("finish");
-
 
 finish.addEventListener("click", () => {
 
