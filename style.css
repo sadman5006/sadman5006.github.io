@@ -3111,3 +3111,56 @@ button:active {
         animation: none !important;
     }
 }
+/* =========================================================
+   BIRTHDAY FULL-SCREEN FIX
+   ========================================================= */
+
+#birthday {
+    position: fixed !important;
+    inset: 0 !important;
+
+    width: 100vw !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden !important;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at 50% 42%,
+            rgba(255,245,210,.18),
+            transparent 22%
+        ),
+        radial-gradient(
+            circle at 50% 68%,
+            rgba(100,170,115,.13),
+            transparent 38%
+        ),
+        linear-gradient(
+            135deg,
+            #07150f,
+            #183a25 48%,
+            #07130d
+        ) !important;
+}
+
+#birthday.active {
+    display: flex !important;
+}
+
+#birthday .birthday-content {
+    position: relative;
+    z-index: 5;
+
+    width: min(900px, 90vw);
+
+    margin: 0 auto;
+
+    text-align: center;
+}
