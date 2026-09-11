@@ -12,17 +12,13 @@ html,
 body {
     width: 100%;
     height: 100%;
-
     overflow: hidden;
+}
 
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    background: #00150f;
-
-    color: white;
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    color: #ffffff;
+    background: #00140e;
 }
 
 button {
@@ -37,20 +33,17 @@ button {
 
 .scene {
     position: absolute;
-
     inset: 0;
 
     width: 100%;
     height: 100%;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
     opacity: 0;
     visibility: hidden;
-
     pointer-events: none;
 
     transition:
@@ -61,7 +54,6 @@ button {
 .scene.active {
     opacity: 1;
     visibility: visible;
-
     pointer-events: auto;
 }
 
@@ -73,14 +65,14 @@ button {
 #intro {
     background:
         radial-gradient(
-            circle at center,
-            rgba(74, 130, 91, 0.18),
-            transparent 45%
+            circle at 50% 45%,
+            rgba(85, 140, 100, 0.18),
+            transparent 42%
         ),
         linear-gradient(
             to bottom,
-            #001812,
-            #00251c,
+            #001a13,
+            #00271e,
             #00140e
         );
 
@@ -89,20 +81,35 @@ button {
 
 .intro-content {
     position: relative;
-
-    z-index: 5;
+    z-index: 10;
 
     display: flex;
     flex-direction: column;
-
     align-items: center;
 }
 
+.intro-icon {
+    font-size: 48px;
+    margin-bottom: 18px;
+
+    animation:
+        introFloat 3s ease-in-out infinite;
+}
+
+@keyframes introFloat {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
 .intro-content h1 {
-    font-size: clamp(42px, 6vw, 72px);
-
+    font-size: clamp(40px, 5.5vw, 70px);
     font-weight: 400;
-
     letter-spacing: 2px;
 
     margin-bottom: 15px;
@@ -111,18 +118,27 @@ button {
 .intro-content p {
     font-size: 18px;
 
-    color: rgba(255, 255, 255, 0.65);
+    color:
+        rgba(255, 255, 255, 0.65);
 
     margin-bottom: 35px;
 }
 
+
+/* =========================================================
+   GENERAL BUTTONS
+   ========================================================= */
+
 #enterGarden,
 #startMission,
 #openLetter,
-#finish {
+#finish,
+#bloomLily {
+
     padding: 13px 28px;
 
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border:
+        1px solid rgba(255, 255, 255, 0.18);
 
     border-radius: 30px;
 
@@ -142,7 +158,9 @@ button {
 #enterGarden:hover,
 #startMission:hover,
 #openLetter:hover,
-#finish:hover {
+#finish:hover,
+#bloomLily:hover {
+
     transform: translateY(-3px);
 
     background:
@@ -158,57 +176,60 @@ button {
    ========================================================= */
 
 #garden {
+
+    overflow: hidden;
+
     background:
         linear-gradient(
             to bottom,
-            #001813 0%,
-            #00251c 65%,
+            #001a14 0%,
+            #00271e 58%,
             #00150e 100%
         );
-
-    overflow: hidden;
 }
 
 
-/* Fixed moon */
+/* Moon */
 
 #garden::before,
 #flowerHunt::before {
+
     content: "";
 
     position: absolute;
 
+    width: 88px;
+    height: 88px;
+
     top: 55px;
     right: 90px;
-
-    width: 90px;
-    height: 90px;
 
     border-radius: 50%;
 
     background:
         radial-gradient(
             circle at 35% 35%,
-            #fffef1,
-            #e9efd9 55%,
-            #c9d7bd
+            #fffef0,
+            #e8eedb 55%,
+            #cbd8c0
         );
 
     box-shadow:
-        0 0 35px rgba(255, 255, 220, 0.2);
+        0 0 35px rgba(
+            255,
+            255,
+            220,
+            0.2
+        );
 
     z-index: 1;
 }
 
-
-/* =========================================================
-   GARDEN CONTENT
-   ========================================================= */
-
 .garden-content {
+
     position: relative;
 
-    z-index: 5;
+    z-index: 10;
 
     text-align: center;
 
@@ -216,7 +237,9 @@ button {
 }
 
 .garden-content h2 {
-    font-size: clamp(30px, 4vw, 48px);
+
+    font-size:
+        clamp(30px, 4vw, 48px);
 
     font-weight: 400;
 
@@ -224,9 +247,13 @@ button {
 }
 
 .garden-content p {
-    color: rgba(255, 255, 255, 0.65);
 
     font-size: 17px;
+
+    line-height: 1.7;
+
+    color:
+        rgba(255, 255, 255, 0.65);
 
     margin-bottom: 30px;
 }
@@ -237,15 +264,16 @@ button {
    ========================================================= */
 
 #flowerHunt {
+
+    overflow: hidden;
+
     background:
         linear-gradient(
             to bottom,
-            #001913 0%,
-            #00251b 62%,
+            #001a14 0%,
+            #00271d 60%,
             #00130d 100%
         );
-
-    overflow: hidden;
 }
 
 
@@ -254,44 +282,154 @@ button {
    ========================================================= */
 
 .ground {
+
     position: absolute;
 
     left: 0;
     right: 0;
     bottom: 0;
 
-    height: 23%;
+    height: 24%;
 
     background:
         linear-gradient(
             to top,
-            #00100b,
-            rgba(1, 25, 16, 0.92)
+            #000f0a,
+            #00170f
         );
 
     border-top:
-        1px solid rgba(79, 137, 91, 0.15);
+        1px solid rgba(
+            74,
+            130,
+            85,
+            0.18
+        );
 
     z-index: 1;
 }
 
 .ground::before {
+
     content: "";
 
     position: absolute;
 
-    top: -18px;
     left: 0;
+    right: 0;
+    top: -18px;
 
-    width: 100%;
     height: 25px;
 
     background:
         radial-gradient(
             ellipse at center,
-            rgba(35, 100, 57, 0.35),
+            rgba(40, 105, 61, 0.35),
             transparent 70%
         );
+}
+
+
+/* =========================================================
+   FIREFLIES
+   ========================================================= */
+
+.firefly {
+
+    position: absolute;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: #f5eea9;
+
+    box-shadow:
+        0 0 9px rgba(
+            255,
+            245,
+            160,
+            0.75
+        );
+
+    z-index: 4;
+
+    animation:
+        fireflyFloat 5s ease-in-out infinite;
+}
+
+
+/*
+   Your HTML has exactly nine fireflies.
+*/
+
+.firefly-1 {
+    left: 13%;
+    top: 35%;
+    animation-delay: 0s;
+}
+
+.firefly-2 {
+    left: 27%;
+    top: 47%;
+    animation-delay: 1s;
+}
+
+.firefly-3 {
+    left: 42%;
+    top: 29%;
+    animation-delay: 2s;
+}
+
+.firefly-4 {
+    left: 58%;
+    top: 40%;
+    animation-delay: 0.5s;
+}
+
+.firefly-5 {
+    left: 73%;
+    top: 31%;
+    animation-delay: 1.5s;
+}
+
+.firefly-6 {
+    left: 88%;
+    top: 46%;
+    animation-delay: 2.5s;
+}
+
+.firefly-7 {
+    left: 22%;
+    top: 62%;
+    animation-delay: 3s;
+}
+
+.firefly-8 {
+    left: 79%;
+    top: 59%;
+    animation-delay: 3.5s;
+}
+
+.firefly-9 {
+    left: 52%;
+    top: 55%;
+    animation-delay: 4s;
+}
+
+@keyframes fireflyFloat {
+
+    0%,
+    100% {
+        opacity: 0.25;
+        transform: translate(0, 0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translate(10px, -15px);
+    }
 }
 
 
@@ -300,9 +438,10 @@ button {
    ========================================================= */
 
 .mission-ui {
+
     position: absolute;
 
-    top: 35px;
+    top: 32px;
     left: 50%;
 
     transform: translateX(-50%);
@@ -313,20 +452,24 @@ button {
 }
 
 .mission-ui h2 {
-    font-size: 27px;
+
+    font-size: 28px;
 
     font-weight: 400;
 
     margin-bottom: 7px;
 }
 
-.mission-ui p {
-    color: rgba(255, 255, 255, 0.6);
+#progress {
+
+    color:
+        rgba(255, 255, 255, 0.65);
 
     font-size: 15px;
 }
 
 #foundCount {
+
     color: white;
 
     font-weight: bold;
@@ -338,16 +481,24 @@ button {
    ========================================================= */
 
 .flower {
+
     position: absolute;
 
-    width: 75px;
+    width: 80px;
     height: 210px;
+
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
 
     z-index: 8;
 
     cursor: pointer;
 
-    transform-origin: bottom center;
+    transform-origin:
+        bottom center;
 
     transition:
         filter 0.3s ease;
@@ -357,36 +508,218 @@ button {
 /* Flower positions */
 
 .flower-1 {
-    left: 18%;
+    left: 16%;
     bottom: 19%;
 }
 
 .flower-2 {
-    left: 34%;
+    left: 32%;
     bottom: 16%;
 }
 
 .flower-3 {
-    left: 50%;
+    left: 49%;
     bottom: 20%;
 }
 
 .flower-4 {
-    left: 67%;
+    left: 66%;
     bottom: 17%;
 }
 
 .flower-5 {
-    left: 82%;
+    left: 81%;
     bottom: 20%;
 }
 
 
 /* =========================================================
-   STEMS
+   FLOWER HEAD
    ========================================================= */
 
-.flower-stem {
+.flower-head {
+
+    position: absolute;
+
+    left: 50%;
+    top: 5px;
+
+    width: 62px;
+    height: 62px;
+
+    transform:
+        translateX(-50%);
+
+    transform-origin:
+        center bottom;
+}
+
+
+/* =========================================================
+   PETALS
+   ========================================================= */
+
+.petal {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 25px;
+    height: 39px;
+
+    transform-origin:
+        50% 85%;
+
+    border-radius:
+        60% 60% 50% 50%;
+}
+
+
+/* Pink */
+
+.flower-pink .petal {
+    background:
+        linear-gradient(
+            to bottom,
+            #ffc1d1,
+            #e991ae
+        );
+}
+
+
+/* Yellow */
+
+.flower-yellow .petal {
+    background:
+        linear-gradient(
+            to bottom,
+            #ffeaa2,
+            #e5c95d
+        );
+}
+
+
+/* White */
+
+.flower-white .petal {
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff,
+            #e8eee7
+        );
+}
+
+
+/* Coral */
+
+.flower-coral .petal {
+    background:
+        linear-gradient(
+            to bottom,
+            #ffc09d,
+            #e98d68
+        );
+}
+
+
+/* Red */
+
+.flower-red .petal {
+    background:
+        linear-gradient(
+            to bottom,
+            #f7a0ad,
+            #d95e70
+        );
+}
+
+
+/* Petal positions */
+
+.p1 {
+    transform:
+        translate(-50%, -88%)
+        rotate(0deg);
+}
+
+.p2 {
+    transform:
+        translate(-50%, -88%)
+        rotate(60deg);
+}
+
+.p3 {
+    transform:
+        translate(-50%, -88%)
+        rotate(120deg);
+}
+
+.p4 {
+    transform:
+        translate(-50%, -88%)
+        rotate(180deg);
+}
+
+.p5 {
+    transform:
+        translate(-50%, -88%)
+        rotate(240deg);
+}
+
+.p6 {
+    transform:
+        translate(-50%, -88%)
+        rotate(300deg);
+}
+
+
+/* =========================================================
+   FLOWER CENTER
+   ========================================================= */
+
+.flower-center {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 17px;
+    height: 17px;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #fff0a0,
+            #d7b94f
+        );
+
+    box-shadow:
+        0 0 9px rgba(
+            255,
+            225,
+            100,
+            0.4
+        );
+
+    z-index: 10;
+}
+
+
+/* =========================================================
+   STEM
+   ========================================================= */
+
+.stem {
+
     position: absolute;
 
     left: 50%;
@@ -403,12 +736,10 @@ button {
     background:
         linear-gradient(
             to right,
-            #155b36,
+            #145c36,
             #43a961,
-            #155b36
+            #145c36
         );
-
-    transform-origin: bottom center;
 }
 
 
@@ -416,10 +747,11 @@ button {
    LEAVES
    ========================================================= */
 
-.flower-leaf {
+.leaf {
+
     position: absolute;
 
-    width: 45px;
+    width: 46px;
     height: 18px;
 
     border-radius:
@@ -433,16 +765,19 @@ button {
         );
 }
 
-.flower-leaf-left {
-    left: 4px;
+.leaf-left {
+
+    left: 3px;
     bottom: 55px;
 
-    transform: rotate(25deg);
+    transform:
+        rotate(25deg);
 }
 
-.flower-leaf-right {
-    right: 4px;
-    bottom: 75px;
+.leaf-right {
+
+    right: 3px;
+    bottom: 74px;
 
     transform:
         scaleX(-1)
@@ -451,147 +786,24 @@ button {
 
 
 /* =========================================================
-   FLOWER HEAD
-   ========================================================= */
-
-.flower-head {
-    position: absolute;
-
-    left: 50%;
-    top: 10px;
-
-    width: 60px;
-    height: 60px;
-
-    transform:
-        translateX(-50%);
-
-    transform-origin: center bottom;
-}
-
-
-/* =========================================================
-   PETALS
-   ========================================================= */
-
-.petal {
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-
-    width: 25px;
-    height: 38px;
-
-    transform-origin: 50% 85%;
-
-    border-radius:
-        60% 60% 50% 50%;
-}
-
-
-/* Different flower colors */
-
-.flower-1 .petal {
-    background: #f6a8bd;
-}
-
-.flower-2 .petal {
-    background: #f4d878;
-}
-
-.flower-3 .petal {
-    background: #d8a6e8;
-}
-
-.flower-4 .petal {
-    background: #f3a86e;
-}
-
-.flower-5 .petal {
-    background: #f4c5d8;
-}
-
-
-/* Six petals */
-
-.petal:nth-child(1) {
-    transform:
-        translate(-50%, -90%)
-        rotate(0deg);
-}
-
-.petal:nth-child(2) {
-    transform:
-        translate(-50%, -90%)
-        rotate(60deg);
-}
-
-.petal:nth-child(3) {
-    transform:
-        translate(-50%, -90%)
-        rotate(120deg);
-}
-
-.petal:nth-child(4) {
-    transform:
-        translate(-50%, -90%)
-        rotate(180deg);
-}
-
-.petal:nth-child(5) {
-    transform:
-        translate(-50%, -90%)
-        rotate(240deg);
-}
-
-.petal:nth-child(6) {
-    transform:
-        translate(-50%, -90%)
-        rotate(300deg);
-}
-
-
-/* =========================================================
-   FLOWER CENTER
-   ========================================================= */
-
-.flower-center {
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-
-    width: 17px;
-    height: 17px;
-
-    transform:
-        translate(-50%, -50%);
-
-    border-radius: 50%;
-
-    background:
-        #f6d85d;
-
-    box-shadow:
-        0 0 8px rgba(255, 225, 100, 0.4);
-
-    z-index: 10;
-}
-
-
-/* =========================================================
    FLOWER HOVER
    ========================================================= */
 
 .flower:hover {
+
     filter:
         drop-shadow(
-            0 0 12px rgba(255, 255, 255, 0.3)
+            0 0 12px rgba(
+                255,
+                255,
+                255,
+                0.35
+            )
         );
 }
 
 .flower:hover .flower-head {
+
     animation:
         flowerFloat 1.5s ease-in-out infinite;
 }
@@ -618,6 +830,7 @@ button {
    ========================================================= */
 
 .flower.blooming .flower-head {
+
     animation:
         flowerBloom 0.75s ease forwards;
 }
@@ -652,9 +865,15 @@ button {
    ========================================================= */
 
 .flower.found .flower-head {
+
     filter:
         drop-shadow(
-            0 0 8px rgba(255, 255, 255, 0.18)
+            0 0 9px rgba(
+                255,
+                255,
+                255,
+                0.2
+            )
         );
 }
 
@@ -664,6 +883,7 @@ button {
    ========================================================= */
 
 .sparkle {
+
     position: absolute;
 
     color: white;
@@ -706,109 +926,11 @@ button {
 
 
 /* =========================================================
-   FIREFLIES
-   ========================================================= */
-
-.firefly {
-    position: absolute;
-
-    width: 5px;
-    height: 5px;
-
-    border-radius: 50%;
-
-    background: #f4edaa;
-
-    box-shadow:
-        0 0 9px rgba(255, 245, 160, 0.7);
-
-    z-index: 4;
-
-    animation:
-        fireflyFloat 5s ease-in-out infinite;
-}
-
-.firefly:nth-of-type(1) {
-    left: 13%;
-    top: 35%;
-    animation-delay: 0s;
-}
-
-.firefly:nth-of-type(2) {
-    left: 27%;
-    top: 47%;
-    animation-delay: 1s;
-}
-
-.firefly:nth-of-type(3) {
-    left: 42%;
-    top: 29%;
-    animation-delay: 2s;
-}
-
-.firefly:nth-of-type(4) {
-    left: 58%;
-    top: 40%;
-    animation-delay: 0.5s;
-}
-
-.firefly:nth-of-type(5) {
-    left: 73%;
-    top: 31%;
-    animation-delay: 1.5s;
-}
-
-.firefly:nth-of-type(6) {
-    left: 88%;
-    top: 46%;
-    animation-delay: 2.5s;
-}
-
-.firefly:nth-of-type(7) {
-    left: 22%;
-    top: 62%;
-    animation-delay: 3s;
-}
-
-.firefly:nth-of-type(8) {
-    left: 79%;
-    top: 59%;
-    animation-delay: 3.5s;
-}
-
-.firefly:nth-of-type(9) {
-    left: 52%;
-    top: 55%;
-    animation-delay: 4s;
-}
-
-@keyframes fireflyFloat {
-
-    0%,
-    100% {
-        opacity: 0.25;
-
-        transform:
-            translate(0, 0);
-    }
-
-    50% {
-        opacity: 1;
-
-        transform:
-            translate(
-                10px,
-                -15px
-            );
-    }
-}
-
-
-/* =========================================================
-   FLOWER MESSAGE POPUP
+   FLOWER POPUP
    ========================================================= */
 
 #flowerMessage {
+
     position: fixed;
 
     inset: 0;
@@ -819,24 +941,34 @@ button {
     justify-content: center;
 
     background:
-        rgba(0, 12, 8, 0.6);
+        rgba(0, 12, 8, 0.62);
 
     backdrop-filter:
         blur(5px);
 
     z-index: 100;
 
+    opacity: 1;
+
     transition:
         opacity 0.4s ease;
 }
 
 #flowerMessage.hidden {
+
     opacity: 0;
 
     pointer-events: none;
 }
 
-.popup-card {
+
+/*
+   IMPORTANT:
+   Your HTML uses .popup-content
+*/
+
+.popup-content {
+
     width: min(90%, 430px);
 
     padding: 35px;
@@ -846,37 +978,55 @@ button {
     text-align: center;
 
     background:
-        rgba(7, 35, 25, 0.95);
+        rgba(7, 35, 25, 0.96);
 
     border:
-        1px solid rgba(255, 255, 255, 0.12);
+        1px solid rgba(
+            255,
+            255,
+            255,
+            0.12
+        );
 
     box-shadow:
-        0 20px 70px rgba(0, 0, 0, 0.4);
+        0 20px 70px rgba(
+            0,
+            0,
+            0,
+            0.45
+        );
 }
 
-.popup-card h3 {
-    font-size: 25px;
+#flowerNumber {
 
-    font-weight: 400;
+    display: block;
+
+    font-size: 24px;
 
     margin-bottom: 15px;
 }
 
-.popup-card p {
-    color:
-        rgba(255, 255, 255, 0.7);
+#flowerText {
 
-    line-height: 1.6;
+    color:
+        rgba(255, 255, 255, 0.72);
+
+    line-height: 1.7;
 
     margin-bottom: 25px;
 }
 
 #closeFlowerMessage {
-    padding: 10px 23px;
+
+    padding: 10px 24px;
 
     border:
-        1px solid rgba(255, 255, 255, 0.16);
+        1px solid rgba(
+            255,
+            255,
+            255,
+            0.16
+        );
 
     border-radius: 25px;
 
@@ -884,6 +1034,21 @@ button {
         rgba(255, 255, 255, 0.07);
 
     color: white;
+
+    font-size: 15px;
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+#closeFlowerMessage:hover {
+
+    background:
+        rgba(255, 255, 255, 0.13);
+
+    transform:
+        translateY(-2px);
 }
 
 
@@ -892,16 +1057,14 @@ button {
    ========================================================= */
 
 #lilyScene {
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
 
     overflow: hidden;
 
+    text-align: center;
+
     background:
         radial-gradient(
-            circle at 50% 60%,
+            circle at 50% 55%,
             rgba(54, 112, 76, 0.2),
             transparent 40%
         ),
@@ -915,17 +1078,18 @@ button {
 
 
 /* =========================================================
-   LILY STORY AREA
+   LILY STORY
    ========================================================= */
 
 .lily-story {
+
     position: relative;
 
     z-index: 10;
 
     width: min(90%, 850px);
 
-    min-height: 90vh;
+    height: 92vh;
 
     display: flex;
 
@@ -933,18 +1097,25 @@ button {
 
     align-items: center;
 
-    justify-content: center;
+    justify-content: flex-start;
 
-    padding-top: 20px;
+    padding-top: 35px;
 }
 
 
-/* Text gets its own protected area */
+/* =========================================================
+   LILY TEXT
+   ========================================================= */
 
 #lilyIntro {
+
     position: relative;
 
     z-index: 30;
+
+    min-height: 46px;
+
+    margin-bottom: 8px;
 
     font-size:
         clamp(24px, 3vw, 36px);
@@ -954,27 +1125,24 @@ button {
     color:
         rgba(255, 255, 255, 0.94);
 
-    margin-bottom: 8px;
-
-    min-height: 45px;
-
     transition:
         opacity 0.8s ease;
 }
 
 #lilyText {
+
     position: relative;
 
     z-index: 30;
 
+    min-height: 28px;
+
+    margin-bottom: 0;
+
     font-size: 17px;
 
     color:
-        rgba(255, 255, 255, 0.6);
-
-    min-height: 26px;
-
-    margin-bottom: 0;
+        rgba(255, 255, 255, 0.62);
 
     transition:
         opacity 0.8s ease;
@@ -982,14 +1150,20 @@ button {
 
 
 /* =========================================================
-   LILY GARDEN
+   LILY GARDEN AREA
    ========================================================= */
 
+/*
+   This creates a completely separate area for the lily.
+   The flower cannot grow into the text.
+*/
+
 .lily-garden {
+
     position: relative;
 
     width: 500px;
-    height: 420px;
+    height: 410px;
 
     margin-top: 5px;
 
@@ -997,13 +1171,16 @@ button {
 }
 
 
-/* Lily ground */
+/* =========================================================
+   LILY GROUND
+   ========================================================= */
 
 .lily-ground {
+
     position: absolute;
 
     left: 50%;
-    bottom: 20px;
+    bottom: 18px;
 
     width: 230px;
     height: 48px;
@@ -1031,13 +1208,14 @@ button {
    ========================================================= */
 
 #lilyPlant {
+
     position: absolute;
 
     left: 50%;
-    bottom: 38px;
+    bottom: 36px;
 
     width: 300px;
-    height: 350px;
+    height: 345px;
 
     transform:
         translateX(-50%);
@@ -1052,6 +1230,7 @@ button {
    ========================================================= */
 
 .lily-stem {
+
     position: absolute;
 
     left: 50%;
@@ -1092,12 +1271,13 @@ button {
    ========================================================= */
 
 .lily-leaf {
+
     position: absolute;
 
-    bottom: 72px;
+    bottom: 65px;
 
-    width: 115px;
-    height: 36px;
+    width: 110px;
+    height: 35px;
 
     border-radius:
         100% 0 100% 0;
@@ -1117,7 +1297,8 @@ button {
 }
 
 .lily-leaf-left {
-    left: 20px;
+
+    left: 22px;
 
     transform:
         rotate(18deg)
@@ -1128,7 +1309,8 @@ button {
 }
 
 .lily-leaf-right {
-    right: 20px;
+
+    right: 22px;
 
     transform:
         scaleX(-1)
@@ -1141,21 +1323,20 @@ button {
 
 
 /* =========================================================
-   STRAIGHT-UP LILY BUD
+   LILY BUD
    ========================================================= */
 
 .lily-bud {
+
     position: absolute;
 
     left: 50%;
 
     /*
-       IMPORTANT:
-       The bud is directly above the stem.
-       Nothing grows sideways.
+       DIRECTLY ABOVE THE STEM
     */
 
-    bottom: 193px;
+    bottom: 190px;
 
     width: 55px;
     height: 82px;
@@ -1178,6 +1359,7 @@ button {
 /* Bud petals */
 
 .bud-petal {
+
     position: absolute;
 
     left: 50%;
@@ -1201,17 +1383,20 @@ button {
 }
 
 .bud-petal-1 {
+
     transform:
         translateX(-50%)
         rotate(-15deg);
 }
 
 .bud-petal-2 {
+
     transform:
         translateX(-50%);
 }
 
 .bud-petal-3 {
+
     transform:
         translateX(-50%)
         rotate(15deg);
@@ -1219,21 +1404,20 @@ button {
 
 
 /* =========================================================
-   FULL LILY FLOWER
+   FULL LILY
    ========================================================= */
 
 .lily-flower {
+
     position: absolute;
 
     left: 50%;
 
     /*
-       Directly above the stem.
-       The flower expands here instead of scaling
-       the entire plant.
+       Also directly above the stem.
     */
 
-    bottom: 190px;
+    bottom: 185px;
 
     width: 190px;
     height: 190px;
@@ -1265,6 +1449,7 @@ button {
    ========================================================= */
 
 .lily-petal {
+
     position: absolute;
 
     left: 50%;
@@ -1283,7 +1468,7 @@ button {
         linear-gradient(
             to bottom,
             #ffffff,
-            #eef2ec
+            #edf2eb
         );
 
     box-shadow:
@@ -1295,37 +1480,46 @@ button {
         );
 }
 
+
+/* Six lily petals */
+
 .lily-petal-1 {
+
     transform:
         translate(-50%, -88%)
         rotate(0deg);
 }
 
 .lily-petal-2 {
+
     transform:
         translate(-50%, -88%)
         rotate(60deg);
 }
 
 .lily-petal-3 {
+
     transform:
         translate(-50%, -88%)
         rotate(120deg);
 }
 
 .lily-petal-4 {
+
     transform:
         translate(-50%, -88%)
         rotate(180deg);
 }
 
 .lily-petal-5 {
+
     transform:
         translate(-50%, -88%)
         rotate(240deg);
 }
 
 .lily-petal-6 {
+
     transform:
         translate(-50%, -88%)
         rotate(300deg);
@@ -1337,6 +1531,7 @@ button {
    ========================================================= */
 
 .lily-center {
+
     position: absolute;
 
     left: 50%;
@@ -1374,22 +1569,26 @@ button {
    ========================================================= */
 
 #lilyPlant.growing .lily-stem {
+
     transform:
         translateX(-50%)
         scaleY(1);
 }
 
 #lilyPlant.growing .lily-leaf {
+
     opacity: 1;
 }
 
 #lilyPlant.growing .lily-leaf-left {
+
     transform:
         rotate(18deg)
         scale(1);
 }
 
 #lilyPlant.growing .lily-leaf-right {
+
     transform:
         scaleX(-1)
         rotate(18deg)
@@ -1398,10 +1597,11 @@ button {
 
 
 /* =========================================================
-   LILY BUD APPEARS
+   BUD APPEARS
    ========================================================= */
 
 #lilyPlant.budding .lily-bud {
+
     transform:
         translateX(-50%)
         translateY(0)
@@ -1414,6 +1614,7 @@ button {
    ========================================================= */
 
 #lilyPlant.bloomed .lily-bud {
+
     opacity: 0;
 
     transform:
@@ -1423,11 +1624,12 @@ button {
 }
 
 #lilyPlant.bloomed .lily-flower {
+
     opacity: 1;
 
     /*
-       Only the flower itself scales.
-       The stem and text remain untouched.
+       ONLY THE FLOWER GETS BIGGER.
+       The stem and text don't move.
     */
 
     transform:
@@ -1441,15 +1643,16 @@ button {
    ========================================================= */
 
 #lilyPlant.bloomed::after {
+
     content: "";
 
     position: absolute;
 
     left: 50%;
-    bottom: 150px;
+    bottom: 145px;
 
-    width: 230px;
-    height: 230px;
+    width: 240px;
+    height: 240px;
 
     transform:
         translateX(-50%);
@@ -1500,41 +1703,18 @@ button {
    ========================================================= */
 
 #bloomLily {
+
     position: relative;
 
     z-index: 30;
 
-    padding: 13px 27px;
-
-    border-radius: 25px;
-
-    color: white;
-
-    background:
-        rgba(255, 255, 255, 0.08);
-
-    border:
-        1px solid rgba(255, 255, 255, 0.15);
-
-    font-size: 16px;
-
     margin-top: 0;
 
-    transition:
-        transform 0.25s ease,
-        background 0.25s ease,
-        opacity 0.4s ease;
-}
-
-#bloomLily:hover {
-    transform:
-        translateY(-3px);
-
-    background:
-        rgba(255, 255, 255, 0.14);
+    flex-shrink: 0;
 }
 
 #lilyScene.lily-growing #bloomLily {
+
     opacity: 0;
 
     pointer-events: none;
@@ -1546,6 +1726,7 @@ button {
    ========================================================= */
 
 #birthday {
+
     background:
         radial-gradient(
             circle at center,
@@ -1563,14 +1744,39 @@ button {
 }
 
 .birthday-content {
+
     position: relative;
 
     z-index: 10;
 }
 
-.birthday-content h1 {
+.cake {
+
     font-size:
-        clamp(50px, 8vw, 100px);
+        clamp(55px, 7vw, 90px);
+
+    margin-bottom: 10px;
+
+    animation:
+        cakeFloat 2s ease-in-out infinite;
+}
+
+@keyframes cakeFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.birthday-content h1 {
+
+    font-size:
+        clamp(48px, 7vw, 95px);
 
     font-weight: 400;
 
@@ -1588,6 +1794,7 @@ button {
 }
 
 .birthday-content p {
+
     font-size: 19px;
 
     color:
@@ -1601,7 +1808,15 @@ button {
    LETTER
    ========================================================= */
 
+/*
+   Your HTML uses .letter-content
+   NOT .letter-card
+*/
+
 #letter {
+
+    overflow: hidden;
+
     background:
         linear-gradient(
             to bottom,
@@ -1613,14 +1828,15 @@ button {
     text-align: center;
 }
 
-.letter-card {
+.letter-content {
+
     width: min(90%, 700px);
 
-    max-height: 80vh;
+    max-height: 82vh;
 
     overflow-y: auto;
 
-    padding: 45px;
+    padding: 42px;
 
     border-radius: 20px;
 
@@ -1628,7 +1844,12 @@ button {
         rgba(255, 255, 255, 0.045);
 
     border:
-        1px solid rgba(255, 255, 255, 0.12);
+        1px solid rgba(
+            255,
+            255,
+            255,
+            0.12
+        );
 
     box-shadow:
         0 20px 70px rgba(
@@ -1637,9 +1858,12 @@ button {
             0,
             0.3
         );
+
+    scrollbar-width: thin;
 }
 
-.letter-card h2 {
+.letter-content h2 {
+
     font-size: 30px;
 
     font-weight: 400;
@@ -1647,15 +1871,29 @@ button {
     margin-bottom: 25px;
 }
 
-.letter-card p {
-    color:
-        rgba(255, 255, 255, 0.72);
+.letter-content p {
 
     font-size: 17px;
 
     line-height: 1.8;
 
+    color:
+        rgba(255, 255, 255, 0.72);
+
     margin-bottom: 18px;
+}
+
+.signature {
+
+    margin-top: 25px;
+    margin-bottom: 28px;
+
+    color:
+        rgba(255, 255, 255, 0.8);
+
+    font-style: italic;
+
+    font-size: 18px;
 }
 
 
@@ -1667,6 +1905,7 @@ button {
 
     #garden::before,
     #flowerHunt::before {
+
         width: 60px;
         height: 60px;
 
@@ -1675,10 +1914,12 @@ button {
     }
 
     .mission-ui {
+
         top: 25px;
     }
 
     .flower {
+
         transform:
             scale(0.75);
 
@@ -1687,15 +1928,15 @@ button {
     }
 
     .flower-1 {
-        left: 10%;
+        left: 7%;
     }
 
     .flower-2 {
-        left: 29%;
+        left: 27%;
     }
 
     .flower-3 {
-        left: 48%;
+        left: 47%;
     }
 
     .flower-4 {
@@ -1703,31 +1944,41 @@ button {
     }
 
     .flower-5 {
-        left: 85%;
+        left: 86%;
     }
 
     .lily-garden {
+
         width: 360px;
         height: 360px;
     }
 
     #lilyPlant {
-        transform:
-            translateX(-50%)
-            scale(0.8);
 
-        transform-origin:
-            bottom center;
-    }
-
-    #lilyPlant.bloomed {
         transform:
             translateX(-50%)
             scale(0.8);
     }
 
-    .letter-card {
-        padding: 30px;
+    .lily-story {
+
+        width: 95%;
+        padding-top: 25px;
+    }
+
+    #lilyIntro {
+
+        font-size: 25px;
+    }
+
+    #lilyText {
+
+        font-size: 15px;
+    }
+
+    .letter-content {
+
+        padding: 28px;
     }
 }
 
@@ -1741,10 +1992,10 @@ button {
     *,
     *::before,
     *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
 
-        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
 
         transition-duration: 0.01ms !important;
     }
