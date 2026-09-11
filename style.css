@@ -1,6 +1,12 @@
-/* =========================================
-   GLOBAL
-========================================= */
+/* =========================================================
+   A LITTLE BIRTHDAY GARDEN
+   COMPLETE STYLE SHEET
+   ========================================================= */
+
+
+/* =========================================================
+   BASIC RESET
+   ========================================================= */
 
 * {
     box-sizing: border-box;
@@ -14,20 +20,21 @@ body {
     height: 100%;
     overflow: hidden;
 
-    font-family: "Segoe UI", Arial, sans-serif;
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+}
 
-    background: #07140f;
+body {
+    background: #001510;
     color: white;
 }
 
-button {
-    font-family: inherit;
-}
 
-
-/* =========================================
+/* =========================================================
    SCENES
-========================================= */
+   ========================================================= */
 
 .scene {
     position: fixed;
@@ -35,15 +42,10 @@ button {
 
     display: none;
 
-    align-items: center;
-    justify-content: center;
+    width: 100%;
+    height: 100%;
 
     overflow: hidden;
-
-    text-align: center;
-
-    opacity: 0;
-    transform: scale(1.02);
 }
 
 .scene.active {
@@ -53,429 +55,58 @@ button {
 }
 
 @keyframes sceneIn {
-
     from {
         opacity: 0;
-        transform: scale(1.02);
     }
 
     to {
         opacity: 1;
-        transform: scale(1);
     }
 }
 
 
-/* =========================================
+/* =========================================================
    BUTTONS
-========================================= */
+   ========================================================= */
 
 button {
-    border: 1px solid rgba(255, 255, 255, .25);
-
+    font-family: inherit;
+    border: none;
     cursor: pointer;
-
-    color: white;
-
-    background: rgba(255, 255, 255, .10);
-
-    padding: 14px 30px;
-
-    border-radius: 40px;
-
-    font-size: 16px;
-
-    transition:
-        transform .25s ease,
-        background .25s ease,
-        box-shadow .25s ease;
-
-    backdrop-filter: blur(8px);
-}
-
-button:hover {
-    transform: translateY(-3px);
-
-    background: rgba(255, 255, 255, .18);
-
-    box-shadow:
-        0 10px 30px rgba(0, 0, 0, .25);
-}
-
-button:active {
-    transform: scale(.97);
 }
 
 
-/* =========================================
-   INTRO
-========================================= */
+/* =========================================================
+   INTRO SCENE
+   ========================================================= */
 
 #intro {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
     background:
         radial-gradient(
-            circle at 50% 40%,
-            rgba(91, 145, 105, .25),
+            circle at 50% 35%,
+            rgba(65, 130, 91, 0.18),
             transparent 35%
         ),
         linear-gradient(
-            to bottom,
-            #07130f,
-            #10291d 60%,
-            #06100b
+            135deg,
+            #001713,
+            #00251d,
+            #00130f
         );
-}
-
-#intro::before {
-    content: "";
-
-    position: absolute;
-    inset: 0;
-
-    background:
-        radial-gradient(
-            circle at 15% 20%,
-            rgba(255,255,255,.5) 0 1px,
-            transparent 2px
-        ),
-        radial-gradient(
-            circle at 80% 30%,
-            rgba(255,255,255,.4) 0 1px,
-            transparent 2px
-        ),
-        radial-gradient(
-            circle at 60% 15%,
-            rgba(255,255,255,.5) 0 1px,
-            transparent 2px
-        ),
-        radial-gradient(
-            circle at 30% 70%,
-            rgba(255,255,255,.3) 0 1px,
-            transparent 2px
-        );
-
-    background-size: 220px 220px;
-
-    opacity: .7;
 }
 
 .intro-content {
     position: relative;
-    z-index: 5;
+    z-index: 2;
 
-    text-align: center;
+    animation: introFloat 5s ease-in-out infinite;
 }
 
-.intro-icon {
-    font-size: 80px;
-
-    margin-bottom: 15px;
-
-    filter:
-        drop-shadow(0 0 15px rgba(180,255,190,.3));
-}
-
-#intro h1 {
-    font-size: clamp(45px, 6vw, 82px);
-
-    font-weight: 300;
-
-    letter-spacing: 4px;
-}
-
-#intro p {
-    margin-top: 18px;
-
-    font-size: 20px;
-
-    opacity: .8;
-}
-
-#enterGarden {
-    margin-top: 28px;
-}
-
-
-/* =========================================
-   GARDEN
-========================================= */
-
-#garden,
-#flowerHunt {
-    background:
-        radial-gradient(
-            circle at 50% 35%,
-            rgba(74, 130, 89, .25),
-            transparent 38%
-        ),
-        linear-gradient(
-            to bottom,
-            #07140f 0%,
-            #0b2117 45%,
-            #102d1b 70%,
-            #07150d 100%
-        );
-}
-
-
-/* Moon */
-
-#garden::before,
-#flowerHunt::before {
-    content: "";
-
-    position: absolute;
-
-    width: 125px;
-    height: 125px;
-
-    border-radius: 50%;
-
-    background: #f4f1d5;
-
-    top: 8%;
-    right: 10%;
-
-    box-shadow:
-        0 0 25px rgba(255,255,220,.5),
-        0 0 70px rgba(255,255,220,.15);
-
-    opacity: .9;
-}
-
-
-/* Ground */
-
-#garden::after,
-#flowerHunt::after {
-    content: "";
-
-    position: absolute;
-
-    width: 140%;
-    height: 42%;
-
-    left: -20%;
-    bottom: -20%;
-
-    border-radius: 50% 50% 0 0;
-
-    background: #07160d;
-
-    box-shadow:
-        inset 0 25px 50px rgba(35,88,51,.25),
-        0 -10px 50px rgba(0,0,0,.3);
-}
-
-
-/* Garden content */
-
-.garden-content {
-    position: relative;
-    z-index: 5;
-
-    text-align: center;
-}
-
-#garden h2 {
-    font-size: clamp(35px, 4vw, 60px);
-
-    font-weight: 300;
-
-    letter-spacing: 3px;
-
-    text-shadow:
-        0 5px 25px rgba(0,0,0,.4);
-}
-
-#garden p {
-    margin: 18px 0 28px;
-
-    font-size: 18px;
-
-    line-height: 1.7;
-
-    opacity: .8;
-}
-
-
-/* =========================================
-   FLOWER HUNT
-========================================= */
-
-#flowerHunt {
-    isolation: isolate;
-
-    box-shadow:
-        inset 0 0 180px rgba(0,0,0,.65);
-}
-
-
-/* Grass */
-
-#flowerHunt::after {
-    height: 38%;
-
-    bottom: -16%;
-
-    background:
-        radial-gradient(
-            ellipse at 20% 20%,
-            rgba(48,102,57,.25),
-            transparent 35%
-        ),
-        radial-gradient(
-            ellipse at 70% 10%,
-            rgba(48,102,57,.20),
-            transparent 35%
-        ),
-        #07160d;
-
-    box-shadow:
-        inset 0 20px 45px rgba(52,105,62,.18),
-        0 -10px 50px rgba(0,0,0,.35);
-}
-
-
-/* Mission UI */
-
-.mission-ui {
-    position: absolute;
-
-    top: 9%;
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    z-index: 100;
-
-    width: 600px;
-    max-width: 90%;
-
-    text-align: center;
-}
-
-.mission-ui h2 {
-    font-size: clamp(38px, 4vw, 58px);
-
-    font-weight: 300;
-
-    letter-spacing: 2px;
-
-    text-shadow:
-        0 4px 25px rgba(0,0,0,.5);
-}
-
-#progress {
-    display: inline-block;
-
-    margin-top: 15px;
-
-    padding: 9px 20px;
-
-    border-radius: 30px;
-
-    background: rgba(255,255,255,.07);
-
-    border: 1px solid rgba(255,255,255,.12);
-
-    backdrop-filter: blur(8px);
-
-    font-size: 15px;
-
-    letter-spacing: .5px;
-
-    box-shadow:
-        0 8px 25px rgba(0,0,0,.2);
-}
-
-#foundCount {
-    display: inline-block;
-
-    min-width: 30px;
-
-    padding: 3px 8px;
-
-    margin: 0 3px;
-
-    border-radius: 20px;
-
-    background: rgba(255,255,255,.10);
-}
-
-
-/* =========================================
-   REAL FLOWERS
-========================================= */
-
-.flower {
-    position: absolute;
-
-    width: 100px;
-    height: 150px;
-
-    padding: 0 !important;
-    margin: 0 !important;
-
-    border: none !important;
-
-    background: transparent !important;
-
-    box-shadow: none !important;
-
-    overflow: visible;
-
-    z-index: 50;
-
-    cursor: pointer;
-
-    transform-origin: bottom center;
-
-    animation:
-        flowerFloat 4s ease-in-out infinite;
-}
-
-
-/* Flower positions */
-
-.flower-1 {
-    left: 18%;
-    top: 30%;
-}
-
-.flower-2 {
-    left: 42%;
-    top: 65%;
-
-    animation-delay: .7s;
-}
-
-.flower-3 {
-    left: 68%;
-    top: 32%;
-
-    animation-delay: 1.4s;
-}
-
-.flower-4 {
-    left: 78%;
-    top: 68%;
-
-    animation-delay: 2.1s;
-}
-
-.flower-5 {
-    left: 25%;
-    top: 72%;
-
-    animation-delay: 2.8s;
-}
-
-
-/* Flower movement */
-
-@keyframes flowerFloat {
-
+@keyframes introFloat {
     0%,
     100% {
         transform: translateY(0);
@@ -486,896 +117,785 @@ button:active {
     }
 }
 
+.intro-icon {
+    font-size: 58px;
+    margin-bottom: 18px;
 
-/* Flower head */
+    filter:
+        drop-shadow(0 0 15px rgba(100, 200, 130, 0.25));
+}
 
-.flower-head {
+.intro-content h1 {
+    font-size: clamp(38px, 5vw, 68px);
+    font-weight: 300;
+    letter-spacing: 1px;
+
+    margin-bottom: 14px;
+}
+
+.intro-content p {
+    font-size: 20px;
+    font-weight: 300;
+
+    color: rgba(255, 255, 255, 0.72);
+
+    margin-bottom: 32px;
+}
+
+#enterGarden {
+    padding: 14px 28px;
+
+    border-radius: 30px;
+
+    color: white;
+    background: rgba(255, 255, 255, 0.08);
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    font-size: 16px;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+#enterGarden:hover {
+    transform: translateY(-3px);
+
+    background: rgba(255, 255, 255, 0.14);
+
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.25),
+        0 0 20px rgba(130, 220, 160, 0.1);
+}
+
+
+/* =========================================================
+   GENERAL GARDEN SCENE
+   ========================================================= */
+
+#garden,
+#flowerHunt {
+    background:
+        radial-gradient(
+            ellipse at 50% 70%,
+            rgba(37, 104, 67, 0.16),
+            transparent 55%
+        ),
+        linear-gradient(
+            to bottom,
+            #001b15 0%,
+            #00291f 55%,
+            #001b15 100%
+        );
+}
+
+
+/* =========================================================
+   FIXED MOON
+   ========================================================= */
+
+/*
+   The moon is deliberately attached to the scene itself.
+   It does NOT use any animation or transform, so it stays fixed.
+*/
+
+#garden::before,
+#flowerHunt::before {
+    content: "";
+
     position: absolute;
 
-    width: 58px;
-    height: 58px;
+    width: 118px;
+    height: 118px;
 
-    left: 50%;
-    top: 10px;
+    top: 7%;
+    right: 9%;
 
-    transform: translateX(-50%);
+    border-radius: 50%;
+
+    background: #eeeeda;
+
+    box-shadow:
+        0 0 15px rgba(238, 238, 218, 0.35),
+        0 0 40px rgba(238, 238, 218, 0.18),
+        0 0 80px rgba(238, 238, 218, 0.08);
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+
+/* =========================================================
+   GARDEN INTRO
+   ========================================================= */
+
+.garden-content {
+    position: relative;
 
     z-index: 5;
 
-    animation:
-        flowerSway 4s ease-in-out infinite;
+    width: min(90%, 600px);
+
+    text-align: center;
+
+    margin: auto;
+
+    padding: 35px;
 }
 
-@keyframes flowerSway {
+.garden-content h2 {
+    font-size: clamp(34px, 4vw, 55px);
 
-    0%,
-    100% {
-        transform:
-            translateX(-50%)
-            rotate(-2deg);
-    }
+    font-weight: 300;
 
-    50% {
-        transform:
-            translateX(-50%)
-            rotate(3deg);
-    }
+    margin-bottom: 18px;
 }
 
-.flower-2 .flower-head {
-    animation-delay: .6s;
+.garden-content p {
+    font-size: 19px;
+    line-height: 1.7;
+
+    color: rgba(255, 255, 255, 0.72);
+
+    margin-bottom: 30px;
 }
 
-.flower-3 .flower-head {
-    animation-delay: 1.1s;
+#startMission {
+    padding: 14px 28px;
+
+    border-radius: 30px;
+
+    color: white;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    font-size: 16px;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
-.flower-4 .flower-head {
-    animation-delay: 1.7s;
-}
+#startMission:hover {
+    transform: translateY(-3px);
 
-.flower-5 .flower-head {
-    animation-delay: 2.3s;
-}
-
-
-/* =========================================
-   PETALS
-========================================= */
-
-.petal {
-    position: absolute;
-
-    width: 27px;
-    height: 38px;
-
-    left: 50%;
-    top: 50%;
-
-    transform-origin: 50% 90%;
-
-    border-radius:
-        55% 55% 45% 45%;
-}
-
-
-/* Five petals */
-
-.p1 {
-    transform:
-        translate(-50%, -90%)
-        rotate(0deg);
-}
-
-.p2 {
-    transform:
-        translate(-50%, -90%)
-        rotate(72deg);
-}
-
-.p3 {
-    transform:
-        translate(-50%, -90%)
-        rotate(144deg);
-}
-
-.p4 {
-    transform:
-        translate(-50%, -90%)
-        rotate(216deg);
-}
-
-.p5 {
-    transform:
-        translate(-50%, -90%)
-        rotate(288deg);
-}
-
-
-/* Sixth petal */
-
-.p6 {
-    transform:
-        translate(-50%, -90%)
-        rotate(60deg);
-}
-
-
-/* Six-petal flowers need different spacing */
-
-.flower-2 .p1,
-.flower-4 .p1 {
-    transform:
-        translate(-50%, -90%)
-        rotate(0deg);
-}
-
-.flower-2 .p2,
-.flower-4 .p2 {
-    transform:
-        translate(-50%, -90%)
-        rotate(60deg);
-}
-
-.flower-2 .p3,
-.flower-4 .p3 {
-    transform:
-        translate(-50%, -90%)
-        rotate(120deg);
-}
-
-.flower-2 .p4,
-.flower-4 .p4 {
-    transform:
-        translate(-50%, -90%)
-        rotate(180deg);
-}
-
-.flower-2 .p5,
-.flower-4 .p5 {
-    transform:
-        translate(-50%, -90%)
-        rotate(240deg);
-}
-
-.flower-2 .p6,
-.flower-4 .p6 {
-    transform:
-        translate(-50%, -90%)
-        rotate(300deg);
-}
-
-
-/* =========================================
-   FLOWER COLORS
-========================================= */
-
-.flower-pink .petal {
-    background:
-        linear-gradient(
-            145deg,
-            #ff8fc4,
-            #e94d91
-        );
+    background: rgba(255, 255, 255, 0.14);
 
     box-shadow:
-        0 0 10px rgba(255,100,170,.25);
-}
-
-.flower-yellow .petal {
-    background:
-        linear-gradient(
-            145deg,
-            #ffe878,
-            #e6a82f
-        );
-
-    box-shadow:
-        0 0 10px rgba(255,220,80,.25);
-}
-
-.flower-white .petal {
-    background:
-        linear-gradient(
-            145deg,
-            #ffffff,
-            #d9e9dd
-        );
-
-    box-shadow:
-        0 0 10px rgba(230,255,235,.35);
-}
-
-.flower-coral .petal {
-    background:
-        linear-gradient(
-            145deg,
-            #ff8f9f,
-            #ef5268
-        );
-
-    box-shadow:
-        0 0 10px rgba(255,100,120,.25);
-}
-
-.flower-red .petal {
-    background:
-        linear-gradient(
-            145deg,
-            #ff6670,
-            #d93646
-        );
-
-    box-shadow:
-        0 0 10px rgba(255,70,80,.25);
+        0 8px 30px rgba(0, 0, 0, 0.25);
 }
 
 
-/* =========================================
-   FLOWER CENTERS
-========================================= */
-
-.flower-center {
-    position: absolute;
-
-    width: 17px;
-    height: 17px;
-
-    left: 50%;
-    top: 50%;
-
-    transform:
-        translate(-50%, -50%);
-
-    border-radius: 50%;
-
-    background: #f6c84a;
-
-    box-shadow:
-        0 0 6px rgba(255,220,80,.8),
-        0 0 14px rgba(255,220,80,.3);
-
-    z-index: 10;
-}
-
-
-/* =========================================
-   STEM
-========================================= */
-
-.stem {
-    position: absolute;
-
-    width: 6px;
-    height: 72px;
-
-    left: 50%;
-    bottom: 13px;
-
-    transform:
-        translateX(-50%);
-
-    border-radius: 10px;
-
-    background:
-        linear-gradient(
-            to right,
-            #245d35,
-            #4e9a54,
-            #245d35
-        );
-
-    box-shadow:
-        0 0 8px rgba(70,160,80,.25);
-}
-
-
-/* =========================================
-   LEAVES
-========================================= */
-
-.leaf {
-    position: absolute;
-
-    width: 34px;
-    height: 15px;
-
-    bottom: 35px;
-
-    border-radius:
-        100% 0 100% 0;
-
-    background:
-        linear-gradient(
-            135deg,
-            #5da866,
-            #245d35
-        );
-}
-
-.leaf-left {
-    left: 23px;
-
-    transform:
-        rotate(25deg);
-}
-
-.leaf-right {
-    right: 23px;
-
-    transform:
-        scaleX(-1)
-        rotate(25deg);
-}
-
-
-/* =========================================
-   FLOWER HOVER
-========================================= */
-
-.flower:hover {
-    transform:
-        scale(1.2)
-        translateY(-7px) !important;
-
-    filter:
-        drop-shadow(0 0 8px rgba(255,255,255,.8))
-        drop-shadow(0 0 25px rgba(255,220,180,.5));
-}
-
-.flower:hover .flower-head {
-    filter:
-        drop-shadow(0 0 7px rgba(255,255,255,.8))
-        drop-shadow(0 0 18px rgba(255,200,220,.5));
-}
-
-.flower:hover .stem {
-    box-shadow:
-        0 0 8px rgba(80,180,100,.5);
-}
-
-
-/* =========================================
-   FOUND FLOWER
-========================================= */
-
-.flower.found {
-    filter:
-        grayscale(.15)
-        brightness(.65);
-
-    transform:
-        scale(.85);
-}
-
-
-/* =========================================
-   FIREFLIES
-========================================= */
-
-.firefly {
-    position: absolute;
-
-    width: 5px;
-    height: 5px;
-
-    border-radius: 50%;
-
-    background: #eaffb0;
-
-    box-shadow:
-        0 0 8px #eaffb0,
-        0 0 18px rgba(220,255,150,.6);
-
-    animation:
-        fireflyMove 5s ease-in-out infinite;
-
-    z-index: 10;
-}
-
-.firefly-1 {
-    left: 12%;
-    top: 50%;
-}
-
-.firefly-2 {
-    left: 30%;
-    top: 40%;
-
-    animation-delay: 1s;
-}
-
-.firefly-3 {
-    left: 53%;
-    top: 55%;
-
-    animation-delay: 2s;
-}
-
-.firefly-4 {
-    left: 72%;
-    top: 47%;
-
-    animation-delay: 3s;
-}
-
-.firefly-5 {
-    left: 84%;
-    top: 30%;
-
-    animation-delay: 1.5s;
-}
-
-.firefly-6 {
-    left: 60%;
-    top: 25%;
-
-    animation-delay: 3.5s;
-}
-
-@keyframes fireflyMove {
-
-    0% {
-        transform: translate(0,0);
-        opacity: .2;
-    }
-
-    25% {
-        opacity: 1;
-    }
-
-    50% {
-        transform: translate(30px,-40px);
-        opacity: .7;
-    }
-
-    75% {
-        opacity: 1;
-    }
-
-    100% {
-        transform: translate(-20px,-70px);
-        opacity: .1;
-    }
-}
-
-
-/* =========================================
-   POPUP
-========================================= */
-
-.popup {
+/* =========================================================
+   FLOWER HUNT
+   ========================================================= */
+
+#flowerHunt {
     position: fixed;
+}
 
-    inset: 0;
 
-    z-index: 500;
+/* =========================================================
+   GARDEN GROUND
+   ========================================================= */
 
-    display: flex;
+.ground {
+    position: absolute;
+
+    left: -5%;
+    bottom: -8%;
+
+    width: 110%;
+    height: 34%;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 0%,
+            rgba(55, 130, 79, 0.52),
+            rgba(22, 76, 49, 0.82) 48%,
+            rgba(7, 40, 27, 0.96) 100%
+        );
+
+    border-radius: 50% 50% 0 0;
+
+    box-shadow:
+        inset 0 18px 35px rgba(90, 160, 100, 0.10),
+        0 -8px 30px rgba(38, 110, 68, 0.15);
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+
+/* subtle grass-like highlights */
+
+.ground::before {
+    content: "";
+
+    position: absolute;
+
+    left: 5%;
+    right: 5%;
+    top: 18px;
+
+    height: 2px;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            transparent 0 18px,
+            rgba(110, 180, 110, 0.12) 18px 20px,
+            transparent 20px 38px
+        );
+
+    opacity: 0.7;
+}
+
+
+/* =========================================================
+   MISSION UI
+   ========================================================= */
+
+.mission-ui {
+    position: absolute;
+
+    top: 6%;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    z-index: 20;
+
+    text-align: center;
+
+    pointer-events: none;
+}
+
+.mission-ui h2 {
+    font-size: clamp(34px, 4vw, 55px);
+
+    font-weight: 300;
+
+    margin-bottom: 16px;
+
+    text-shadow:
+        0 2px 15px rgba(0, 0, 0, 0.25);
+}
+
+#progress {
+    display: inline-block;
+
+    padding: 10px 18px;
+
+    border-radius: 25px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    border: 1px solid rgba(255, 255, 255, 0.13);
+
+    color: rgba(255, 255, 255, 0.85);
+
+    font-size: 14px;
+
+    backdrop-filter: blur(5px);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+#foundCount {
+    display: inline-flex;
 
     align-items: center;
     justify-content: center;
 
-    background:
-        rgba(2,10,6,.55);
+    min-width: 27px;
+    height: 27px;
 
-    backdrop-filter: blur(8px);
-}
+    margin-left: 4px;
 
-.popup.hidden {
-    display: none;
-}
+    border-radius: 50%;
 
-.popup-content {
-    width: min(500px, 85%);
-
-    padding: 45px;
-
-    text-align: center;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(31,65,46,.95),
-            rgba(10,29,19,.95)
-        );
-
-    border:
-        1px solid rgba(255,255,255,.15);
-
-    border-radius: 25px;
-
-    box-shadow:
-        0 30px 80px rgba(0,0,0,.5),
-        0 0 40px rgba(130,190,140,.08);
-
-    animation:
-        popupIn .45s ease;
-}
-
-#flowerNumber {
-    display: block;
-
-    font-size: 14px;
-
-    letter-spacing: 2px;
-
-    text-transform: uppercase;
-
-    opacity: .65;
-
-    margin-bottom: 18px;
-}
-
-#flowerText {
-    font-size: 22px;
-
-    line-height: 1.6;
-
-    margin-bottom: 25px;
-}
-
-@keyframes popupIn {
-
-    from {
-        opacity: 0;
-
-        transform:
-            translateY(20px)
-            scale(.95);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
-    }
+    background: rgba(255, 255, 255, 0.12);
 }
 
 
-/* =========================================
-   LILY SCENE
-========================================= */
-
-#lilyScene {
-    background:
-        radial-gradient(
-            circle at center 45%,
-            rgba(230,255,235,.12),
-            transparent 30%
-        ),
-        linear-gradient(
-            to bottom,
-            #06130d,
-            #0c2116,
-            #050d09
-        );
-}
-
-.lily-content {
-    position: relative;
-    z-index: 5;
-
-    text-align: center;
-}
-
-#lilyIntro {
-    font-size: 25px;
-
-    margin-bottom: 15px;
-
-    opacity: .85;
-}
-
-#lilyText {
-    font-size: 18px;
-
-    margin-bottom: 20px;
-
-    opacity: .7;
-}
-
-#lilyPlant {
-    font-size: 150px;
-
-    margin: 20px 0;
-
-    transition:
-        transform 1.5s ease,
-        filter 1.5s ease;
-
-    filter:
-        drop-shadow(0 0 20px rgba(255,255,255,.2));
-}
-
-#lilyPlant.bloomed {
-    transform:
-        scale(2.3);
-
-    filter:
-        drop-shadow(0 0 30px rgba(255,255,255,.7))
-        drop-shadow(0 0 70px rgba(230,255,240,.35));
-}
-
-
-/* =========================================
-   BIRTHDAY
-========================================= */
-
-#birthday {
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(255,235,180,.15),
-            transparent 35%
-        ),
-        linear-gradient(
-            135deg,
-            #07150f,
-            #183a25,
-            #07130d
-        );
-}
-
-.birthday-content {
-    position: relative;
-    z-index: 5;
-
-    text-align: center;
-}
-
-.cake {
-    font-size: 100px;
-
-    margin-bottom: 15px;
-
-    filter:
-        drop-shadow(0 0 20px rgba(255,230,180,.35));
-}
-
-#birthday h1 {
-    font-size: clamp(55px, 8vw, 110px);
-
-    font-weight: 300;
-
-    letter-spacing: 8px;
-
-    animation:
-        birthdayGlow 2s ease-in-out infinite alternate;
-}
-
-#birthday p {
-    margin: 18px 0 28px;
-
-    font-size: 20px;
-
-    opacity: .8;
-}
-
-@keyframes birthdayGlow {
-
-    from {
-        text-shadow:
-            0 0 10px rgba(255,255,255,.2);
-    }
-
-    to {
-        text-shadow:
-            0 0 25px rgba(255,255,220,.7),
-            0 0 60px rgba(255,255,220,.25);
-    }
-}
-
-
-/* =========================================
-   LETTER
-========================================= */
-
-#letter {
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(255,255,255,.08),
-            transparent 40%
-        ),
-        #08160f;
-}
-
-.letter-content {
-    position: relative;
-    z-index: 5;
-
-    width: min(700px, 80%);
-
-    max-height: 85vh;
-
-    overflow-y: auto;
-
-    padding: 55px;
-
-    background:
-        rgba(255,255,255,.07);
-
-    border:
-        1px solid rgba(255,255,255,.15);
-
-    border-radius: 25px;
-
-    backdrop-filter: blur(15px);
-
-    box-shadow:
-        0 30px 80px rgba(0,0,0,.35);
-
-    text-align: left;
-}
-
-.letter-content h2 {
-    margin-bottom: 25px;
-
-    font-size: 35px;
-
-    font-weight: 400;
-}
-
-.letter-content p {
-    line-height: 1.8;
-
-    font-size: 18px;
-
-    opacity: .9;
-
-    margin-bottom: 18px;
-}
-
-.signature {
-    margin-top: 30px;
-
-    margin-bottom: 25px;
-
-    font-size: 18px;
-
-    font-style: italic;
-
-    opacity: .8;
-}
-
-
-/* =========================================
-   MOBILE
-========================================= */
-
-@media (max-width: 700px) {
-
-    #intro h1 {
-        font-size: 40px;
-    }
-
-    .intro-icon {
-        font-size: 60px;
-    }
-
-    #garden h2,
-    .mission-ui h2 {
-        font-size: 35px;
-    }
-
-    .flower {
-        transform: scale(.8);
-    }
-
-    .flower:hover {
-        transform:
-            scale(.95)
-            translateY(-5px) !important;
-    }
-
-    #lilyPlant {
-        font-size: 100px;
-    }
-
-    #birthday h1 {
-        font-size: 45px;
-
-        letter-spacing: 4px;
-    }
-
-    .letter-content {
-        width: 90%;
-
-        padding: 30px;
-    }
-
-    .letter-content p {
-        font-size: 16px;
-    }
-
-    #flowerHunt .flower-1 {
-        left: 8%;
-    }
-
-    #flowerHunt .flower-2 {
-        left: 35%;
-    }
-
-    #flowerHunt .flower-3 {
-        left: 62%;
-    }
-
-    #flowerHunt .flower-4 {
-        left: 70%;
-    }
-
-    #flowerHunt .flower-5 {
-        left: 15%;
-    }
-}
-/* =========================
-   FLOWER INTERACTION
-   ========================= */
+/* =========================================================
+   FLOWERS
+   ========================================================= */
 
 .flower {
+    position: absolute;
+
+    width: 100px;
+    height: 150px;
+
+    padding: 0;
+
+    background: transparent;
+
+    z-index: 10;
+
+    transform-origin: bottom center;
+
     transition:
-        filter 0.25s ease,
-        transform 0.25s ease;
+        filter 0.25s ease;
 }
+
+
+/* flower positions */
+
+.flower-1 {
+    left: 18%;
+    top: 30%;
+}
+
+.flower-2 {
+    left: 42%;
+    top: 65%;
+    animation-delay: 0.7s;
+}
+
+.flower-3 {
+    left: 68%;
+    top: 32%;
+    animation-delay: 1.4s;
+}
+
+.flower-4 {
+    left: 78%;
+    top: 68%;
+    animation-delay: 2.1s;
+}
+
+.flower-5 {
+    left: 25%;
+    top: 72%;
+    animation-delay: 2.8s;
+}
+
+
+/* =========================================================
+   FLOWER HEAD
+   ========================================================= */
+
+.flower-head {
+    position: absolute;
+
+    left: 50%;
+    top: 0;
+
+    width: 62px;
+    height: 62px;
+
+    transform: translateX(-50%);
+
+    z-index: 4;
+
+    transition:
+        filter 0.3s ease;
+}
+
+
+/* =========================================================
+   PETALS
+   ========================================================= */
+
+.petal {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 29px;
+    height: 38px;
+
+    border-radius: 50%;
+
+    transform-origin: 50% 100%;
+}
+
+
+/* five-petal arrangement */
+
+.p1 {
+    transform: translate(-50%, -100%) rotate(0deg);
+}
+
+.p2 {
+    transform: translate(-50%, -100%) rotate(72deg);
+}
+
+.p3 {
+    transform: translate(-50%, -100%) rotate(144deg);
+}
+
+.p4 {
+    transform: translate(-50%, -100%) rotate(216deg);
+}
+
+.p5 {
+    transform: translate(-50%, -100%) rotate(288deg);
+}
+
+
+/* six-petal arrangement */
+
+.flower-2 .p1,
+.flower-4 .p1 {
+    transform: translate(-50%, -100%) rotate(0deg);
+}
+
+.flower-2 .p2,
+.flower-4 .p2 {
+    transform: translate(-50%, -100%) rotate(60deg);
+}
+
+.flower-2 .p3,
+.flower-4 .p3 {
+    transform: translate(-50%, -100%) rotate(120deg);
+}
+
+.flower-2 .p4,
+.flower-4 .p4 {
+    transform: translate(-50%, -100%) rotate(180deg);
+}
+
+.flower-2 .p5,
+.flower-4 .p5 {
+    transform: translate(-50%, -100%) rotate(240deg);
+}
+
+.flower-2 .p6,
+.flower-4 .p6 {
+    transform: translate(-50%, -100%) rotate(300deg);
+}
+
+
+/* =========================================================
+   FLOWER COLORS
+   ========================================================= */
+
+.flower-pink .petal {
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            #ff8bb5,
+            #f34e91
+        );
+
+    box-shadow:
+        0 0 7px rgba(255, 105, 165, 0.22);
+}
+
+.flower-yellow .petal {
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            #ffe895,
+            #f5c84c
+        );
+
+    box-shadow:
+        0 0 7px rgba(255, 215, 90, 0.2);
+}
+
+.flower-white .petal {
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            #ffffff,
+            #e8e8dd
+        );
+
+    box-shadow:
+        0 0 15px rgba(255, 255, 255, 0.35);
+}
+
+.flower-coral .petal {
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            #ff7d82,
+            #f14e61
+        );
+
+    box-shadow:
+        0 0 7px rgba(255, 105, 115, 0.2);
+}
+
+.flower-red .petal {
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            #ff6672,
+            #ed4053
+        );
+
+    box-shadow:
+        0 0 7px rgba(255, 90, 100, 0.2);
+}
+
+
+/* =========================================================
+   FLOWER CENTERS
+   ========================================================= */
+
+.flower-center {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 18px;
+    height: 18px;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background: #ffd84f;
+
+    box-shadow:
+        0 0 6px rgba(255, 220, 80, 0.5);
+
+    z-index: 8;
+
+    transition:
+        transform 0.3s ease;
+}
+
+
+/* =========================================================
+   STEMS
+   ========================================================= */
+
+.stem {
+    position: absolute;
+
+    left: 50%;
+    top: 48px;
+
+    width: 5px;
+    height: 92px;
+
+    transform: translateX(-50%);
+
+    border-radius: 5px;
+
+    background:
+        linear-gradient(
+            to right,
+            #16884c,
+            #2fba6a,
+            #147943
+        );
+
+    box-shadow:
+        0 0 4px rgba(40, 180, 100, 0.15);
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   LEAVES
+   ========================================================= */
+
+.leaf {
+    position: absolute;
+
+    top: 95px;
+
+    width: 33px;
+    height: 13px;
+
+    border-radius: 100% 0 100% 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #36b86b,
+            #16844a
+        );
+
+    z-index: 3;
+}
+
+.leaf-left {
+    left: 15px;
+
+    transform: rotate(20deg);
+}
+
+.leaf-right {
+    right: 15px;
+
+    transform:
+        scaleX(-1)
+        rotate(20deg);
+}
+
+
+/* =========================================================
+   FLOWER HOVER
+   ========================================================= */
 
 .flower:hover {
-    filter: brightness(1.25)
-            drop-shadow(0 0 12px rgba(255, 255, 255, 0.35));
-    cursor: pointer;
+    filter:
+        brightness(1.2)
+        drop-shadow(
+            0 0 12px rgba(255, 255, 255, 0.25)
+        );
 }
 
-/* Flower bloom animation when clicked */
+.flower:hover .flower-head {
+    filter:
+        drop-shadow(
+            0 0 12px rgba(255, 255, 255, 0.25)
+        );
+}
+
+
+/* =========================================================
+   FLOWER BLOOM ANIMATION
+   ========================================================= */
+
+/*
+   IMPORTANT:
+   translateX(-50%) is included in every keyframe.
+   This keeps the flower head centered while scaling.
+*/
+
 .flower.blooming .flower-head {
-    animation: flowerBloom 0.75s ease forwards;
+    animation:
+        flowerBloom 0.75s ease forwards;
 }
 
 @keyframes flowerBloom {
+
     0% {
-        transform: scale(1);
+        transform: translateX(-50%) scale(1);
     }
 
-    45% {
-        transform: scale(1.3);
+    35% {
+        transform: translateX(-50%) scale(1.28);
     }
 
-    70% {
-        transform: scale(1.12);
+    60% {
+        transform: translateX(-50%) scale(1.12);
+    }
+
+    80% {
+        transform: translateX(-50%) scale(1.22);
     }
 
     100% {
-        transform: scale(1.2);
+        transform: translateX(-50%) scale(1.18);
     }
 }
 
-/* Flowers that have already been found */
+
+/* =========================================================
+   FOUND FLOWERS
+   ========================================================= */
+
 .flower.found {
     filter:
-        brightness(1.15)
-        drop-shadow(0 0 14px rgba(255, 255, 255, 0.35));
+        brightness(1.12)
+        drop-shadow(
+            0 0 13px rgba(255, 255, 255, 0.18)
+        );
+}
+
+.flower.found .flower-head {
+    filter:
+        drop-shadow(
+            0 0 13px rgba(255, 255, 255, 0.25)
+        );
 }
 
 .flower.found .flower-center {
-    transform: translate(-50%, -50%) scale(1.15);
+    transform:
+        translate(-50%, -50%)
+        scale(1.12);
 }
 
-/* Little sparkle particles */
+
+/* little permanent sparkle */
+
+.flower.found::after {
+    content: "✦";
+
+    position: absolute;
+
+    top: 3px;
+    right: 8px;
+
+    font-size: 13px;
+
+    color: rgba(255, 255, 220, 0.9);
+
+    animation:
+        foundSparkle 2s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+@keyframes foundSparkle {
+
+    0%,
+    100% {
+        opacity: 0.25;
+        transform: scale(0.7) rotate(0deg);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.15) rotate(45deg);
+    }
+}
+
+
+/* =========================================================
+   CLICK SPARKLES
+   ========================================================= */
+
 .sparkle {
     position: absolute;
-    font-size: 16px;
-    color: white;
-    pointer-events: none;
-    z-index: 20;
 
-    animation: sparkleFloat 0.9s ease-out forwards;
+    left: 50%;
+    top: 30%;
+
+    font-size: 16px;
+
+    color: white;
+
+    pointer-events: none;
+
+    z-index: 30;
+
+    animation:
+        sparkleFloat 0.9s ease-out forwards;
 }
 
 @keyframes sparkleFloat {
+
     0% {
         opacity: 0;
-        transform: translate(0, 0) scale(0.4) rotate(0deg);
+
+        transform:
+            translate(0, 0)
+            scale(0.4)
+            rotate(0deg);
     }
 
     25% {
@@ -1384,151 +904,40 @@ button:active {
 
     100% {
         opacity: 0;
+
         transform:
-            translate(var(--sparkle-x), var(--sparkle-y))
+            translate(
+                var(--sparkle-x),
+                var(--sparkle-y)
+            )
             scale(1.2)
             rotate(90deg);
     }
 }
-/* =========================================
-   LIVING GARDEN ATMOSPHERE
-   ========================================= */
-
-/* -------------------------
-   SOFT AMBIENT LIGHT
-   ------------------------- */
-
-#flowerHunt::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background:
-        radial-gradient(
-            circle at 50% 55%,
-            rgba(80, 170, 120, 0.06),
-            transparent 42%
-        ),
-        radial-gradient(
-            circle at 15% 30%,
-            rgba(255, 255, 255, 0.025),
-            transparent 25%
-        );
-    z-index: 0;
-}
 
 
-/* -------------------------
-   MAKE MISSION UI STAY ON TOP
-   ------------------------- */
-
-.mission-ui {
-    z-index: 10;
-}
-
-
-/* -------------------------
-   FLOWER DEPTH + SWAY
-   ------------------------- */
-
-.flower {
-    transform-origin: bottom center;
-}
-
-/* Each flower moves slightly differently */
-
-.flower-1 {
-    animation:
-        flowerFloat 4.5s ease-in-out infinite,
-        flowerSway1 5s ease-in-out infinite;
-}
-
-.flower-2 {
-    animation:
-        flowerFloat 5.2s ease-in-out infinite,
-        flowerSway2 6s ease-in-out infinite;
-}
-
-.flower-3 {
-    animation:
-        flowerFloat 4.8s ease-in-out infinite,
-        flowerSway1 5.7s ease-in-out infinite;
-}
-
-.flower-4 {
-    animation:
-        flowerFloat 5.5s ease-in-out infinite,
-        flowerSway2 6.5s ease-in-out infinite;
-}
-
-.flower-5 {
-    animation:
-        flowerFloat 4.7s ease-in-out infinite,
-        flowerSway1 5.4s ease-in-out infinite;
-}
-
-@keyframes flowerSway1 {
-    0%, 100% {
-        rotate: -1deg;
-    }
-
-    50% {
-        rotate: 1.5deg;
-    }
-}
-
-@keyframes flowerSway2 {
-    0%, 100% {
-        rotate: 1deg;
-    }
-
-    50% {
-        rotate: -1.5deg;
-    }
-}
-
-
-/* -------------------------
-   FLOWER GLOW
-   ------------------------- */
-
-.flower-head {
-    transition:
-        filter 0.4s ease,
-        transform 0.4s ease;
-}
-
-.flower:hover .flower-head {
-    filter:
-        brightness(1.2)
-        drop-shadow(0 0 10px rgba(255,255,255,0.35));
-}
-
-.flower.found .flower-head {
-    filter:
-        brightness(1.18)
-        drop-shadow(0 0 16px rgba(255,255,255,0.28));
-}
-
-
-/* -------------------------
+/* =========================================================
    FIREFLIES
-   ------------------------- */
+   ========================================================= */
 
 .firefly {
     position: absolute;
+
     width: 5px;
     height: 5px;
+
     border-radius: 50%;
 
-    background: rgba(255, 248, 170, 0.95);
+    background:
+        rgba(255, 248, 170, 0.95);
 
     box-shadow:
         0 0 5px rgba(255, 248, 170, 0.9),
         0 0 14px rgba(255, 248, 170, 0.45);
 
     pointer-events: none;
-    z-index: 2;
+
+    z-index: 4;
 
     animation:
         fireflyGlow 2.5s ease-in-out infinite,
@@ -1571,8 +980,28 @@ button:active {
     animation-delay: 3s;
 }
 
+.firefly-7 {
+    left: 22%;
+    top: 52%;
+    animation-delay: 1.5s;
+}
+
+.firefly-8 {
+    left: 62%;
+    top: 24%;
+    animation-delay: 3.5s;
+}
+
+.firefly-9 {
+    left: 91%;
+    top: 44%;
+    animation-delay: 2.2s;
+}
+
 @keyframes fireflyGlow {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 0.25;
         transform: scale(0.7);
     }
@@ -1584,6 +1013,7 @@ button:active {
 }
 
 @keyframes fireflyDrift {
+
     0% {
         margin-left: 0;
         margin-top: 0;
@@ -1611,145 +1041,521 @@ button:active {
 }
 
 
-/* -------------------------
-   BUTTERFLY 1
-   ------------------------- */
+/* =========================================================
+   FLOWER MESSAGE POPUP
+   ========================================================= */
 
-#flowerHunt::before {
-    content: "🦋";
-    position: absolute;
+.popup {
+    position: fixed;
 
-    left: 8%;
-    top: 55%;
+    inset: 0;
 
-    font-size: 24px;
+    display: flex;
 
-    opacity: 0.45;
-    filter: blur(0.2px);
+    align-items: center;
+    justify-content: center;
 
-    pointer-events: none;
-    z-index: 3;
+    z-index: 100;
 
-    animation: butterflyFlight 14s ease-in-out infinite;
+    background:
+        rgba(0, 12, 9, 0.38);
+
+    backdrop-filter: blur(4px);
 }
 
-@keyframes butterflyFlight {
-
-    0% {
-        transform:
-            translate(0, 0)
-            rotate(-5deg);
-    }
-
-    20% {
-        transform:
-            translate(120px, -80px)
-            rotate(8deg);
-    }
-
-    40% {
-        transform:
-            translate(260px, 20px)
-            rotate(-8deg);
-    }
-
-    60% {
-        transform:
-            translate(430px, -100px)
-            rotate(5deg);
-    }
-
-    80% {
-        transform:
-            translate(600px, -20px)
-            rotate(-5deg);
-    }
-
-    100% {
-        transform:
-            translate(780px, -80px)
-            rotate(4deg);
-    }
+.popup.hidden {
+    display: none;
 }
 
+.popup-content {
+    width: min(90%, 420px);
 
-/* -------------------------
-   SOFT GROUND GLOW
-   ------------------------- */
+    padding: 32px;
 
-#flowerHunt::after {
+    border-radius: 22px;
+
+    text-align: center;
+
+    background:
+        rgba(10, 35, 27, 0.92);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.12);
+
     box-shadow:
-        inset 0 -100px 120px rgba(0, 0, 0, 0.18);
+        0 25px 70px rgba(0, 0, 0, 0.4),
+        0 0 30px rgba(80, 160, 100, 0.08);
+
+    animation:
+        popupIn 0.35s ease forwards;
 }
 
+@keyframes popupIn {
 
-/* -------------------------
-   FOUND FLOWERS
-   ------------------------- */
-
-.flower.found {
-    filter:
-        brightness(1.15)
-        drop-shadow(0 0 12px rgba(255,255,255,0.2));
-}
-
-.flower.found::after {
-    content: "✦";
-
-    position: absolute;
-
-    top: -8px;
-    right: -10px;
-
-    font-size: 13px;
-
-    color: rgba(255,255,220,0.9);
-
-    animation: foundSparkle 2s ease-in-out infinite;
-}
-
-@keyframes foundSparkle {
-
-    0%, 100% {
-        opacity: 0.25;
-        transform: scale(0.7) rotate(0deg);
+    from {
+        opacity: 0;
+        transform: scale(0.92) translateY(10px);
     }
 
-    50% {
+    to {
         opacity: 1;
-        transform: scale(1.2) rotate(45deg);
+        transform: scale(1) translateY(0);
     }
 }
 
+#flowerNumber {
+    display: block;
 
-/* -------------------------
-   MISSION UI
-   ------------------------- */
+    margin-bottom: 15px;
 
-#progress {
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+    font-size: 14px;
+
+    color:
+        rgba(180, 230, 190, 0.75);
+
+    letter-spacing: 1px;
 }
 
-#progress:hover {
+#flowerText {
+    font-size: 20px;
+
+    line-height: 1.6;
+
+    color:
+        rgba(255, 255, 255, 0.9);
+
+    margin-bottom: 25px;
+}
+
+#closeFlowerMessage {
+    padding: 11px 24px;
+
+    border-radius: 25px;
+
+    color: white;
+
+    background:
+        rgba(255, 255, 255, 0.09);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.15);
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+#closeFlowerMessage:hover {
     transform: translateY(-2px);
 
-    box-shadow:
-        0 8px 25px rgba(0,0,0,0.2),
-        0 0 18px rgba(120,220,170,0.08);
+    background:
+        rgba(255, 255, 255, 0.15);
 }
 
 
-/* -------------------------
-   REDUCE MOTION FOR USERS
-   ------------------------- */
+/* =========================================================
+   LILY SCENE
+   ========================================================= */
+
+#lilyScene {
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at 50% 55%,
+            rgba(70, 140, 90, 0.2),
+            transparent 35%
+        ),
+        linear-gradient(
+            to bottom,
+            #001b15,
+            #002c21,
+            #001812
+        );
+}
+
+.lily-content {
+    position: relative;
+
+    z-index: 5;
+
+    width: min(90%, 650px);
+
+    padding: 30px;
+}
+
+#lilyIntro {
+    font-size: 24px;
+
+    color:
+        rgba(255, 255, 255, 0.85);
+
+    margin-bottom: 12px;
+}
+
+#lilyText {
+    font-size: 18px;
+
+    color:
+        rgba(255, 255, 255, 0.62);
+
+    margin-bottom: 25px;
+}
+
+#lilyPlant {
+    font-size: 90px;
+
+    margin: 25px 0;
+
+    transition:
+        transform 2s ease,
+        filter 2s ease;
+}
+
+#lilyPlant.bloomed {
+    transform:
+        scale(2.3);
+
+    filter:
+        drop-shadow(
+            0 0 30px rgba(255, 255, 255, 0.45)
+        );
+}
+
+#bloomLily {
+    padding: 13px 27px;
+
+    border-radius: 25px;
+
+    color: white;
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.15);
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease;
+}
+
+#bloomLily:hover {
+    transform: translateY(-3px);
+
+    background:
+        rgba(255, 255, 255, 0.14);
+}
+
+
+/* =========================================================
+   BIRTHDAY SCENE
+   ========================================================= */
+
+#birthday {
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(110, 190, 130, 0.2),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #001b15,
+            #003023,
+            #001710
+        );
+}
+
+.birthday-content {
+    position: relative;
+
+    z-index: 5;
+
+    animation:
+        birthdayIn 1s ease forwards;
+}
+
+@keyframes birthdayIn {
+
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.cake {
+    font-size: 90px;
+
+    margin-bottom: 15px;
+
+    filter:
+        drop-shadow(
+            0 0 20px rgba(255, 220, 160, 0.18)
+        );
+}
+
+.birthday-content h1 {
+    font-size: clamp(45px, 7vw, 85px);
+
+    font-weight: 300;
+
+    letter-spacing: 3px;
+
+    text-shadow:
+        0 0 25px rgba(255, 255, 255, 0.15);
+
+    margin-bottom: 15px;
+}
+
+.birthday-content p {
+    font-size: 18px;
+
+    color:
+        rgba(255, 255, 255, 0.7);
+
+    margin-bottom: 28px;
+}
+
+#openLetter {
+    padding: 13px 27px;
+
+    border-radius: 25px;
+
+    color: white;
+
+    background:
+        rgba(255, 255, 255, 0.09);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.15);
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease;
+}
+
+#openLetter:hover {
+    transform: translateY(-3px);
+
+    background:
+        rgba(255, 255, 255, 0.15);
+}
+
+
+/* =========================================================
+   LETTER SCENE
+   ========================================================= */
+
+#letter {
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    overflow-y: auto;
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(65, 130, 90, 0.16),
+            transparent 45%
+        ),
+        linear-gradient(
+            135deg,
+            #001b15,
+            #00271e,
+            #001711
+        );
+}
+
+.letter-content {
+    width: min(90%, 650px);
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    padding: 40px;
+
+    border-radius: 24px;
+
+    background:
+        rgba(255, 255, 255, 0.06);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.12);
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.35);
+
+    backdrop-filter: blur(10px);
+
+    animation:
+        letterIn 0.7s ease forwards;
+}
+
+@keyframes letterIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.letter-content h2 {
+    font-size: 32px;
+
+    font-weight: 400;
+
+    margin-bottom: 25px;
+}
+
+.letter-content p {
+    font-size: 17px;
+
+    line-height: 1.8;
+
+    color:
+        rgba(255, 255, 255, 0.78);
+
+    margin-bottom: 18px;
+}
+
+.signature {
+    margin-top: 25px;
+
+    font-size: 18px;
+
+    color:
+        rgba(255, 255, 255, 0.9);
+
+    font-style: italic;
+}
+
+#finish {
+    margin-top: 28px;
+
+    padding: 12px 25px;
+
+    border-radius: 25px;
+
+    color: white;
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.14);
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease;
+}
+
+#finish:hover {
+    transform: translateY(-3px);
+
+    background:
+        rgba(255, 255, 255, 0.14);
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .intro-content h1 {
+        font-size: 38px;
+    }
+
+    .mission-ui {
+        top: 5%;
+    }
+
+    .mission-ui h2 {
+        font-size: 32px;
+    }
+
+    #flowerHunt::before,
+    #garden::before {
+        width: 80px;
+        height: 80px;
+
+        top: 6%;
+        right: 7%;
+    }
+
+    .flower {
+        transform: scale(0.82);
+    }
+
+    .flower-1 {
+        left: 10%;
+        top: 30%;
+    }
+
+    .flower-2 {
+        left: 40%;
+        top: 65%;
+    }
+
+    .flower-3 {
+        left: 68%;
+        top: 32%;
+    }
+
+    .flower-4 {
+        left: 72%;
+        top: 68%;
+    }
+
+    .flower-5 {
+        left: 18%;
+        top: 72%;
+    }
+
+    .letter-content {
+        padding: 28px;
+    }
+
+    .birthday-content h1 {
+        font-size: 45px;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
-    .flower,
-    .firefly,
-    #flowerHunt::before {
-        animation: none !important;
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
     }
 }
