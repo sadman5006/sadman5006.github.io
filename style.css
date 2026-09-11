@@ -645,3 +645,240 @@ button:active {
     margin-left: auto !important;
     margin-right: auto !important;
 }
+/* =========================================
+   FLOWER HUNT — GARDEN ATMOSPHERE
+========================================= */
+
+/* Dark vignette around the screen */
+#flowerHunt {
+    box-shadow: inset 0 0 180px rgba(0, 0, 0, 0.65);
+}
+
+/* Grass texture */
+#flowerHunt::after {
+    height: 38%;
+    bottom: -16%;
+
+    background:
+        radial-gradient(
+            ellipse at 20% 20%,
+            rgba(48, 102, 57, 0.25),
+            transparent 35%
+        ),
+        radial-gradient(
+            ellipse at 70% 10%,
+            rgba(48, 102, 57, 0.2),
+            transparent 35%
+        ),
+        #07160d;
+
+    box-shadow:
+        inset 0 20px 45px rgba(52, 105, 62, 0.18),
+        0 -10px 50px rgba(0, 0, 0, 0.35);
+}
+
+/* =========================================
+   MISSION UI
+========================================= */
+
+#flowerHunt .mission-ui {
+    position: absolute;
+    top: 9%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    z-index: 40;
+
+    text-align: center;
+    width: 600px;
+    max-width: 90%;
+}
+
+#flowerHunt .mission-ui h2 {
+    position: static;
+    transform: none;
+
+    font-size: clamp(38px, 4vw, 58px);
+    font-weight: 300;
+    letter-spacing: 2px;
+
+    text-shadow:
+        0 4px 25px rgba(0, 0, 0, 0.5);
+}
+
+#flowerHunt #progress {
+    display: inline-block;
+
+    margin-top: 15px;
+    padding: 9px 20px;
+
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    backdrop-filter: blur(8px);
+
+    font-size: 15px;
+    letter-spacing: 0.5px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================================
+   FLOWER BUTTONS
+========================================= */
+
+#flowerHunt .flower {
+    appearance: none;
+    -webkit-appearance: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 82px;
+    height: 82px;
+
+    border-radius: 50%;
+
+    font-size: 52px;
+    line-height: 1;
+
+    background: rgba(255, 255, 255, 0.025) !important;
+
+    transition:
+        transform 0.35s ease,
+        filter 0.35s ease,
+        background 0.35s ease;
+
+    animation: gentleFlowerFloat 4s ease-in-out infinite;
+}
+
+/* Soft circle underneath each flower */
+#flowerHunt .flower::before {
+    content: "";
+
+    position: absolute;
+
+    width: 65px;
+    height: 65px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    box-shadow:
+        0 0 25px rgba(255, 255, 255, 0.04);
+
+    z-index: -1;
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+/* Hover */
+#flowerHunt .flower:hover {
+    transform: scale(1.2) translateY(-7px) !important;
+
+    background: rgba(255, 255, 255, 0.06) !important;
+
+    filter:
+        drop-shadow(0 0 7px rgba(255,255,255,.8))
+        drop-shadow(0 0 25px rgba(255,220,180,.5));
+}
+
+#flowerHunt .flower:hover::before {
+    transform: scale(1.15);
+
+    box-shadow:
+        0 0 25px rgba(255, 245, 190, 0.2);
+}
+
+@keyframes gentleFlowerFloat {
+
+    0%, 100% {
+        margin-top: 0;
+    }
+
+    50% {
+        margin-top: -6px;
+    }
+}
+
+/* Different movement timing */
+#flowerHunt .flower-1 {
+    animation-delay: 0s;
+}
+
+#flowerHunt .flower-2 {
+    animation-delay: .7s;
+}
+
+#flowerHunt .flower-3 {
+    animation-delay: 1.4s;
+}
+
+#flowerHunt .flower-4 {
+    animation-delay: 2.1s;
+}
+
+#flowerHunt .flower-5 {
+    animation-delay: 2.8s;
+}
+
+/* =========================================
+   FOUND FLOWER
+========================================= */
+
+#flowerHunt .flower[style*="opacity"] {
+    filter: grayscale(0.15) brightness(0.65);
+    transform: scale(0.85);
+}
+
+/* =========================================
+   LITTLE STARS / FIREFLY EFFECT
+========================================= */
+
+#flowerHunt {
+    isolation: isolate;
+}
+
+#flowerHunt .mission-ui::before {
+    content: "✦     ·       ✧          ·       ✦";
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    pointer-events: none;
+
+    color: rgba(220, 255, 190, 0.35);
+
+    font-size: 14px;
+    letter-spacing: 45px;
+
+    opacity: 0.45;
+
+    animation: sparkleDrift 7s ease-in-out infinite alternate;
+
+    z-index: -1;
+}
+
+@keyframes sparkleDrift {
+    from {
+        transform: translateY(0);
+        opacity: .25;
+    }
+
+    to {
+        transform: translateY(-15px);
+        opacity: .55;
+    }
+}
