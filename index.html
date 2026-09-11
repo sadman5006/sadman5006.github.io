@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>A Little Birthday Garden</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=2">
 </head>
 
 <body>
 
-    <!-- ============================= -->
-    <!-- SCENE 1 — INTRO -->
-    <!-- ============================= -->
+    <!-- =========================================
+         SCENE 1 — INTRO
+    ========================================= -->
 
     <section id="intro" class="scene active">
 
@@ -34,9 +35,9 @@
     </section>
 
 
-    <!-- ============================= -->
-    <!-- SCENE 2 — GARDEN -->
-    <!-- ============================= -->
+    <!-- =========================================
+         SCENE 2 — GARDEN
+    ========================================= -->
 
     <section id="garden" class="scene">
 
@@ -49,10 +50,6 @@
                 waiting to be found.
             </p>
 
-            <div id="flowerCounter">
-                0 / 5
-            </div>
-
             <button id="startMission">
                 Start Exploring
             </button>
@@ -62,119 +59,177 @@
     </section>
 
 
-    <!-- ============================= -->
-    <!-- SCENE 3 — FLOWER HUNT -->
-    <!-- ============================= -->
+    <!-- =========================================
+         SCENE 3 — FLOWER HUNT
+    ========================================= -->
 
     <section id="flowerHunt" class="scene">
+
+        <!-- Ambient fireflies -->
+
+        <span class="firefly firefly-1"></span>
+        <span class="firefly firefly-2"></span>
+        <span class="firefly firefly-3"></span>
+        <span class="firefly firefly-4"></span>
+        <span class="firefly firefly-5"></span>
+        <span class="firefly firefly-6"></span>
+
+
+        <!-- Mission information -->
 
         <div class="mission-ui">
 
             <h2>Find the flowers 🌷</h2>
 
             <div id="progress">
-                Flowers found: <span id="foundCount">0</span> / 5
+                Flowers found:
+                <span id="foundCount">0</span> / 5
             </div>
 
         </div>
 
-        <!-- These will become actual flowers later -->
 
-       <!-- =========================================
-     FLOWERS
-========================================= -->
+        <!-- =========================================
+             FLOWER 1
+        ========================================= -->
 
-<button class="flower flower-1" data-flower="1">
-    <span class="flower-head flower-pink">
-        <span class="petal p1"></span>
-        <span class="petal p2"></span>
-        <span class="petal p3"></span>
-        <span class="petal p4"></span>
-        <span class="petal p5"></span>
-        <span class="flower-center"></span>
-    </span>
+        <button class="flower flower-1" data-flower="1">
 
-    <span class="stem"></span>
-    <span class="leaf leaf-left"></span>
-    <span class="leaf leaf-right"></span>
-</button>
+            <span class="flower-head flower-pink">
 
+                <span class="petal p1"></span>
+                <span class="petal p2"></span>
+                <span class="petal p3"></span>
+                <span class="petal p4"></span>
+                <span class="petal p5"></span>
 
-<button class="flower flower-2" data-flower="2">
-    <span class="flower-head flower-yellow">
-        <span class="petal p1"></span>
-        <span class="petal p2"></span>
-        <span class="petal p3"></span>
-        <span class="petal p4"></span>
-        <span class="petal p5"></span>
-        <span class="petal p6"></span>
-        <span class="flower-center"></span>
-    </span>
+                <span class="flower-center"></span>
 
-    <span class="stem"></span>
-    <span class="leaf leaf-left"></span>
-    <span class="leaf leaf-right"></span>
-</button>
+            </span>
+
+            <span class="stem"></span>
+
+            <span class="leaf leaf-left"></span>
+            <span class="leaf leaf-right"></span>
+
+        </button>
 
 
-<button class="flower flower-3" data-flower="3">
-    <span class="flower-head flower-white">
-        <span class="petal p1"></span>
-        <span class="petal p2"></span>
-        <span class="petal p3"></span>
-        <span class="petal p4"></span>
-        <span class="petal p5"></span>
-        <span class="flower-center"></span>
-    </span>
+        <!-- =========================================
+             FLOWER 2
+        ========================================= -->
 
-    <span class="stem"></span>
-    <span class="leaf leaf-left"></span>
-    <span class="leaf leaf-right"></span>
-</button>
+        <button class="flower flower-2" data-flower="2">
 
+            <span class="flower-head flower-yellow">
 
-<button class="flower flower-4" data-flower="4">
-    <span class="flower-head flower-coral">
-        <span class="petal p1"></span>
-        <span class="petal p2"></span>
-        <span class="petal p3"></span>
-        <span class="petal p4"></span>
-        <span class="petal p5"></span>
-        <span class="petal p6"></span>
-        <span class="flower-center"></span>
-    </span>
+                <span class="petal p1"></span>
+                <span class="petal p2"></span>
+                <span class="petal p3"></span>
+                <span class="petal p4"></span>
+                <span class="petal p5"></span>
+                <span class="petal p6"></span>
 
-    <span class="stem"></span>
-    <span class="leaf leaf-left"></span>
-    <span class="leaf leaf-right"></span>
-</button>
+                <span class="flower-center"></span>
+
+            </span>
+
+            <span class="stem"></span>
+
+            <span class="leaf leaf-left"></span>
+            <span class="leaf leaf-right"></span>
+
+        </button>
 
 
-<button class="flower flower-5" data-flower="5">
-    <span class="flower-head flower-red">
-        <span class="petal p1"></span>
-        <span class="petal p2"></span>
-        <span class="petal p3"></span>
-        <span class="petal p4"></span>
-        <span class="petal p5"></span>
-        <span class="flower-center"></span>
-    </span>
+        <!-- =========================================
+             FLOWER 3
+        ========================================= -->
 
-    <span class="stem"></span>
-    <span class="leaf leaf-left"></span>
-    <span class="leaf leaf-right"></span>
-</button>
+        <button class="flower flower-3" data-flower="3">
+
+            <span class="flower-head flower-white">
+
+                <span class="petal p1"></span>
+                <span class="petal p2"></span>
+                <span class="petal p3"></span>
+                <span class="petal p4"></span>
+                <span class="petal p5"></span>
+
+                <span class="flower-center"></span>
+
+            </span>
+
+            <span class="stem"></span>
+
+            <span class="leaf leaf-left"></span>
+            <span class="leaf leaf-right"></span>
+
+        </button>
+
+
+        <!-- =========================================
+             FLOWER 4
+        ========================================= -->
+
+        <button class="flower flower-4" data-flower="4">
+
+            <span class="flower-head flower-coral">
+
+                <span class="petal p1"></span>
+                <span class="petal p2"></span>
+                <span class="petal p3"></span>
+                <span class="petal p4"></span>
+                <span class="petal p5"></span>
+                <span class="petal p6"></span>
+
+                <span class="flower-center"></span>
+
+            </span>
+
+            <span class="stem"></span>
+
+            <span class="leaf leaf-left"></span>
+            <span class="leaf leaf-right"></span>
+
+        </button>
+
+
+        <!-- =========================================
+             FLOWER 5
+        ========================================= -->
+
+        <button class="flower flower-5" data-flower="5">
+
+            <span class="flower-head flower-red">
+
+                <span class="petal p1"></span>
+                <span class="petal p2"></span>
+                <span class="petal p3"></span>
+                <span class="petal p4"></span>
+                <span class="petal p5"></span>
+
+                <span class="flower-center"></span>
+
+            </span>
+
+            <span class="stem"></span>
+
+            <span class="leaf leaf-left"></span>
+            <span class="leaf leaf-right"></span>
+
+        </button>
 
     </section>
 
 
-    <!-- ============================= -->
-    <!-- FLOWER MESSAGE -->
-    <!-- ============================= -->
+    <!-- =========================================
+         FLOWER MESSAGE POPUP
+    ========================================= -->
 
     <div id="flowerMessage" class="popup hidden">
 
-        <div class="popup-card">
+        <div class="popup-content">
 
             <span id="flowerNumber">
                 Flower #1
@@ -193,9 +248,9 @@
     </div>
 
 
-    <!-- ============================= -->
-    <!-- SCENE 4 — LILY -->
-    <!-- ============================= -->
+    <!-- =========================================
+         SCENE 4 — LILY
+    ========================================= -->
 
     <section id="lilyScene" class="scene">
 
@@ -222,9 +277,9 @@
     </section>
 
 
-    <!-- ============================= -->
-    <!-- SCENE 5 — BIRTHDAY -->
-    <!-- ============================= -->
+    <!-- =========================================
+         SCENE 5 — BIRTHDAY
+    ========================================= -->
 
     <section id="birthday" class="scene">
 
@@ -249,13 +304,13 @@
     </section>
 
 
-    <!-- ============================= -->
-    <!-- SCENE 6 — LETTER -->
-    <!-- ============================= -->
+    <!-- =========================================
+         SCENE 6 — LETTER
+    ========================================= -->
 
     <section id="letter" class="scene">
 
-        <div class="letter-card">
+        <div class="letter-content">
 
             <h2>Hey,</h2>
 
@@ -299,11 +354,12 @@
     </section>
 
 
-    <!-- ============================= -->
-    <!-- JAVASCRIPT -->
-    <!-- ============================= -->
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================= -->
 
-    <script src="script.js"></script>
+    <script src="script.js?v=2"></script>
 
 </body>
+
 </html>
