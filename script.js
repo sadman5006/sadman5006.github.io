@@ -22,18 +22,156 @@ function showScene(id) {
 
 
 /* =====================================================
+   BACKGROUND MUSIC
+   ===================================================== */
+
+const bgMusic =
+    document.getElementById("bgMusic");
+
+const musicToggle =
+    document.getElementById("musicToggle");
+
+let musicStarted = false;
+let musicMuted = false;
+
+
+function startMusic() {
+
+    if (!bgMusic) {
+        return;
+    }
+
+    if (musicStarted) {
+        return;
+    }
+
+    bgMusic.volume = 0.22;
+
+    bgMusic.play()
+        .then(() => {
+
+            musicStarted = true;
+
+            if (musicToggle) {
+                musicToggle.textContent = "🔊";
+            }
+
+        })
+        .catch(error => {
+
+            console.log(
+                "Music could not start:",
+                error
+            );
+
+        });
+
+}
+
+
+/* =====================================================
+   MUSIC TOGGLE
+   ===================================================== */
+
+if (musicToggle) {
+
+    musicToggle.addEventListener(
+        "click",
+        () => {
+
+            if (!bgMusic) {
+                return;
+            }
+
+
+            /*
+             * If music hasn't started yet,
+             * clicking the button starts it.
+             */
+
+            if (!musicStarted) {
+
+                musicMuted = false;
+
+                startMusic();
+
+                musicToggle.textContent = "🔊";
+
+                musicToggle.classList.remove(
+                    "muted"
+                );
+
+                return;
+
+            }
+
+
+            /*
+             * Toggle mute / unmute.
+             */
+
+            musicMuted = !musicMuted;
+
+
+            if (musicMuted) {
+
+                bgMusic.pause();
+
+                musicToggle.textContent = "🔇";
+
+                musicToggle.classList.add(
+                    "muted"
+                );
+
+            } else {
+
+                bgMusic.play()
+                    .catch(error => {
+
+                        console.log(
+                            "Music could not resume:",
+                            error
+                        );
+
+                    });
+
+                musicToggle.textContent = "🔊";
+
+                musicToggle.classList.remove(
+                    "muted"
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =====================================================
    INTRO
    ===================================================== */
 
 const enterGarden =
     document.getElementById("enterGarden");
 
+
 if (enterGarden) {
 
     enterGarden.addEventListener(
         "click",
         () => {
+
             showScene("garden");
+
+            /*
+             * Start music from a real user interaction.
+             * This avoids browser autoplay blocking.
+             */
+
+            startMusic();
+
         }
     );
 
@@ -47,12 +185,15 @@ if (enterGarden) {
 const startMission =
     document.getElementById("startMission");
 
+
 if (startMission) {
 
     startMission.addEventListener(
         "click",
         () => {
+
             showScene("flowerHunt");
+
         }
     );
 
@@ -90,20 +231,26 @@ const flowerMessages = {
 const flowers =
     document.querySelectorAll(".flower");
 
+
 const flowerMessage =
     document.getElementById("flowerMessage");
+
 
 const flowerNumber =
     document.getElementById("flowerNumber");
 
+
 const flowerText =
     document.getElementById("flowerText");
+
 
 const closeFlowerMessage =
     document.getElementById("closeFlowerMessage");
 
+
 const foundCount =
     document.getElementById("foundCount");
+
 
 let flowersFound = 0;
 
@@ -126,7 +273,9 @@ flowers.forEach(flower => {
             if (
                 flower.classList.contains("found")
             ) {
+
                 return;
+
             }
 
 
@@ -140,18 +289,22 @@ flowers.forEach(flower => {
              * Permanently mark flower as found.
              */
 
-            flower.classList.add("found");
+            flower.classList.add(
+                "found"
+            );
 
 
             /*
              * Temporary bloom animation.
              */
 
-            flower.classList.add("blooming");
+            flower.classList.add(
+                "blooming"
+            );
 
 
             /*
-             * Disable the actual button too.
+             * Disable the actual button.
              */
 
             flower.disabled = true;
@@ -262,7 +415,9 @@ if (closeFlowerMessage) {
 
                 setTimeout(
                     () => {
+
                         startLilyScene();
+
                     },
                     700
                 );
@@ -328,7 +483,9 @@ function createSparkles(element) {
 
         setTimeout(
             () => {
+
                 sparkle.remove();
+
             },
             1000
         );
@@ -345,11 +502,14 @@ function createSparkles(element) {
 const lilyPlant =
     document.getElementById("lilyPlant");
 
+
 const lilyIntro =
     document.getElementById("lilyIntro");
 
+
 const lilyText =
     document.getElementById("lilyText");
+
 
 const bloomLily =
     document.getElementById("bloomLily");
@@ -554,7 +714,9 @@ if (bloomLily) {
 
                     setTimeout(
                         () => {
+
                             createConfetti();
+
                         },
                         700
                     );
@@ -640,7 +802,9 @@ function createConfetti() {
 
         setTimeout(
             () => {
+
                 piece.remove();
+
             },
             8000
         );
@@ -790,6 +954,7 @@ if (openLetter) {
 
 const finish =
     document.getElementById("finish");
+
 
 let celebrationConfettiTimer =
     null;
@@ -1040,47 +1205,5 @@ if (finish) {
 
         }
     );
-/* =========================================================
-   BACKGROUND MUSIC
-   ========================================================= */
 
-const bgMusic = document.getElementById("bgMusic");
-const musicToggle = document.getElementById("musicToggle");
-
-let musicStarted = false;
-let musicMuted = false;
-
-function startMusic() {
-    if (musicStarted) return;
-
-    bgMusic.volume = 0.22;
-
-    bgMusic.play()
-        .then(() => {
-            musicStarted = true;
-        })
-        .catch(() => {
-            // Browser may block playback until another user interaction
-        });
-}
-
-if (musicToggle) {
-    musicToggle.addEventListener("click", () => {
-        if (!musicStarted) {
-            startMusic();
-        }
-
-        musicMuted = !musicMuted;
-
-        if (musicMuted) {
-            bgMusic.pause();
-            musicToggle.textContent = "🔇";
-            musicToggle.classList.add("muted");
-        } else {
-            bgMusic.play();
-            musicToggle.textContent = "🔊";
-            musicToggle.classList.remove("muted");
-        }
-    });
-}
 }
