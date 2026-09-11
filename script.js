@@ -1,13 +1,7 @@
-/* =========================================================
-   SCENE SYSTEM
-   ========================================================= */
-
 const scenes = document.querySelectorAll(".scene");
 
 function showScene(id) {
-    scenes.forEach(scene => {
-        scene.classList.remove("active");
-    });
+    scenes.forEach(scene => scene.classList.remove("active"));
 
     const target = document.getElementById(id);
 
@@ -17,9 +11,9 @@ function showScene(id) {
 }
 
 
-/* =========================================================
+/* =====================================================
    INTRO → GARDEN
-   ========================================================= */
+   ===================================================== */
 
 const enterGarden = document.getElementById("enterGarden");
 
@@ -30,9 +24,9 @@ if (enterGarden) {
 }
 
 
-/* =========================================================
+/* =====================================================
    GARDEN → FLOWER HUNT
-   ========================================================= */
+   ===================================================== */
 
 const startMission = document.getElementById("startMission");
 
@@ -43,11 +37,12 @@ if (startMission) {
 }
 
 
-/* =========================================================
+/* =====================================================
    FLOWER MESSAGES
-   ========================================================= */
+   ===================================================== */
 
 const flowerMessages = {
+
     1: "A little flower to start things off. 🌷",
 
     2: "You found another one. Keep going. ✨",
@@ -57,23 +52,21 @@ const flowerMessages = {
     4: "Almost there. One more flower is waiting. 🌼",
 
     5: "You found them all. But... something is still waiting."
+
 };
 
 
-/* =========================================================
-   FLOWER ELEMENTS
-   ========================================================= */
+/* =====================================================
+   FLOWER HUNT
+   ===================================================== */
 
 const flowers = document.querySelectorAll(".flower");
 
-const flowerMessage =
-    document.getElementById("flowerMessage");
+const flowerMessage = document.getElementById("flowerMessage");
 
-const flowerNumber =
-    document.getElementById("flowerNumber");
+const flowerNumber = document.getElementById("flowerNumber");
 
-const flowerText =
-    document.getElementById("flowerText");
+const flowerText = document.getElementById("flowerText");
 
 const closeFlowerMessage =
     document.getElementById("closeFlowerMessage");
@@ -85,10 +78,6 @@ const foundCount =
 let flowersFound = 0;
 
 
-/* =========================================================
-   FLOWER CLICK
-   ========================================================= */
-
 flowers.forEach(flower => {
 
     flower.addEventListener("click", () => {
@@ -98,63 +87,71 @@ flowers.forEach(flower => {
 
 
         /*
-           Only count a flower the first time
-           it is clicked.
-        */
+         * Only count a flower the first
+         * time it is discovered.
+         */
 
         if (!flower.classList.contains("found")) {
 
             flower.classList.add("found");
+
             flower.classList.add("blooming");
 
             flowersFound++;
 
+
             if (foundCount) {
-                foundCount.textContent =
-                    flowersFound;
+                foundCount.textContent = flowersFound;
             }
+
 
             createSparkles(flower);
 
-
-            /*
-               Remove the temporary bloom animation
-               after it finishes.
-            */
 
             setTimeout(() => {
 
                 flower.classList.remove("blooming");
 
             }, 800);
+
         }
 
 
         /*
-           Show the flower message.
-        */
+         * Show the appropriate message.
+         */
 
         if (flowerNumber) {
+
             flowerNumber.textContent =
                 `Flower #${number}`;
+
         }
 
+
         if (flowerText) {
+
             flowerText.textContent =
                 flowerMessages[number] ||
                 "A little flower just for you. 🌷";
+
         }
 
+
         if (flowerMessage) {
+
             flowerMessage.classList.remove("hidden");
+
         }
+
     });
+
 });
 
 
-/* =========================================================
+/* =====================================================
    CLOSE FLOWER MESSAGE
-   ========================================================= */
+   ===================================================== */
 
 if (closeFlowerMessage) {
 
@@ -164,9 +161,9 @@ if (closeFlowerMessage) {
 
 
         /*
-           Once all five flowers have been found,
-           move to the lily scene.
-        */
+         * Once all five flowers have been found,
+         * move to the Lily scene.
+         */
 
         if (flowersFound === 5) {
 
@@ -175,14 +172,17 @@ if (closeFlowerMessage) {
                 startLilyScene();
 
             }, 700);
+
         }
+
     });
+
 }
 
 
-/* =========================================================
-   SPARKLES
-   ========================================================= */
+/* =====================================================
+   FLOWER SPARKLES
+   ===================================================== */
 
 function createSparkles(element) {
 
@@ -195,8 +195,9 @@ function createSparkles(element) {
         const sparkle =
             document.createElement("span");
 
-        sparkle.className =
-            "sparkle";
+
+        sparkle.className = "sparkle";
+
 
         sparkle.textContent =
             Math.random() > 0.5
@@ -207,6 +208,7 @@ function createSparkles(element) {
         sparkle.style.left =
             `${rect.left + rect.width / 2}px`;
 
+
         sparkle.style.top =
             `${rect.top + 35}px`;
 
@@ -215,6 +217,7 @@ function createSparkles(element) {
             "--sparkle-x",
             `${(Math.random() - 0.5) * 100}px`
         );
+
 
         sparkle.style.setProperty(
             "--sparkle-y",
@@ -226,15 +229,19 @@ function createSparkles(element) {
 
 
         setTimeout(() => {
+
             sparkle.remove();
+
         }, 1000);
+
     }
+
 }
 
 
-/* =========================================================
-   LILY ELEMENTS
-   ========================================================= */
+/* =====================================================
+   LILY SCENE
+   ===================================================== */
 
 const lilyPlant =
     document.getElementById("lilyPlant");
@@ -249,19 +256,14 @@ const bloomLily =
     document.getElementById("bloomLily");
 
 
-/* =========================================================
-   START LILY SCENE
-   ========================================================= */
-
 function startLilyScene() {
 
     showScene("lilyScene");
 
 
     /*
-       Reset the lily.
-       This makes the scene safe to replay.
-    */
+     * Reset the Lily.
+     */
 
     if (lilyPlant) {
 
@@ -270,16 +272,20 @@ function startLilyScene() {
             "budding",
             "bloomed"
         );
+
     }
 
 
+    /*
+     * Reset the text.
+     */
+
     if (lilyIntro) {
 
-        lilyIntro.textContent =
-            "Wait...";
+        lilyIntro.textContent = "Wait...";
 
-        lilyIntro.style.opacity =
-            "1";
+        lilyIntro.style.opacity = "1";
+
     }
 
 
@@ -288,76 +294,90 @@ function startLilyScene() {
         lilyText.textContent =
             "There's still one plant that hasn't bloomed.";
 
-        lilyText.style.opacity =
-            "1";
+        lilyText.style.opacity = "1";
+
     }
 
+
+    /*
+     * Reset the button.
+     */
 
     if (bloomLily) {
 
         bloomLily.textContent =
             "Watch it grow";
 
-        bloomLily.disabled =
-            false;
+        bloomLily.disabled = false;
 
-        bloomLily.style.opacity =
-            "1";
+        bloomLily.style.opacity = "1";
 
-        bloomLily.style.pointerEvents =
-            "auto";
+        bloomLily.style.pointerEvents = "auto";
+
     }
+
 }
 
 
-/* =========================================================
-   LILY GROWTH + BLOOM
-   ========================================================= */
+/* =====================================================
+   LILY GROWTH / BLOOM
+   ===================================================== */
 
 if (bloomLily) {
 
     bloomLily.addEventListener("click", () => {
 
+
         /*
-           Prevent multiple clicks.
-        */
+         * Disable the button immediately.
+         */
 
         bloomLily.disabled = true;
 
         bloomLily.style.opacity = "0";
+
         bloomLily.style.pointerEvents = "none";
 
 
-        /* -----------------------------------------------
-           STEP 1 — STEM GROWS
-           ----------------------------------------------- */
+        /*
+         * Stage 1:
+         * Stem and leaves grow.
+         */
 
         if (lilyPlant) {
+
             lilyPlant.classList.add("growing");
+
         }
 
 
-        /* -----------------------------------------------
-           STEP 2 — BUD APPEARS
-           ----------------------------------------------- */
+        /*
+         * Stage 2:
+         * Bud appears.
+         */
 
         setTimeout(() => {
 
             if (lilyPlant) {
+
                 lilyPlant.classList.add("budding");
+
             }
 
         }, 2300);
 
 
-        /* -----------------------------------------------
-           STEP 3 — LILY OPENS
-           ----------------------------------------------- */
+        /*
+         * Stage 3:
+         * Lily blooms.
+         */
 
         setTimeout(() => {
 
             if (lilyPlant) {
+
                 lilyPlant.classList.add("bloomed");
+
             }
 
 
@@ -365,6 +385,7 @@ if (bloomLily) {
 
                 lilyIntro.textContent =
                     "And then...";
+
             }
 
 
@@ -372,14 +393,16 @@ if (bloomLily) {
 
                 lilyText.textContent =
                     "Some things take a little longer to bloom.";
+
             }
 
         }, 4200);
 
 
-        /* -----------------------------------------------
-           STEP 4 — BIRTHDAY REVEAL
-           ----------------------------------------------- */
+        /*
+         * Stage 4:
+         * Birthday reveal.
+         */
 
         setTimeout(() => {
 
@@ -387,9 +410,9 @@ if (bloomLily) {
 
 
             /*
-               Let the birthday scene appear first,
-               then release the confetti.
-            */
+             * Wait a moment after the birthday
+             * scene appears before starting confetti.
+             */
 
             setTimeout(() => {
 
@@ -398,17 +421,19 @@ if (bloomLily) {
             }, 900);
 
         }, 7600);
+
     });
+
 }
 
 
-/* =========================================================
+/* =====================================================
    CONFETTI
-   ========================================================= */
+   ===================================================== */
 
 function createConfetti() {
 
-    const pieces = 45;
+    const pieces = 70;
 
 
     for (let i = 0; i < pieces; i++) {
@@ -416,31 +441,31 @@ function createConfetti() {
         const piece =
             document.createElement("span");
 
-        piece.className =
-            "confetti";
+
+        piece.className = "confetti";
 
 
         /*
-           Random horizontal starting position.
-        */
+         * Random horizontal starting position.
+         */
 
         piece.style.left =
-            `${Math.random() * 100}%`;
+            `${Math.random() * 100}vw`;
 
 
         /*
-           Random sideways movement.
-        */
+         * Random sideways movement.
+         */
 
         piece.style.setProperty(
             "--confetti-x",
-            `${(Math.random() - 0.5) * 250}px`
+            `${(Math.random() - 0.5) * 350}px`
         );
 
 
         /*
-           Random falling speed.
-        */
+         * Random falling speed.
+         */
 
         piece.style.setProperty(
             "--confetti-duration",
@@ -449,53 +474,71 @@ function createConfetti() {
 
 
         /*
-           Random starting delay.
-        */
+         * Random delay so all pieces
+         * don't appear at exactly the same time.
+         */
 
         piece.style.setProperty(
             "--confetti-delay",
-            `${Math.random() * 1.5}s`
+            `${Math.random() * 1.2}s`
         );
 
 
         /*
-           Mix round and rectangular pieces.
-        */
+         * Give each piece a slightly
+         * different starting rotation.
+         */
+
+        piece.style.transform =
+            `rotate(${Math.random() * 360}deg)`;
+
+
+        /*
+         * Mix circular and rectangular pieces.
+         */
 
         if (Math.random() > 0.5) {
 
-            piece.style.borderRadius =
-                "50%";
+            piece.style.borderRadius = "50%";
 
         } else {
 
-            piece.style.borderRadius =
-                "2px";
+            piece.style.borderRadius = "2px";
+
         }
 
+
+        /*
+         * Add the confetti directly to
+         * the document so it is not trapped
+         * inside the birthday content.
+         */
 
         document.body.appendChild(piece);
 
 
         /*
-           Remove the piece after its animation.
-        */
+         * Clean it up after the animation.
+         */
 
         setTimeout(() => {
 
             piece.remove();
 
         }, 7500);
+
     }
+
 }
 
 
-/* =========================================================
+/* =====================================================
    BIRTHDAY → LETTER
-   ========================================================= */
+   ===================================================== */
 
 const openLetter =
     document.getElementById("openLetter");
+
 
 if (openLetter) {
 
@@ -504,15 +547,17 @@ if (openLetter) {
         showScene("letter");
 
     });
+
 }
 
 
-/* =========================================================
+/* =====================================================
    LETTER → GARDEN
-   ========================================================= */
+   ===================================================== */
 
 const finish =
     document.getElementById("finish");
+
 
 if (finish) {
 
@@ -521,4 +566,5 @@ if (finish) {
         showScene("flowerHunt");
 
     });
+
 }
