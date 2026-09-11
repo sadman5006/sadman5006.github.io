@@ -580,6 +580,35 @@ button:active {
         );
 }
 
+#flowerHunt .ground::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 75px;
+    background:
+        repeating-linear-gradient(78deg, transparent 0 18px, rgba(83,150,82,.42) 19px 21px, transparent 22px 38px),
+        repeating-linear-gradient(102deg, transparent 0 25px, rgba(63,125,67,.30) 26px 28px, transparent 29px 50px);
+    opacity: .75;
+    pointer-events: none;
+}
+
+#flowerHunt .ground::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 10px;
+    height: 60px;
+    background:
+        repeating-linear-gradient(88deg, transparent 0 32px, rgba(111,168,91,.22) 33px 35px, transparent 36px 64px);
+    opacity: .65;
+    pointer-events: none;
+}
+
+
+
 
 /* =========================================================
    MISSION UI
@@ -818,27 +847,32 @@ button:active {
 
 .flower-1 {
     left: 17%;
-    top: 43%;
+    top: auto;
+    bottom: 20%;
 }
 
 .flower-2 {
     left: 39%;
-    top: 62%;
+    top: auto;
+    bottom: 15%;
 }
 
 .flower-3 {
     left: 67%;
-    top: 43%;
+    top: auto;
+    bottom: 20%;
 }
 
 .flower-4 {
     left: 79%;
-    top: 63%;
+    top: auto;
+    bottom: 14%;
 }
 
 .flower-5 {
     left: 25%;
-    top: 68%;
+    top: auto;
+    bottom: 12%;
 }
 
 
@@ -872,10 +906,10 @@ button:active {
     position: absolute;
 
     width: 6px;
-    height: 95px;
+    height: 145px;
 
     left: 50%;
-    bottom: 8px;
+    bottom: -25px;
 
     transform:
         translateX(-50%);
@@ -924,9 +958,10 @@ button:active {
 }
 
 #flowerHunt .leaf-left {
-    left: 8px;
+    left: 50%;
 
     transform:
+        translateX(-100%)
         rotate(25deg);
 
     transform-origin:
@@ -934,11 +969,11 @@ button:active {
 }
 
 #flowerHunt .leaf-right {
-    right: 8px;
+    left: 50%;
+    right: auto;
 
     transform:
-        scaleX(-1)
-        rotate(25deg);
+        rotate(-25deg);
 
     transform-origin:
         left center;
@@ -1828,8 +1863,7 @@ button:active {
     height: 190px;
 
     transform:
-        translateX(-50%)
-        scale(.1);
+        translateX(-50%);
 
     transform-origin:
         center bottom;
@@ -1837,8 +1871,7 @@ button:active {
     opacity: 0;
 
     transition:
-        transform 1.8s cubic-bezier(.2,.8,.2,1),
-        opacity 1.4s ease;
+        opacity .5s ease;
 }
 
 .lily-petal {
@@ -1992,15 +2025,64 @@ button:active {
 
     opacity: 1;
 
-    transform:
-        translateX(-50%)
-        scale(1);
+    animation:
+        lilyFlowerOpen
+        2.2s
+        cubic-bezier(.2,.8,.2,1)
+        forwards;
 
     filter:
         drop-shadow(
             0 0 18px
             rgba(255,255,255,.3)
         );
+}
+
+
+#lilyPlant.bloomed .lily-petal {
+    opacity: 0;
+    animation:
+        lilyPetalOpen
+        1.8s
+        cubic-bezier(.2,.8,.2,1)
+        forwards;
+}
+
+#lilyPlant.bloomed .lily-petal-1 { --petal-rotation: 0deg; animation-delay: .05s; }
+#lilyPlant.bloomed .lily-petal-2 { --petal-rotation: 60deg; animation-delay: .10s; }
+#lilyPlant.bloomed .lily-petal-3 { --petal-rotation: 120deg; animation-delay: .15s; }
+#lilyPlant.bloomed .lily-petal-4 { --petal-rotation: 180deg; animation-delay: .20s; }
+#lilyPlant.bloomed .lily-petal-5 { --petal-rotation: 240deg; animation-delay: .15s; }
+#lilyPlant.bloomed .lily-petal-6 { --petal-rotation: 300deg; animation-delay: .10s; }
+
+@keyframes lilyFlowerOpen {
+    0% {
+        transform: translateX(-50%) scale(.35);
+    }
+    45% {
+        transform: translateX(-50%) scale(.72);
+    }
+    75% {
+        transform: translateX(-50%) scale(1.04);
+    }
+    100% {
+        transform: translateX(-50%) scale(1);
+    }
+}
+
+@keyframes lilyPetalOpen {
+    0% {
+        opacity: 0;
+        transform: translate(-50%,-90%) rotate(var(--petal-rotation)) scale(.05);
+    }
+    55% {
+        opacity: 1;
+        transform: translate(-50%,-90%) rotate(var(--petal-rotation)) scale(.78);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%,-90%) rotate(var(--petal-rotation)) scale(1);
+    }
 }
 
 
