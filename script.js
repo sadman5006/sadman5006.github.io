@@ -66,19 +66,19 @@ if (startMission) {
 const flowerMessages = {
 
     1:
-        "A little flower to start things off. 🌷",
+        "Bura hoe jaiteso jehetu aktu sorirer kheyal rakho",
 
     2:
-        "You found another one. Keep going. ✨",
+        "Just wanted to say i apreciate you talking with me",
 
     3:
-        "Halfway there... the garden is getting brighter. 🌸",
+        "I hope that you can keep being you",
 
     4:
-        "Almost there. One more flower is waiting. 🌼",
+        "Aikhane amar bolar kichu chilo na matha hang korse",
 
     5:
-        "You found them all. But... something is still waiting."
+        "Oh Birthday treat dao nai mone rakhbo"
 
 };
 
