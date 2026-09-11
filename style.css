@@ -496,3 +496,41 @@ button:active {
         width: 90%;
     }
 }
+/* =========================================
+   ALIGNMENT FIX
+========================================= */
+
+/* Keep scene content centered vertically */
+.scene.active {
+    flex-direction: column;
+}
+
+/* Keep flowers positioned independently */
+#flowerHunt .flower {
+    position: absolute;
+}
+
+/* Keep normal content above the garden background */
+#garden h2,
+#garden p,
+#garden button,
+#flowerHunt h2,
+#flowerHunt p {
+    position: relative;
+    z-index: 20;
+}
+
+/* Make flower positions independent of the text */
+#flowerHunt .flower {
+    z-index: 30;
+}
+
+/* Make the flower hunt area fill the screen */
+#flowerHunt {
+    position: fixed;
+}
+
+/* Don't let flower hover affect the layout */
+#flowerHunt .flower:hover {
+    margin-top: 0;
+}
