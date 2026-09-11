@@ -2006,3 +2006,244 @@ button {
         transition-duration: 0.01ms !important;
     }
 }
+/* =========================================================
+   BIRTHDAY REVEAL
+   ========================================================= */
+
+#birthday {
+    overflow: hidden;
+}
+
+/* Soft glow behind the birthday */
+
+#birthday::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(255, 245, 190, 0.16),
+            transparent 38%
+        );
+
+    opacity: 0;
+
+    animation:
+        birthdayGlow 2s ease forwards;
+
+    pointer-events: none;
+}
+
+@keyframes birthdayGlow {
+    from {
+        opacity: 0;
+        transform: scale(0.85);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* Birthday content */
+
+.birthday-content {
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+
+    animation:
+        birthdayEntrance 1.5s
+        0.5s
+        cubic-bezier(0.2, 0.8, 0.2, 1)
+        forwards;
+}
+
+@keyframes birthdayEntrance {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(20px)
+            scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* Cake */
+
+.birthday-content .cake {
+    opacity: 0;
+
+    animation:
+        cakeEntrance 1s
+        0.9s
+        ease
+        forwards;
+}
+
+@keyframes cakeEntrance {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(25px)
+            scale(0.7);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* Happy Birthday */
+
+.birthday-content h1 {
+    opacity: 0;
+
+    animation:
+        birthdayTitle 1.2s
+        1.25s
+        ease
+        forwards;
+}
+
+@keyframes birthdayTitle {
+
+    0% {
+        opacity: 0;
+        transform:
+            translateY(15px)
+            scale(0.94);
+        letter-spacing: 8px;
+    }
+
+    100% {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+        letter-spacing: 4px;
+    }
+}
+
+
+/* Mission complete */
+
+.birthday-content p {
+    opacity: 0;
+
+    animation:
+        birthdayMessage 1s
+        1.8s
+        ease
+        forwards;
+}
+
+@keyframes birthdayMessage {
+
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Button */
+
+.birthday-content #openLetter {
+    opacity: 0;
+
+    animation:
+        birthdayButton 1s
+        2.25s
+        ease
+        forwards;
+}
+
+@keyframes birthdayButton {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================================================
+   CONFETTI
+   ========================================================= */
+
+.confetti {
+    position: fixed;
+
+    top: -20px;
+
+    width: 7px;
+    height: 12px;
+
+    pointer-events: none;
+
+    z-index: 50;
+
+    opacity: 0;
+
+    animation:
+        confettiFall
+        var(--confetti-duration)
+        linear
+        var(--confetti-delay)
+        forwards;
+}
+
+@keyframes confettiFall {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(-20px)
+            translateX(0)
+            rotate(0deg);
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateY(105vh)
+            translateX(var(--confetti-x))
+            rotate(720deg);
+    }
+}
