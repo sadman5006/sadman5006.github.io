@@ -2800,3 +2800,314 @@ button:active {
     }
 
 }
+/* =========================================================
+   BIRTHDAY REVEAL — POLISHED CELEBRATION
+   ========================================================= */
+
+#birthday {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at 50% 42%, rgba(255,245,210,.18), transparent 22%),
+        radial-gradient(circle at 50% 68%, rgba(100,170,115,.13), transparent 38%),
+        linear-gradient(135deg, #07150f, #183a25 48%, #07130d);
+}
+
+#birthday::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: min(760px, 80vw);
+    height: min(760px, 80vw);
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,250,220,.10) 0%,
+            rgba(255,250,220,.045) 28%,
+            transparent 68%
+        );
+
+    filter: blur(2px);
+    pointer-events: none;
+    z-index: 0;
+
+    animation: birthdayHalo 5s ease-in-out infinite alternate;
+}
+
+#birthday::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+
+    background:
+        radial-gradient(circle at 12% 22%, rgba(255,255,255,.38) 0 1px, transparent 2px),
+        radial-gradient(circle at 82% 18%, rgba(255,255,255,.30) 0 1px, transparent 2px),
+        radial-gradient(circle at 72% 72%, rgba(255,255,255,.22) 0 1px, transparent 2px),
+        radial-gradient(circle at 25% 76%, rgba(255,255,255,.25) 0 1px, transparent 2px);
+}
+
+.birthday-content {
+    position: relative;
+    z-index: 5;
+    width: min(900px, 90vw);
+    text-align: center;
+
+    animation:
+        birthdayContentEntrance
+        1.35s
+        cubic-bezier(.2,.8,.2,1)
+        both;
+}
+
+.cake {
+    position: relative;
+    display: inline-block;
+    font-size: clamp(70px, 9vw, 120px);
+    margin-bottom: 18px;
+
+    filter:
+        drop-shadow(0 12px 22px rgba(0,0,0,.25))
+        drop-shadow(0 0 18px rgba(255,235,170,.12));
+
+    animation:
+        cakeReveal
+        1.45s
+        cubic-bezier(.2,.8,.2,1)
+        .12s
+        both,
+        cakeFloat
+        4s
+        ease-in-out
+        1.7s
+        infinite;
+}
+
+.cake::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -8px;
+    width: 145%;
+    height: 34px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+
+    background:
+        radial-gradient(ellipse, rgba(255,235,170,.20), transparent 68%);
+
+    filter: blur(7px);
+    z-index: -1;
+}
+
+#birthday h1 {
+    position: relative;
+    font-size: clamp(48px, 7vw, 100px);
+    font-weight: 300;
+    letter-spacing: clamp(4px, .8vw, 9px);
+    line-height: 1.05;
+    text-align: center;
+
+    animation:
+        birthdayTitleReveal
+        1.45s
+        cubic-bezier(.2,.8,.2,1)
+        .35s
+        both;
+}
+
+#birthday h1::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -18px;
+    width: 110px;
+    height: 1px;
+    transform: translateX(-50%) scaleX(0);
+    transform-origin: center;
+    background: rgba(255,255,255,.45);
+
+    animation:
+        birthdayLineReveal
+        1s
+        ease
+        1.15s
+        forwards;
+}
+
+#birthday p {
+    margin-top: 38px;
+    font-size: clamp(17px, 2vw, 20px);
+    letter-spacing: .8px;
+    opacity: 0;
+
+    animation:
+        birthdaySubtitleReveal
+        1s
+        ease
+        1.05s
+        forwards;
+}
+
+#birthday button {
+    margin-top: 30px;
+    opacity: 0;
+
+    animation:
+        birthdayButtonReveal
+        1s
+        cubic-bezier(.2,.8,.2,1)
+        1.35s
+        forwards;
+}
+
+.birthday-firefly {
+    position: fixed;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 3;
+
+    background: rgba(255,250,215,.78);
+
+    box-shadow:
+        0 0 7px rgba(255,250,215,.65),
+        0 0 18px rgba(255,245,190,.22);
+
+    animation:
+        birthdayFireflyRise
+        var(--firefly-duration)
+        ease-in-out
+        var(--firefly-delay)
+        infinite;
+}
+
+@keyframes birthdayHalo {
+    from {
+        opacity: .55;
+        transform: translate(-50%, -50%) scale(.94);
+    }
+    to {
+        opacity: .95;
+        transform: translate(-50%, -50%) scale(1.06);
+    }
+}
+
+@keyframes birthdayContentEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(22px) scale(.985);
+        filter: blur(3px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+@keyframes cakeReveal {
+    from {
+        opacity: 0;
+        transform: translateY(35px) scale(.68) rotate(-3deg);
+    }
+    65% {
+        opacity: 1;
+        transform: translateY(-5px) scale(1.04) rotate(1deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotate(0);
+    }
+}
+
+@keyframes cakeFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-7px); }
+}
+
+@keyframes birthdayTitleReveal {
+    from {
+        opacity: 0;
+        letter-spacing: 18px;
+        transform: translateY(12px);
+        text-shadow: 0 0 0 rgba(255,255,220,0);
+    }
+    to {
+        opacity: 1;
+        letter-spacing: clamp(4px, .8vw, 9px);
+        transform: translateY(0);
+        text-shadow:
+            0 0 18px rgba(255,255,220,.28),
+            0 0 45px rgba(255,255,220,.12);
+    }
+}
+
+@keyframes birthdayLineReveal {
+    from {
+        transform: translateX(-50%) scaleX(0);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(-50%) scaleX(1);
+        opacity: 1;
+    }
+}
+
+@keyframes birthdaySubtitleReveal {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: .85;
+        transform: translateY(0);
+    }
+}
+
+@keyframes birthdayButtonReveal {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes birthdayFireflyRise {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 18px, 0) scale(.65);
+    }
+    18% { opacity: .75; }
+    55% { opacity: .95; }
+    100% {
+        opacity: 0;
+        transform:
+            translate3d(var(--firefly-x), -120px, 0)
+            scale(1.05);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #birthday::before,
+    .birthday-content,
+    .cake,
+    #birthday h1,
+    #birthday h1::after,
+    #birthday p,
+    #birthday button,
+    .birthday-firefly {
+        animation: none !important;
+    }
+}
