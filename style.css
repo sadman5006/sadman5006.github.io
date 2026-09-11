@@ -1309,16 +1309,22 @@ button {
 }
 
 .lily-leaf-right {
-
-    right: 22px;
+    right: 48px;
+    bottom: 65px;
 
     transform:
         scaleX(-1)
         rotate(18deg)
         scale(0.35);
 
-    transform-origin:
-        right center;
+    transform-origin: right center;
+}
+
+#lilyPlant.growing .lily-leaf-right {
+    transform:
+        scaleX(-1)
+        rotate(18deg)
+        scale(1);
 }
 
 
