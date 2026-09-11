@@ -1390,3 +1390,366 @@ button:active {
             rotate(90deg);
     }
 }
+/* =========================================
+   LIVING GARDEN ATMOSPHERE
+   ========================================= */
+
+/* -------------------------
+   SOFT AMBIENT LIGHT
+   ------------------------- */
+
+#flowerHunt::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(
+            circle at 50% 55%,
+            rgba(80, 170, 120, 0.06),
+            transparent 42%
+        ),
+        radial-gradient(
+            circle at 15% 30%,
+            rgba(255, 255, 255, 0.025),
+            transparent 25%
+        );
+    z-index: 0;
+}
+
+
+/* -------------------------
+   MAKE MISSION UI STAY ON TOP
+   ------------------------- */
+
+.mission-ui {
+    z-index: 10;
+}
+
+
+/* -------------------------
+   FLOWER DEPTH + SWAY
+   ------------------------- */
+
+.flower {
+    transform-origin: bottom center;
+}
+
+/* Each flower moves slightly differently */
+
+.flower-1 {
+    animation:
+        flowerFloat 4.5s ease-in-out infinite,
+        flowerSway1 5s ease-in-out infinite;
+}
+
+.flower-2 {
+    animation:
+        flowerFloat 5.2s ease-in-out infinite,
+        flowerSway2 6s ease-in-out infinite;
+}
+
+.flower-3 {
+    animation:
+        flowerFloat 4.8s ease-in-out infinite,
+        flowerSway1 5.7s ease-in-out infinite;
+}
+
+.flower-4 {
+    animation:
+        flowerFloat 5.5s ease-in-out infinite,
+        flowerSway2 6.5s ease-in-out infinite;
+}
+
+.flower-5 {
+    animation:
+        flowerFloat 4.7s ease-in-out infinite,
+        flowerSway1 5.4s ease-in-out infinite;
+}
+
+@keyframes flowerSway1 {
+    0%, 100% {
+        rotate: -1deg;
+    }
+
+    50% {
+        rotate: 1.5deg;
+    }
+}
+
+@keyframes flowerSway2 {
+    0%, 100% {
+        rotate: 1deg;
+    }
+
+    50% {
+        rotate: -1.5deg;
+    }
+}
+
+
+/* -------------------------
+   FLOWER GLOW
+   ------------------------- */
+
+.flower-head {
+    transition:
+        filter 0.4s ease,
+        transform 0.4s ease;
+}
+
+.flower:hover .flower-head {
+    filter:
+        brightness(1.2)
+        drop-shadow(0 0 10px rgba(255,255,255,0.35));
+}
+
+.flower.found .flower-head {
+    filter:
+        brightness(1.18)
+        drop-shadow(0 0 16px rgba(255,255,255,0.28));
+}
+
+
+/* -------------------------
+   FIREFLIES
+   ------------------------- */
+
+.firefly {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+
+    background: rgba(255, 248, 170, 0.95);
+
+    box-shadow:
+        0 0 5px rgba(255, 248, 170, 0.9),
+        0 0 14px rgba(255, 248, 170, 0.45);
+
+    pointer-events: none;
+    z-index: 2;
+
+    animation:
+        fireflyGlow 2.5s ease-in-out infinite,
+        fireflyDrift 8s ease-in-out infinite;
+}
+
+.firefly-1 {
+    left: 14%;
+    top: 38%;
+    animation-delay: 0s;
+}
+
+.firefly-2 {
+    left: 31%;
+    top: 25%;
+    animation-delay: 1.2s;
+}
+
+.firefly-3 {
+    left: 54%;
+    top: 52%;
+    animation-delay: 2.4s;
+}
+
+.firefly-4 {
+    left: 72%;
+    top: 35%;
+    animation-delay: 0.7s;
+}
+
+.firefly-5 {
+    left: 84%;
+    top: 58%;
+    animation-delay: 1.8s;
+}
+
+.firefly-6 {
+    left: 43%;
+    top: 72%;
+    animation-delay: 3s;
+}
+
+@keyframes fireflyGlow {
+    0%, 100% {
+        opacity: 0.25;
+        transform: scale(0.7);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.25);
+    }
+}
+
+@keyframes fireflyDrift {
+    0% {
+        margin-left: 0;
+        margin-top: 0;
+    }
+
+    25% {
+        margin-left: 20px;
+        margin-top: -15px;
+    }
+
+    50% {
+        margin-left: -10px;
+        margin-top: -30px;
+    }
+
+    75% {
+        margin-left: -25px;
+        margin-top: -10px;
+    }
+
+    100% {
+        margin-left: 0;
+        margin-top: 0;
+    }
+}
+
+
+/* -------------------------
+   BUTTERFLY 1
+   ------------------------- */
+
+#flowerHunt::before {
+    content: "🦋";
+    position: absolute;
+
+    left: 8%;
+    top: 55%;
+
+    font-size: 24px;
+
+    opacity: 0.45;
+    filter: blur(0.2px);
+
+    pointer-events: none;
+    z-index: 3;
+
+    animation: butterflyFlight 14s ease-in-out infinite;
+}
+
+@keyframes butterflyFlight {
+
+    0% {
+        transform:
+            translate(0, 0)
+            rotate(-5deg);
+    }
+
+    20% {
+        transform:
+            translate(120px, -80px)
+            rotate(8deg);
+    }
+
+    40% {
+        transform:
+            translate(260px, 20px)
+            rotate(-8deg);
+    }
+
+    60% {
+        transform:
+            translate(430px, -100px)
+            rotate(5deg);
+    }
+
+    80% {
+        transform:
+            translate(600px, -20px)
+            rotate(-5deg);
+    }
+
+    100% {
+        transform:
+            translate(780px, -80px)
+            rotate(4deg);
+    }
+}
+
+
+/* -------------------------
+   SOFT GROUND GLOW
+   ------------------------- */
+
+#flowerHunt::after {
+    box-shadow:
+        inset 0 -100px 120px rgba(0, 0, 0, 0.18);
+}
+
+
+/* -------------------------
+   FOUND FLOWERS
+   ------------------------- */
+
+.flower.found {
+    filter:
+        brightness(1.15)
+        drop-shadow(0 0 12px rgba(255,255,255,0.2));
+}
+
+.flower.found::after {
+    content: "✦";
+
+    position: absolute;
+
+    top: -8px;
+    right: -10px;
+
+    font-size: 13px;
+
+    color: rgba(255,255,220,0.9);
+
+    animation: foundSparkle 2s ease-in-out infinite;
+}
+
+@keyframes foundSparkle {
+
+    0%, 100% {
+        opacity: 0.25;
+        transform: scale(0.7) rotate(0deg);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2) rotate(45deg);
+    }
+}
+
+
+/* -------------------------
+   MISSION UI
+   ------------------------- */
+
+#progress {
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+#progress:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,0.2),
+        0 0 18px rgba(120,220,170,0.08);
+}
+
+
+/* -------------------------
+   REDUCE MOTION FOR USERS
+   ------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .flower,
+    .firefly,
+    #flowerHunt::before {
+        animation: none !important;
+    }
+}
