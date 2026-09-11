@@ -120,8 +120,9 @@ flowers.forEach(flower => {
 
             /*
              * If this flower was already found,
-             * absolutely nothing happens.
+             * do nothing.
              */
+
             if (
                 flower.classList.contains("found")
             ) {
@@ -138,18 +139,21 @@ flowers.forEach(flower => {
             /*
              * Permanently mark flower as found.
              */
+
             flower.classList.add("found");
 
 
             /*
              * Temporary bloom animation.
              */
+
             flower.classList.add("blooming");
 
 
             /*
              * Disable the actual button too.
              */
+
             flower.disabled = true;
 
             flower.setAttribute(
@@ -170,18 +174,19 @@ flowers.forEach(flower => {
 
 
             /*
-             * One sparkle burst.
+             * Sparkle burst.
              */
+
             createSparkles(flower);
 
 
             /*
-             * Remove ONLY the temporary
+             * Remove only the temporary
              * bloom class.
              *
-             * The "found" class remains,
-             * which means the flower keeps dancing.
+             * "found" stays permanently.
              */
+
             setTimeout(
                 () => {
 
@@ -197,6 +202,7 @@ flowers.forEach(flower => {
             /*
              * Popup content.
              */
+
             if (flowerNumber) {
 
                 flowerNumber.textContent =
@@ -238,15 +244,20 @@ if (closeFlowerMessage) {
         "click",
         () => {
 
-            flowerMessage.classList.add(
-                "hidden"
-            );
+            if (flowerMessage) {
+
+                flowerMessage.classList.add(
+                    "hidden"
+                );
+
+            }
 
 
             /*
-             * Once all five are found,
+             * Once all five flowers are found,
              * move to the lily story.
              */
+
             if (flowersFound === 5) {
 
                 setTimeout(
@@ -356,6 +367,7 @@ function startLilyScene() {
     /*
      * Reset lily for the story.
      */
+
     if (lilyPlant) {
 
         lilyPlant.classList.remove(
@@ -421,6 +433,7 @@ if (bloomLily) {
             /*
              * Prevent double clicking.
              */
+
             bloomLily.disabled =
                 true;
 
@@ -434,6 +447,7 @@ if (bloomLily) {
             /*
              * Stem + leaves start growing.
              */
+
             if (lilyPlant) {
 
                 lilyPlant.classList.add(
@@ -446,6 +460,7 @@ if (bloomLily) {
             /*
              * Bud appears.
              */
+
             setTimeout(
                 () => {
 
@@ -465,6 +480,7 @@ if (bloomLily) {
             /*
              * Full flower blooms.
              */
+
             setTimeout(
                 () => {
 
@@ -498,23 +514,53 @@ if (bloomLily) {
 
 
             /*
+             * Quiet moment before birthday reveal.
+             */
+
+            setTimeout(
+                () => {
+
+                    if (lilyIntro) {
+
+                        lilyIntro.style.opacity =
+                            "0";
+
+                    }
+
+
+                    if (lilyText) {
+
+                        lilyText.style.opacity =
+                            "0";
+
+                    }
+
+                },
+                6900
+            );
+
+
+            /*
              * Birthday reveal.
              */
+
             setTimeout(
                 () => {
 
                     showScene("birthday");
+
+                    createBirthdayFireflies();
 
 
                     setTimeout(
                         () => {
                             createConfetti();
                         },
-                        900
+                        700
                     );
 
                 },
-                7600
+                7900
             );
 
         }
@@ -605,18 +651,133 @@ function createConfetti() {
 
 
 /* =====================================================
+   BIRTHDAY ATMOSPHERE
+   ===================================================== */
+
+let birthdayFireflyTimer =
+    null;
+
+
+function createBirthdayFireflies() {
+
+    document
+        .querySelectorAll(".birthday-firefly")
+        .forEach(
+            firefly => firefly.remove()
+        );
+
+
+    const fireflies = 18;
+
+
+    for (
+        let i = 0;
+        i < fireflies;
+        i++
+    ) {
+
+        const firefly =
+            document.createElement("span");
+
+
+        firefly.className =
+            "birthday-firefly";
+
+
+        firefly.style.left =
+            `${8 + Math.random() * 84}%`;
+
+
+        firefly.style.top =
+            `${48 + Math.random() * 45}%`;
+
+
+        firefly.style.setProperty(
+            "--firefly-x",
+            `${(Math.random() - .5) * 90}px`
+        );
+
+
+        firefly.style.setProperty(
+            "--firefly-duration",
+            `${3.5 + Math.random() * 3}s`
+        );
+
+
+        firefly.style.setProperty(
+            "--firefly-delay",
+            `${Math.random() * 2.5}s`
+        );
+
+
+        document.body.appendChild(
+            firefly
+        );
+
+    }
+
+
+    clearTimeout(
+        birthdayFireflyTimer
+    );
+
+
+    birthdayFireflyTimer =
+        setTimeout(
+            () => {
+
+                const birthday =
+                    document.getElementById(
+                        "birthday"
+                    );
+
+
+                if (
+                    birthday &&
+                    birthday.classList.contains(
+                        "active"
+                    )
+                ) {
+
+                    createBirthdayFireflies();
+
+                }
+
+            },
+            9000
+        );
+
+}
+
+
+/* =====================================================
    BIRTHDAY → LETTER
    ===================================================== */
 
 const openLetter =
     document.getElementById("openLetter");
 
+
 if (openLetter) {
 
     openLetter.addEventListener(
         "click",
         () => {
+
+            clearTimeout(
+                birthdayFireflyTimer
+            );
+
+
+            document
+                .querySelectorAll(".birthday-firefly")
+                .forEach(
+                    firefly => firefly.remove()
+                );
+
+
             showScene("letter");
+
         }
     );
 
@@ -654,6 +815,7 @@ function startGardenCelebration() {
     /*
      * Make every flower permanently alive.
      */
+
     flowers.forEach(
         flower => {
 
@@ -682,6 +844,7 @@ function startGardenCelebration() {
     /*
      * Activate celebration mode.
      */
+
     flowerHunt.classList.add(
         "celebration-mode"
     );
@@ -690,6 +853,7 @@ function startGardenCelebration() {
     /*
      * Make the mission UI subtle.
      */
+
     const missionUI =
         flowerHunt.querySelector(
             ".mission-ui"
@@ -709,6 +873,7 @@ function startGardenCelebration() {
      * Remove previous celebration lily
      * if the page has been replayed.
      */
+
     const oldCelebrationLily =
         flowerHunt.querySelector(
             ".celebration-lily"
@@ -725,6 +890,7 @@ function startGardenCelebration() {
     /*
      * Clone the ACTUAL lily that was grown.
      */
+
     if (lilyPlant) {
 
         const celebrationLily =
@@ -732,9 +898,10 @@ function startGardenCelebration() {
 
 
         /*
-         * Remove the ID so there is never
+         * Remove ID so there is never
          * a duplicate #lilyPlant.
          */
+
         celebrationLily.removeAttribute(
             "id"
         );
@@ -743,6 +910,7 @@ function startGardenCelebration() {
         /*
          * Give it its own class.
          */
+
         celebrationLily.classList.add(
             "celebration-lily"
         );
@@ -752,6 +920,7 @@ function startGardenCelebration() {
          * Make absolutely sure it is
          * in the final bloomed state.
          */
+
         celebrationLily.classList.remove(
             "growing",
             "budding"
@@ -766,6 +935,7 @@ function startGardenCelebration() {
         /*
          * Put it inside the final garden.
          */
+
         flowerHunt.appendChild(
             celebrationLily
         );
@@ -776,6 +946,7 @@ function startGardenCelebration() {
     /*
      * Start continuous confetti.
      */
+
     startCelebrationConfetti();
 
 }
@@ -793,12 +964,14 @@ function startCelebrationConfetti() {
     /*
      * First shower immediately.
      */
+
     createConfetti();
 
 
     /*
      * Then another shower every 2.5 seconds.
      */
+
     celebrationConfettiTimer =
         setInterval(
             () => {
@@ -826,8 +999,10 @@ function stopCelebrationConfetti() {
             celebrationConfettiTimer
         );
 
+
         celebrationConfettiTimer =
             null;
+
     }
 
 }
@@ -853,6 +1028,7 @@ if (finish) {
              * transition finish before
              * the celebration appears.
              */
+
             setTimeout(
                 () => {
 
