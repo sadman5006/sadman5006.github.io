@@ -2197,53 +2197,101 @@ button {
 }
 
 
-/* =========================================================
+/* =====================================================
    CONFETTI
-   ========================================================= */
+   ===================================================== */
 
 .confetti {
     position: fixed;
 
     top: -20px;
 
-    width: 7px;
-    height: 12px;
+    width: 9px;
+    height: 15px;
+
+    z-index: 9999;
 
     pointer-events: none;
 
-    z-index: 50;
-
-    opacity: 0;
+    background: rgba(255, 255, 255, 0.9);
 
     animation:
         confettiFall
-        var(--confetti-duration)
+        var(--confetti-duration, 4s)
         linear
-        var(--confetti-delay)
+        var(--confetti-delay, 0s)
         forwards;
 }
+
 
 @keyframes confettiFall {
 
     0% {
-        opacity: 0;
 
         transform:
-            translateY(-20px)
-            translateX(0)
+            translate3d(
+                0,
+                -20px,
+                0
+            )
             rotate(0deg);
+
+        opacity: 1;
+
     }
 
-    10% {
-        opacity: 1;
+
+    25% {
+
+        transform:
+            translate3d(
+                var(--confetti-x, 0px),
+                25vh,
+                0
+            )
+            rotate(120deg);
+
     }
+
+
+    50% {
+
+        transform:
+            translate3d(
+                calc(var(--confetti-x, 0px) * -0.5),
+                50vh,
+                0
+            )
+            rotate(240deg);
+
+    }
+
+
+    75% {
+
+        transform:
+            translate3d(
+                calc(var(--confetti-x, 0px) * 0.7),
+                75vh,
+                0
+            )
+            rotate(360deg);
+
+    }
+
 
     100% {
-        opacity: 1;
 
         transform:
-            translateY(105vh)
-            translateX(var(--confetti-x))
-            rotate(720deg);
+            translate3d(
+                var(--confetti-x, 0px),
+                110vh,
+                0
+            )
+            rotate(520deg);
+
+        opacity: 0;
+
     }
+
 }
