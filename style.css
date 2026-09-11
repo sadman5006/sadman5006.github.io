@@ -1,188 +1,498 @@
-/* =================================
-   BASIC RESET
-================================= */
+/* =========================================
+   GLOBAL
+========================================= */
 
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 html,
 body {
     width: 100%;
     height: 100%;
-}
-
-body {
     overflow: hidden;
-    font-family: Arial, sans-serif;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #07140f;
+    color: white;
 }
 
-
-/* =================================
+/* =========================================
    SCENES
-================================= */
+========================================= */
 
 .scene {
     position: fixed;
     inset: 0;
-
     display: none;
-
-    width: 100%;
-    height: 100%;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    opacity: 0;
+    transform: scale(1.02);
 }
 
 .scene.active {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    animation: sceneIn 0.8s ease forwards;
 }
 
+@keyframes sceneIn {
+    from {
+        opacity: 0;
+        transform: scale(1.02);
+    }
 
-/* =================================
-   TEMPORARY STYLING
-================================= */
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* =========================================
+   INTRO
+========================================= */
 
 #intro {
-    background: #111;
-    color: white;
+    background:
+        radial-gradient(circle at 50% 40%, rgba(91, 145, 105, 0.25), transparent 35%),
+        linear-gradient(to bottom, #07130f, #10291d 60%, #06100b);
+}
+
+#intro::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(255,255,255,.5) 0 1px, transparent 2px),
+        radial-gradient(circle at 80% 30%, rgba(255,255,255,.4) 0 1px, transparent 2px),
+        radial-gradient(circle at 60% 15%, rgba(255,255,255,.5) 0 1px, transparent 2px),
+        radial-gradient(circle at 30% 70%, rgba(255,255,255,.3) 0 1px, transparent 2px);
+    background-size: 220px 220px;
+    opacity: .7;
+}
+
+#intro h1 {
+    font-size: clamp(45px, 6vw, 82px);
+    font-weight: 300;
+    letter-spacing: 4px;
     text-align: center;
 }
 
-#garden {
-    background: #234;
-    color: white;
+#intro p {
+    margin-top: 18px;
+    font-size: 20px;
+    opacity: .8;
     text-align: center;
 }
 
-#flowerHunt {
-    background: #24351f;
-}
-
-#lilyScene {
-    background: #17251a;
-    color: white;
-    text-align: center;
-}
-
-#birthday {
-    background: #24152b;
-    color: white;
-    text-align: center;
-}
-
-#letter {
-    background: #eee;
-    color: #222;
-    text-align: center;
-}
-
-
-/* =================================
+/* =========================================
    BUTTONS
-================================= */
+========================================= */
 
 button {
-    padding: 12px 24px;
-    margin-top: 20px;
-
     border: none;
-    border-radius: 8px;
-
     cursor: pointer;
-
+    color: white;
+    background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.25);
+    padding: 14px 30px;
+    border-radius: 40px;
     font-size: 16px;
+    transition:
+        transform .25s ease,
+        background .25s ease,
+        box-shadow .25s ease;
+    backdrop-filter: blur(8px);
 }
 
+button:hover {
+    transform: translateY(-3px);
+    background: rgba(255,255,255,.18);
+    box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
 
-/* =================================
+button:active {
+    transform: scale(.97);
+}
+
+/* =========================================
+   GARDEN
+========================================= */
+
+#garden,
+#flowerHunt {
+    background:
+        radial-gradient(circle at 50% 35%, rgba(74, 130, 89, .25), transparent 38%),
+        linear-gradient(
+            to bottom,
+            #07140f 0%,
+            #0b2117 45%,
+            #102d1b 70%,
+            #07150d 100%
+        );
+}
+
+/* Moon */
+
+#garden::before,
+#flowerHunt::before {
+    content: "";
+    position: absolute;
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    background: #f4f1d5;
+    top: 8%;
+    right: 10%;
+    box-shadow:
+        0 0 25px rgba(255,255,220,.5),
+        0 0 70px rgba(255,255,220,.15);
+    opacity: .9;
+}
+
+/* Ground */
+
+#garden::after,
+#flowerHunt::after {
+    content: "";
+    position: absolute;
+    width: 140%;
+    height: 42%;
+    left: -20%;
+    bottom: -20%;
+    border-radius: 50% 50% 0 0;
+    background: #07160d;
+    box-shadow:
+        inset 0 25px 50px rgba(35, 88, 51, .25),
+        0 -10px 50px rgba(0,0,0,.3);
+}
+
+/* =========================================
+   GARDEN CONTENT
+========================================= */
+
+#garden > *,
+#flowerHunt > * {
+    position: relative;
+    z-index: 5;
+}
+
+#garden h2,
+#flowerHunt h2 {
+    font-size: clamp(35px, 4vw, 60px);
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-shadow: 0 5px 25px rgba(0,0,0,.4);
+}
+
+#garden p,
+#flowerHunt p {
+    font-size: 18px;
+    opacity: .8;
+    margin: 12px 0 25px;
+}
+
+/* =========================================
    FLOWERS
-================================= */
+========================================= */
 
 .flower {
     position: absolute;
+    z-index: 10;
+    cursor: pointer;
 
-    background: transparent;
+    font-size: 55px;
 
-    font-size: 50px;
+    transition:
+        transform .35s ease,
+        filter .35s ease,
+        opacity .35s ease;
+    
+    filter:
+        drop-shadow(0 0 5px rgba(255,255,255,.2))
+        drop-shadow(0 0 15px rgba(255,255,255,.1));
+
+    animation: flowerFloat 4s ease-in-out infinite;
 }
 
-.flower-1 {
-    top: 30%;
-    left: 20%;
+.flower:hover {
+    transform: scale(1.25) translateY(-8px);
+    filter:
+        drop-shadow(0 0 8px rgba(255,255,255,.8))
+        drop-shadow(0 0 25px rgba(255,220,180,.5));
 }
 
-.flower-2 {
-    top: 60%;
-    left: 35%;
+@keyframes flowerFloat {
+    0%, 100% {
+        margin-top: 0;
+    }
+
+    50% {
+        margin-top: -8px;
+    }
 }
 
-.flower-3 {
-    top: 35%;
-    right: 25%;
+/* Make each flower slightly different */
+
+.flower:nth-child(2) {
+    animation-delay: .5s;
 }
 
-.flower-4 {
-    bottom: 20%;
-    right: 15%;
+.flower:nth-child(3) {
+    animation-delay: 1s;
 }
 
-.flower-5 {
-    top: 70%;
-    right: 40%;
+.flower:nth-child(4) {
+    animation-delay: 1.5s;
 }
 
+.flower:nth-child(5) {
+    animation-delay: 2s;
+}
 
-/* =================================
+/* =========================================
+   FLOWER COUNTER
+========================================= */
+
+#foundCount {
+    display: inline-block;
+    min-width: 32px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: rgba(255,255,255,.1);
+    margin-left: 5px;
+}
+
+/* =========================================
    POPUP
-================================= */
+========================================= */
 
 .popup {
     position: fixed;
     inset: 0;
+    z-index: 100;
 
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
-    background: rgba(0, 0, 0, 0.6);
-
-    z-index: 100;
+    background: rgba(2, 10, 6, .55);
+    backdrop-filter: blur(8px);
 }
 
 .popup.hidden {
     display: none;
 }
 
-.popup-card {
-    background: white;
-    padding: 40px;
-    border-radius: 15px;
-
+.popup-content {
+    width: min(500px, 85%);
+    padding: 45px;
     text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(31,65,46,.95),
+            rgba(10,29,19,.95)
+        );
+
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 25px;
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.5),
+        0 0 40px rgba(130,190,140,.08);
+
+    animation: popupIn .45s ease;
 }
 
+@keyframes popupIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(.95);
+    }
 
-/* =================================
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* =========================================
+   LILY SCENE
+========================================= */
+
+#lilyScene {
+    background:
+        radial-gradient(
+            circle at center 45%,
+            rgba(230,255,235,.12),
+            transparent 30%
+        ),
+        linear-gradient(
+            to bottom,
+            #06130d,
+            #0c2116,
+            #050d09
+        );
+}
+
+#lilyPlant {
+    font-size: 150px;
+    transition: all 1.5s ease;
+    filter: drop-shadow(0 0 20px rgba(255,255,255,.2));
+}
+
+#lilyPlant:hover {
+    transform: scale(1.05);
+}
+
+/* =========================================
+   BIRTHDAY
+========================================= */
+
+#birthday {
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,235,180,.15),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #07150f,
+            #183a25,
+            #07130d
+        );
+}
+
+#birthday h1 {
+    font-size: clamp(55px, 8vw, 110px);
+    font-weight: 300;
+    letter-spacing: 8px;
+    text-align: center;
+
+    animation: birthdayGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes birthdayGlow {
+    from {
+        text-shadow:
+            0 0 10px rgba(255,255,255,.2);
+    }
+
+    to {
+        text-shadow:
+            0 0 25px rgba(255,255,220,.7),
+            0 0 60px rgba(255,255,220,.25);
+    }
+}
+
+/* =========================================
    LETTER
-================================= */
+========================================= */
 
-.letter-card {
-    max-width: 600px;
-    padding: 40px;
-
-    background: white;
-    border-radius: 15px;
+#letter {
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,255,255,.08),
+            transparent 40%
+        ),
+        #08160f;
 }
 
-.letter-card p {
-    margin-top: 20px;
-    line-height: 1.6;
+#letter .letter-content {
+    width: min(700px, 80%);
+    padding: 55px;
+
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 25px;
+
+    backdrop-filter: blur(15px);
+
+    box-shadow: 0 30px 80px rgba(0,0,0,.35);
 }
 
-.signature {
-    margin-top: 30px;
-    font-style: italic;
+#letter p {
+    line-height: 1.8;
+    font-size: 18px;
+    opacity: .9;
+}
+
+/* =========================================
+   FIRELIGHT / AMBIENT GLOW
+========================================= */
+
+#garden .firefly,
+#flowerHunt .firefly {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+
+    background: #eaffb0;
+
+    box-shadow:
+        0 0 8px #eaffb0,
+        0 0 18px rgba(220,255,150,.6);
+
+    animation: fireflyMove 5s ease-in-out infinite;
+}
+
+@keyframes fireflyMove {
+    0% {
+        transform: translate(0,0);
+        opacity: .2;
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    50% {
+        transform: translate(30px,-40px);
+        opacity: .7;
+    }
+
+    75% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-20px,-70px);
+        opacity: .1;
+    }
+}
+
+/* =========================================
+   MOBILE SAFETY
+========================================= */
+
+@media (max-width: 700px) {
+
+    #intro h1 {
+        font-size: 40px;
+    }
+
+    #garden h2,
+    #flowerHunt h2 {
+        font-size: 35px;
+    }
+
+    .flower {
+        font-size: 40px;
+    }
+
+    #lilyPlant {
+        font-size: 100px;
+    }
+
+    #letter .letter-content {
+        padding: 30px;
+        width: 90%;
+    }
 }
