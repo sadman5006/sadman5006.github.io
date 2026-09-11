@@ -496,7 +496,7 @@ if (bloomLily) {
                     if (lilyIntro) {
 
                         lilyIntro.textContent =
-                            "And then...";
+                            "And Finally jar jonno atokisu.......";
 
                     }
 
@@ -504,7 +504,7 @@ if (bloomLily) {
                     if (lilyText) {
 
                         lilyText.textContent =
-                            "Some things take a little longer to bloom.";
+                            "";
 
                     }
 
