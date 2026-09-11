@@ -1770,8 +1770,7 @@ button:active {
         calc(50% + 0px);
 
     transform:
-        scaleX(-1)
-        rotate(18deg)
+        rotate(-18deg)
         scale(.35);
 
     transform-origin:
@@ -1988,8 +1987,7 @@ button:active {
 .celebration-lily .lily-leaf-right {
 
     transform:
-        scaleX(-1)
-        rotate(18deg)
+        rotate(-18deg)
         scale(1);
 }
 
@@ -2493,8 +2491,7 @@ button:active {
 .celebration-lily .lily-leaf-right {
 
     transform:
-        scaleX(-1)
-        rotate(18deg)
+        rotate(-18deg)
         scale(1) !important;
 }
 
