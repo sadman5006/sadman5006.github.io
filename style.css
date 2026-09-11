@@ -1,2629 +1,1111 @@
 /* =========================================================
-   GLOBAL
-   ========================================================= */
+GLOBAL
+========================================================= */
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  }
 
 html,
 body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+width: 100%;
+height: 100%;
+overflow: hidden;
 
-    font-family:
-        "Segoe UI",
-        Arial,
-        sans-serif;
+```
+font-family:
+    "Segoe UI",
+    Arial,
+    sans-serif;
 
-    background: #06120c;
-    color: white;
+background: #06120c;
+color: white;
+```
+
 }
 
 button {
-    border: none;
-    cursor: pointer;
+border: none;
+cursor: pointer;
 
-    color: white;
+```
+color: white;
 
-    background:
-        rgba(255,255,255,.09);
+background:
+    rgba(255,255,255,.09);
 
-    border:
-        1px solid rgba(255,255,255,.22);
+border:
+    1px solid rgba(255,255,255,.22);
 
-    padding:
-        14px 30px;
+padding:
+    14px 30px;
 
-    border-radius:
-        40px;
+border-radius:
+    40px;
 
-    font-size: 16px;
+font-size: 16px;
 
-    backdrop-filter:
-        blur(8px);
+backdrop-filter:
+    blur(8px);
 
-    transition:
-        transform .25s ease,
-        background .25s ease,
-        box-shadow .25s ease;
+transition:
+    transform .25s ease,
+    background .25s ease,
+    box-shadow .25s ease;
+```
+
 }
 
 button:hover {
-    transform:
-        translateY(-3px);
+transform:
+translateY(-3px);
 
-    background:
-        rgba(255,255,255,.16);
+```
+background:
+    rgba(255,255,255,.16);
 
-    box-shadow:
-        0 10px 30px rgba(0,0,0,.25);
+box-shadow:
+    0 10px 30px rgba(0,0,0,.25);
+```
+
 }
 
 button:active {
-    transform:
-        scale(.97);
+transform:
+scale(.97);
 }
 
-
 /* =========================================================
-   SCENES
-   ========================================================= */
+SCENES
+========================================================= */
 
 .scene {
-    position: fixed;
-    inset: 0;
+position: fixed;
+inset: 0;
 
-    display: none;
+```
+display: none;
 
-    align-items: center;
-    justify-content: center;
+align-items: center;
+justify-content: center;
 
-    overflow: hidden;
+overflow: hidden;
 
-    opacity: 0;
+opacity: 0;
 
-    transform:
-        scale(1.02);
+transform:
+    scale(1.02);
+```
+
 }
 
 .scene.active {
-    display: flex;
+display: flex;
 
-    animation:
-        sceneIn
-        .8s
-        cubic-bezier(.2,.8,.2,1)
-        forwards;
+```
+animation:
+    sceneIn
+    .8s
+    cubic-bezier(.2,.8,.2,1)
+    forwards;
+```
+
 }
 
 @keyframes sceneIn {
 
-    from {
-        opacity: 0;
-
-        transform:
-            scale(1.025);
-
-        filter:
-            blur(2px);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            scale(1);
-
-        filter:
-            blur(0);
-    }
-}
-
-
-/* =========================================================
-   INTRO
-   ========================================================= */
-
-#intro {
-    text-align: center;
-
-    background:
-        radial-gradient(
-            circle at 50% 38%,
-            rgba(91,145,105,.28),
-            transparent 34%
-        ),
-        radial-gradient(
-            circle at 80% 20%,
-            rgba(120,150,180,.08),
-            transparent 28%
-        ),
-        linear-gradient(
-            to bottom,
-            #050d0b,
-            #0b2016 58%,
-            #06110b
-        );
-}
-
-#intro::before {
-    content: "";
-
-    position: absolute;
-    inset: 0;
-
-    background:
-        radial-gradient(
-            circle at 15% 20%,
-            rgba(255,255,255,.45) 0 1px,
-            transparent 2px
-        ),
-        radial-gradient(
-            circle at 80% 30%,
-            rgba(255,255,255,.35) 0 1px,
-            transparent 2px
-        ),
-        radial-gradient(
-            circle at 60% 15%,
-            rgba(255,255,255,.45) 0 1px,
-            transparent 2px
-        ),
-        radial-gradient(
-            circle at 30% 70%,
-            rgba(255,255,255,.25) 0 1px,
-            transparent 2px
-        );
-
-    background-size:
-        220px 220px;
-
-    opacity: .7;
-
-    pointer-events: none;
-}
-
-.intro-content {
-    position: relative;
-    z-index: 5;
-
-    text-align: center;
-
-    padding: 30px;
-}
-
-.intro-icon {
-    font-size: 70px;
-
-    margin-bottom: 20px;
-
-    filter:
-        drop-shadow(
-            0 0 18px
-            rgba(180,255,190,.35)
-        );
-
-    animation:
-        introPlant
-        3s
-        ease-in-out
-        infinite;
-}
-
-@keyframes introPlant {
-
-    0%,100% {
-        transform:
-            translateY(0)
-            rotate(-2deg);
-    }
-
-    50% {
-        transform:
-            translateY(-7px)
-            rotate(2deg);
-    }
-}
-
-#intro h1 {
-    font-size:
-        clamp(45px,6vw,82px);
-
-    font-weight: 300;
-
-    letter-spacing: 4px;
-
-    text-align: center;
-}
-
-#intro p {
-    margin-top: 18px;
-
-    font-size: 20px;
-
-    opacity: .8;
-
-    text-align: center;
-}
-
-#intro button {
-    margin-top: 25px;
-}
-
-
-/* =========================================================
-   GARDEN INTRO
-   ========================================================= */
-
-#garden {
-    text-align: center;
-
-    background:
-        radial-gradient(
-            circle at 50% 38%,
-            rgba(80,140,95,.25),
-            transparent 35%
-        ),
-        linear-gradient(
-            to bottom,
-            #050d0b,
-            #0b2116 50%,
-            #102c1a 72%,
-            #06110a
-        );
-}
-
-#garden::before {
-    content: "";
-
-    position: absolute;
-
-    width: 125px;
-    height: 125px;
-
-    top: 8%;
-    right: 10%;
-
-    border-radius: 50%;
-
-    background:
-        #f4f1d5;
-
-    box-shadow:
-        0 0 25px rgba(255,255,220,.55),
-        0 0 75px rgba(255,255,220,.16);
-
-    opacity: .92;
-}
-
-#garden::after {
-    content: "";
-
-    position: absolute;
-
-    width: 140%;
-    height: 42%;
-
-    left: -20%;
-    bottom: -20%;
-
-    border-radius:
-        50% 50% 0 0;
-
-    background:
-        linear-gradient(
-            to bottom,
-            #0b2415,
-            #07160d 50%,
-            #040d08
-        );
-
-    box-shadow:
-        inset 0 25px 50px
-        rgba(55,110,65,.25),
-
-        0 -10px 50px
-        rgba(0,0,0,.35);
-}
-
-.garden-content {
-    position: relative;
-    z-index: 5;
-
-    text-align: center;
-
-    padding: 30px;
-}
-
-#garden h2 {
-    font-size:
-        clamp(38px,5vw,64px);
-
-    font-weight: 300;
-
-    letter-spacing: 3px;
-
-    text-shadow:
-        0 5px 25px rgba(0,0,0,.5);
-}
-
-#garden p {
-    font-size: 19px;
-
-    line-height: 1.7;
-
-    opacity: .8;
-
-    margin:
-        16px 0 28px;
-}
-
-
-/* =========================================================
-   FLOWER HUNT — NIGHT SKY
-   ========================================================= */
-
-#flowerHunt {
-    isolation: isolate;
-
-    background:
-        radial-gradient(
-            circle at 50% 32%,
-            rgba(91,155,105,.20),
-            transparent 27%
-        ),
-        radial-gradient(
-            circle at 82% 14%,
-            rgba(130,155,190,.08),
-            transparent 25%
-        ),
-        linear-gradient(
-            to bottom,
-            #030a0f 0%,
-            #06131a 25%,
-            #082016 58%,
-            #07140d 100%
-        );
-
-    box-shadow:
-        inset 0 0 180px
-        rgba(0,0,0,.7);
-}
-
-
-/* =========================================================
-   MOON
-   ========================================================= */
-
-#flowerHunt::before {
-    content: "";
-
-    position: absolute;
-
-    width: 115px;
-    height: 115px;
-
-    top: 7%;
-    right: 9%;
-
-    border-radius: 50%;
-
-    background:
-        #f5f1d6;
-
-    box-shadow:
-        0 0 30px rgba(255,255,220,.5),
-        0 0 80px rgba(255,255,220,.15);
-
-    opacity: .9;
-
-    z-index: 1;
-}
-
-
-/* =========================================================
-   STARS
-   ========================================================= */
-
-#flowerHunt::after {
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-    right: 0;
-
-    bottom: -17%;
-
-    height: 43%;
-
-    border-radius:
-        50% 50% 0 0;
-
-    background:
-        radial-gradient(
-            ellipse at 12% 18%,
-            rgba(67,130,74,.25),
-            transparent 32%
-        ),
-        radial-gradient(
-            ellipse at 38% 5%,
-            rgba(50,115,63,.2),
-            transparent 30%
-        ),
-        radial-gradient(
-            ellipse at 68% 12%,
-            rgba(67,130,74,.25),
-            transparent 32%
-        ),
-        radial-gradient(
-            ellipse at 92% 8%,
-            rgba(50,115,63,.2),
-            transparent 30%
-        ),
-        linear-gradient(
-            to bottom,
-            #0b2415,
-            #07160d 50%,
-            #040d08
-        );
-
-    box-shadow:
-        inset 0 20px 45px
-        rgba(60,125,70,.2),
-
-        0 -15px 55px
-        rgba(0,0,0,.4);
-
-    z-index: 2;
-}
-
-
-/* =========================================================
-   BACKGROUND STARS
-   ========================================================= */
-
-#flowerHunt .mission-ui::before {
-    content:
-        "✦     ·      ✧          ·       ✦        ·      ✧";
-
-    position: fixed;
-
-    inset: 0;
-
-    width: 100vw;
-    height: 55vh;
-
-    color:
-        rgba(225,255,205,.38);
-
-    font-size: 14px;
-
-    letter-spacing: 35px;
-
-    line-height: 90px;
-
-    opacity: .6;
-
-    pointer-events: none;
-
-    animation:
-        starDrift
-        8s
-        ease-in-out
-        infinite alternate;
-
-    z-index: -1;
-}
-
-@keyframes starDrift {
-
-    from {
-        transform:
-            translateY(0);
-
-        opacity: .25;
-    }
-
-    to {
-        transform:
-            translateY(-12px);
-
-        opacity: .55;
-    }
-}
-
-
-/* =========================================================
-   GROUND
-   ========================================================= */
-
-#flowerHunt .ground {
-    position: absolute;
-
-    left: 0;
-    right: 0;
-
-    bottom: 0;
-
-    height: 28%;
-
-    z-index: 4;
-
-    pointer-events: none;
-
-    background:
-        repeating-linear-gradient(
-            82deg,
-            transparent 0 13px,
-            rgba(74,135,77,.18) 14px 16px,
-            transparent 17px 28px
-        );
-
-    opacity: .55;
-
-    mask-image:
-        linear-gradient(
-            to top,
-            black,
-            transparent
-        );
-
-    -webkit-mask-image:
-        linear-gradient(
-            to top,
-            black,
-            transparent
-        );
-}
-
-
-/* =========================================================
-   MISSION UI
-   ========================================================= */
-
-#flowerHunt .mission-ui {
-    position: absolute;
-
-    top: 8%;
-    left: 50%;
+```
+from {
+    opacity: 0;
 
     transform:
-        translateX(-50%);
-
-    z-index: 60;
-
-    width: 600px;
-    max-width: 90%;
-
-    text-align: center;
-
-    transition:
-        opacity 1s ease,
-        transform 1s ease;
-}
-
-#flowerHunt .mission-ui h2 {
-    font-size:
-        clamp(38px,4vw,58px);
-
-    font-weight: 300;
-
-    letter-spacing: 2px;
-
-    text-shadow:
-        0 4px 25px rgba(0,0,0,.5);
-}
-
-#flowerHunt #progress {
-    display: inline-block;
-
-    margin-top: 15px;
-
-    padding:
-        9px 20px;
-
-    border-radius: 30px;
-
-    background:
-        rgba(255,255,255,.07);
-
-    border:
-        1px solid rgba(255,255,255,.12);
-
-    backdrop-filter:
-        blur(8px);
-
-    font-size: 15px;
-
-    letter-spacing: .5px;
-
-    box-shadow:
-        0 8px 25px
-        rgba(0,0,0,.2);
-}
-
-#foundCount {
-    display: inline-block;
-
-    min-width: 32px;
-
-    padding:
-        4px 10px;
-
-    margin-left: 5px;
-
-    border-radius: 20px;
-
-    background:
-        rgba(255,255,255,.1);
-}
-
-
-/* =========================================================
-   FIREFLIES
-   ========================================================= */
-
-#flowerHunt .firefly {
-    position: absolute;
-
-    width: 5px;
-    height: 5px;
-
-    border-radius: 50%;
-
-    background:
-        #eaffb0;
-
-    box-shadow:
-        0 0 8px #eaffb0,
-        0 0 18px
-        rgba(220,255,150,.6);
-
-    z-index: 7;
-
-    animation:
-        fireflyMove
-        5s
-        ease-in-out
-        infinite;
-}
-
-.firefly-1 {
-    left: 12%;
-    top: 38%;
-}
-
-.firefly-2 {
-    left: 24%;
-    top: 22%;
-    animation-delay: .8s !important;
-}
-
-.firefly-3 {
-    left: 38%;
-    top: 42%;
-    animation-delay: 1.4s !important;
-}
-
-.firefly-4 {
-    left: 54%;
-    top: 24%;
-    animation-delay: 2s !important;
-}
-
-.firefly-5 {
-    left: 70%;
-    top: 45%;
-    animation-delay: .4s !important;
-}
-
-.firefly-6 {
-    left: 83%;
-    top: 32%;
-    animation-delay: 1.2s !important;
-}
-
-.firefly-7 {
-    left: 60%;
-    top: 58%;
-    animation-delay: 2.4s !important;
-}
-
-.firefly-8 {
-    left: 31%;
-    top: 58%;
-    animation-delay: 1.8s !important;
-}
-
-.firefly-9 {
-    left: 91%;
-    top: 62%;
-    animation-delay: .9s !important;
-}
-
-@keyframes fireflyMove {
-
-    0% {
-        transform:
-            translate(0,0);
-
-        opacity: .2;
-    }
-
-    25% {
-        opacity: 1;
-    }
-
-    50% {
-        transform:
-            translate(30px,-40px);
-
-        opacity: .7;
-    }
-
-    75% {
-        opacity: 1;
-    }
-
-    100% {
-        transform:
-            translate(-20px,-70px);
-
-        opacity: .1;
-    }
-}
-
-
-/* =========================================================
-   FLOWER BUTTONS
-   ========================================================= */
-
-#flowerHunt .flower {
-    position: absolute;
-
-    z-index: 50;
-
-    width: 100px;
-    height: 155px;
-
-    padding: 0;
-
-    border: none;
-
-    background: transparent;
-
-    box-shadow: none;
-
-    border-radius: 0;
-
-    backdrop-filter: none;
-
-    overflow: visible;
-
-    cursor: pointer;
-
-    transform-origin:
-        50% 100%;
-
-    transition:
-        filter .3s ease;
-}
-
-
-/* Individual positions */
-
-.flower-1 {
-    left: 17%;
-    top: 43%;
-}
-
-.flower-2 {
-    left: 39%;
-    top: 62%;
-}
-
-.flower-3 {
-    left: 67%;
-    top: 43%;
-}
-
-.flower-4 {
-    left: 79%;
-    top: 63%;
-}
-
-.flower-5 {
-    left: 25%;
-    top: 68%;
-}
-
-
-/* =========================================================
-   FLOWER HOVER
-   ========================================================= */
-
-#flowerHunt .flower:not(.found):hover {
-
-    transform:
-        scale(1.15)
-        translateY(-7px);
-
-    filter:
-        drop-shadow(
-            0 0 8px
-            rgba(255,255,255,.75)
-        )
-        drop-shadow(
-            0 0 24px
-            rgba(255,220,180,.45)
-        );
-}
-
-
-/* =========================================================
-   FLOWER STEM
-   ========================================================= */
-
-#flowerHunt .stem {
-    position: absolute;
-
-    width: 6px;
-    height: 95px;
-
-    left: 50%;
-    bottom: 8px;
-
-    transform:
-        translateX(-50%);
-
-    border-radius: 10px;
-
-    background:
-        linear-gradient(
-            to right,
-            #245d35,
-            #4e9a54,
-            #245d35
-        );
-
-    box-shadow:
-        0 0 8px
-        rgba(70,160,80,.25);
-}
-
-
-/* =========================================================
-   FLOWER LEAVES
-   ========================================================= */
-
-#flowerHunt .leaf {
-    position: absolute;
-
-    width: 42px;
-    height: 17px;
-
-    bottom: 42px;
-
-    border-radius:
-        100% 0 100% 0;
-
-    background:
-        linear-gradient(
-            135deg,
-            #65ae6b,
-            #245d35
-        );
-
-    box-shadow:
-        0 0 7px
-        rgba(60,150,75,.2);
-}
-
-#flowerHunt .leaf-left {
-    left: 8px;
-
-    transform:
-        rotate(25deg);
-
-    transform-origin:
-        right center;
-}
-
-#flowerHunt .leaf-right {
-    right: 8px;
-
-    transform:
-        scaleX(-1)
-        rotate(25deg);
-
-    transform-origin:
-        left center;
-}
-
-
-/* =========================================================
-   FLOWER HEAD
-   ========================================================= */
-
-#flowerHunt .flower-head {
-    position: absolute;
-
-    width: 58px;
-    height: 58px;
-
-    left: 50%;
-    top: 8px;
-
-    transform:
-        translateX(-50%);
-
-    transform-origin:
-        50% 90%;
-
-    z-index: 5;
-
-    animation:
-        flowerSway
-        4s
-        ease-in-out
-        infinite;
-}
-
-
-/* =========================================================
-   FLOWER PETALS
-   ========================================================= */
-
-#flowerHunt .petal {
-    position: absolute;
-
-    width: 27px;
-    height: 38px;
-
-    left: 50%;
-    top: 50%;
-
-    transform-origin:
-        50% 90%;
-
-    border-radius:
-        55% 55% 45% 45%;
-}
-
-#flowerHunt .p1 {
-    transform:
-        translate(-50%,-90%);
-}
-
-#flowerHunt .p2 {
-    transform:
-        translate(-50%,-90%)
-        rotate(72deg);
-}
-
-#flowerHunt .p3 {
-    transform:
-        translate(-50%,-90%)
-        rotate(144deg);
-}
-
-#flowerHunt .p4 {
-    transform:
-        translate(-50%,-90%)
-        rotate(216deg);
-}
-
-#flowerHunt .p5 {
-    transform:
-        translate(-50%,-90%)
-        rotate(288deg);
-}
-
-#flowerHunt .p6 {
-    transform:
-        translate(-50%,-90%)
-        rotate(60deg);
-}
-
-
-/* =========================================================
-   FLOWER COLORS
-   ========================================================= */
-
-.flower-pink .petal {
-    background:
-        linear-gradient(
-            145deg,
-            #ff9dcc,
-            #e94d91
-        );
-
-    box-shadow:
-        0 0 10px
-        rgba(255,100,170,.25);
-}
-
-.flower-yellow .petal {
-    background:
-        linear-gradient(
-            145deg,
-            #ffe878,
-            #e6a82f
-        );
-
-    box-shadow:
-        0 0 10px
-        rgba(255,220,80,.25);
-}
-
-.flower-white .petal {
-    background:
-        linear-gradient(
-            145deg,
-            #ffffff,
-            #d9e9dd
-        );
-
-    box-shadow:
-        0 0 10px
-        rgba(230,255,235,.35);
-}
-
-.flower-coral .petal {
-    background:
-        linear-gradient(
-            145deg,
-            #ff9ca9,
-            #ef5268
-        );
-
-    box-shadow:
-        0 0 10px
-        rgba(255,100,120,.25);
-}
-
-.flower-red .petal {
-    background:
-        linear-gradient(
-            145deg,
-            #ff6670,
-            #d93646
-        );
-
-    box-shadow:
-        0 0 10px
-        rgba(255,70,80,.25);
-}
-
-
-/* =========================================================
-   FLOWER CENTER
-   ========================================================= */
-
-#flowerHunt .flower-center {
-    position: absolute;
-
-    width: 17px;
-    height: 17px;
-
-    left: 50%;
-    top: 50%;
-
-    transform:
-        translate(-50%,-50%);
-
-    border-radius: 50%;
-
-    background:
-        #f6c84a;
-
-    box-shadow:
-        0 0 6px
-        rgba(255,220,80,.8),
-
-        0 0 14px
-        rgba(255,220,80,.3);
-
-    z-index: 10;
-}
-
-
-/* =========================================================
-   NORMAL FLOWER WIND
-   ========================================================= */
-
-@keyframes flowerSway {
-
-    0%,100% {
-        transform:
-            translateX(-50%)
-            rotate(-2deg);
-    }
-
-    50% {
-        transform:
-            translateX(-50%)
-            rotate(3deg);
-    }
-}
-
-
-/* =========================================================
-   DIFFERENT FLOWER WIND TIMING
-   ========================================================= */
-
-.flower-2 .flower-head {
-    animation-delay: .6s;
-}
-
-.flower-3 .flower-head {
-    animation-delay: 1.1s;
-}
-
-.flower-4 .flower-head {
-    animation-delay: 1.7s;
-}
-
-.flower-5 .flower-head {
-    animation-delay: 2.3s;
-}
-
-
-/* =========================================================
-   FOUND FLOWER — PERMANENT DANCE
-   ========================================================= */
-
-#flowerHunt .flower.found {
-
-    pointer-events: none;
-
-    cursor: default;
-
-    animation:
-        foundFlowerDance
-        2.6s
-        ease-in-out
-        infinite;
-
-    filter:
-        drop-shadow(
-            0 0 7px
-            rgba(255,255,255,.45)
-        )
-        drop-shadow(
-            0 0 18px
-            rgba(255,215,180,.28)
-        );
-}
-
-
-/*
-   This rule deliberately overrides the normal hover rule.
-   Found flowers cannot be hovered/clicked anymore.
-*/
-
-#flowerHunt .flower.found:hover {
-
-    transform: none;
-
-    filter:
-        drop-shadow(
-            0 0 7px
-            rgba(255,255,255,.45)
-        )
-        drop-shadow(
-            0 0 18px
-            rgba(255,215,180,.28)
-        );
-}
-
-
-@keyframes foundFlowerDance {
-
-    0%,100% {
-        transform:
-            translateY(0)
-            rotate(-3deg);
-    }
-
-    25% {
-        transform:
-            translateY(-4px)
-            rotate(2deg);
-    }
-
-    50% {
-        transform:
-            translateY(-8px)
-            rotate(4deg);
-    }
-
-    75% {
-        transform:
-            translateY(-4px)
-            rotate(-2deg);
-    }
-}
-
-
-/* =========================================================
-   FINAL CELEBRATION FLOWERS
-   ========================================================= */
-
-#flowerHunt .flower.celebrating {
-
-    animation:
-        celebrationFlowerDance
-        2.4s
-        ease-in-out
-        infinite;
-
-    filter:
-        drop-shadow(
-            0 0 8px
-            rgba(255,255,255,.55)
-        )
-        drop-shadow(
-            0 0 22px
-            rgba(255,220,180,.35)
-        );
-}
-
-@keyframes celebrationFlowerDance {
-
-    0%,100% {
-        transform:
-            translateY(0)
-            rotate(-4deg)
-            scale(1);
-    }
-
-    25% {
-        transform:
-            translateY(-5px)
-            rotate(3deg)
-            scale(1.02);
-    }
-
-    50% {
-        transform:
-            translateY(-10px)
-            rotate(5deg)
-            scale(1.04);
-    }
-
-    75% {
-        transform:
-            translateY(-5px)
-            rotate(-3deg)
-            scale(1.02);
-    }
-}
-
-
-/* =========================================================
-   ONE-TIME BLOOM
-   ========================================================= */
-
-#flowerHunt .flower.blooming .flower-head {
-
-    animation:
-        flowerBloom
-        .8s
-        ease
-        forwards;
-}
-
-@keyframes flowerBloom {
-
-    0% {
-        transform:
-            translateX(-50%)
-            scale(.82);
-    }
-
-    45% {
-        transform:
-            translateX(-50%)
-            scale(1.18);
-    }
-
-    70% {
-        transform:
-            translateX(-50%)
-            scale(.96);
-    }
-
-    100% {
-        transform:
-            translateX(-50%)
-            scale(1);
-    }
-}
-
-
-/* =========================================================
-   SPARKLES
-   ========================================================= */
-
-.sparkle {
-    position: fixed;
-
-    z-index: 1000;
-
-    pointer-events: none;
-
-    color:
-        #fff9d8;
-
-    font-size: 18px;
-
-    text-shadow:
-        0 0 6px
-        rgba(255,255,255,.9),
-
-        0 0 18px
-        rgba(255,220,150,.6);
-
-    animation:
-        sparkleBurst
-        1s
-        ease-out
-        forwards;
-}
-
-@keyframes sparkleBurst {
-
-    0% {
-        opacity: 0;
-
-        transform:
-            translate(-50%,-50%)
-            scale(.4);
-    }
-
-    20% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-
-        transform:
-            translate(
-                calc(-50% + var(--sparkle-x)),
-                calc(-50% + var(--sparkle-y))
-            )
-            scale(1.15);
-    }
-}
-
-
-/* =========================================================
-   POPUP
-   ========================================================= */
-
-.popup {
-    position: fixed;
-    inset: 0;
-
-    z-index: 200;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    background:
-        rgba(2,10,6,.58);
-
-    backdrop-filter:
-        blur(8px);
-}
-
-.popup.hidden {
-    display: none;
-}
-
-.popup-content {
-    width:
-        min(500px,85%);
-
-    padding:
-        45px;
-
-    text-align:
-        center;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(31,65,46,.96),
-            rgba(10,29,19,.96)
-        );
-
-    border:
-        1px solid
-        rgba(255,255,255,.15);
-
-    border-radius:
-        25px;
-
-    box-shadow:
-        0 30px 80px
-        rgba(0,0,0,.5),
-
-        0 0 40px
-        rgba(130,190,140,.08);
-
-    animation:
-        popupIn
-        .45s
-        ease;
-}
-
-.popup-content span {
-    display: block;
-
-    font-size: 14px;
-
-    opacity: .6;
-
-    letter-spacing: 1px;
-}
-
-.popup-content p {
-    margin:
-        18px 0 25px;
-
-    font-size: 18px;
-
-    line-height: 1.6;
-}
-
-@keyframes popupIn {
-
-    from {
-        opacity: 0;
-
-        transform:
-            translateY(20px)
-            scale(.95);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
-    }
-}
-
-
-/* =========================================================
-   LILY SCENE
-   ========================================================= */
-
-#lilyScene {
-
-    background:
-        radial-gradient(
-            circle at center 42%,
-            rgba(230,255,235,.13),
-            transparent 30%
-        ),
-        linear-gradient(
-            to bottom,
-            #04100b,
-            #0b2115,
-            #040c08
-        );
-
-    text-align: center;
-}
-
-.lily-story {
-    position: relative;
-
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-    padding:
-        40px 20px;
-}
-
-#lilyIntro {
-    font-size:
-        clamp(28px,4vw,48px);
-
-    font-weight: 300;
-
-    margin-bottom: 12px;
-
-    z-index: 10;
-
-    transition:
-        opacity .8s ease;
-}
-
-#lilyText {
-    font-size: 18px;
-
-    opacity: .75;
-
-    max-width: 650px;
-
-    z-index: 10;
-
-    transition:
-        opacity .8s ease;
-}
-
-
-/* =========================================================
-   LILY GARDEN
-   ========================================================= */
-
-.lily-garden {
-    position: relative;
-
-    width: 420px;
-    height: 360px;
-
-    margin-top: 15px;
-
-    flex-shrink: 0;
-}
-
-.lily-ground {
-    position: absolute;
-
-    left: 50%;
-
-    bottom: 15px;
-
-    width: 280px;
-    height: 65px;
-
-    transform:
-        translateX(-50%);
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            ellipse,
-            rgba(75,130,75,.45),
-            rgba(20,60,32,.25) 55%,
-            transparent 72%
-        );
+        scale(1.025);
 
     filter:
         blur(2px);
 }
 
-
-/* =========================================================
-   LILY PLANT
-   ========================================================= */
-
-#lilyPlant,
-.celebration-lily {
-
-    position: absolute;
-
-    left: 50%;
-    bottom: 35px;
-
-    width: 300px;
-    height: 345px;
-
-    transform:
-        translateX(-50%);
-
-    transform-origin:
-        bottom center;
-
-    filter:
-        drop-shadow(
-            0 0 20px
-            rgba(255,255,255,.18)
-        );
-}
-
-
-/* =========================================================
-   LILY STEM
-   ========================================================= */
-
-.lily-stem {
-    position: absolute;
-
-    left: 50%;
-
-    bottom: 0;
-
-    width: 9px;
-    height: 255px;
-
-    transform:
-        translateX(-50%)
-        scaleY(.12);
-
-    transform-origin:
-        bottom center;
-
-    border-radius: 20px;
-
-    background:
-        linear-gradient(
-            to right,
-            #174c2a,
-            #4f9c59,
-            #174c2a
-        );
-
-    box-shadow:
-        0 0 10px
-        rgba(70,170,85,.25);
-
-    transition:
-        transform 2s cubic-bezier(.2,.8,.2,1);
-}
-
-
-/* =========================================================
-   LILY LEAVES
-   ========================================================= */
-
-.lily-leaf {
-    position: absolute;
-
-    width: 110px;
-    height: 42px;
-
-    bottom: 65px;
-
-    border-radius:
-        100% 0 100% 0;
-
-    background:
-        linear-gradient(
-            135deg,
-            #6ab96d,
-            #225b34
-        );
-
-    box-shadow:
-        0 0 10px
-        rgba(70,160,80,.2);
-
-    transform-origin:
-        center center;
-
-    transition:
-        transform 2s cubic-bezier(.2,.8,.2,1);
-}
-
-.lily-leaf-left {
-    left:
-        calc(50% - 110px);
-
-    transform:
-        rotate(18deg)
-        scale(.35);
-
-    transform-origin:
-        right center;
-}
-
-.lily-leaf-right {
-    left:
-        calc(50% + 0px);
-
-    transform:
-        scaleX(-1)
-        rotate(18deg)
-        scale(.35);
-
-    transform-origin:
-        left center;
-}
-
-
-/* =========================================================
-   LILY BUD
-   ========================================================= */
-
-.lily-bud {
-    position: absolute;
-
-    left: 50%;
-
-    bottom: 210px;
-
-    width: 72px;
-    height: 95px;
-
-    transform:
-        translateX(-50%)
-        scale(.2);
-
-    transform-origin:
-        bottom center;
-
-    opacity: 0;
-
-    transition:
-        transform 1.5s ease,
-        opacity 1.2s ease;
-}
-
-.bud-petal {
-    position: absolute;
-
-    left: 50%;
-    bottom: 0;
-
-    width: 34px;
-    height: 82px;
-
-    transform-origin:
-        50% 100%;
-
-    border-radius:
-        60% 60% 35% 35%;
-
-    background:
-        linear-gradient(
-            to bottom,
-            #fffdf5,
-            #e9edf0
-        );
-}
-
-.bud-petal-1 {
-    transform:
-        translateX(-50%)
-        rotate(-22deg);
-}
-
-.bud-petal-2 {
-    transform:
-        translateX(-50%);
-}
-
-.bud-petal-3 {
-    transform:
-        translateX(-50%)
-        rotate(22deg);
-}
-
-
-/* =========================================================
-   LILY FLOWER
-   ========================================================= */
-
-.lily-flower {
-    position: absolute;
-
-    left: 50%;
-
-    bottom: 170px;
-
-    width: 190px;
-    height: 190px;
-
-    transform:
-        translateX(-50%)
-        scale(.1);
-
-    transform-origin:
-        center bottom;
-
-    opacity: 0;
-
-    transition:
-        transform 1.8s cubic-bezier(.2,.8,.2,1),
-        opacity 1.4s ease;
-}
-
-.lily-petal {
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-
-    width: 72px;
-    height: 125px;
-
-    transform-origin:
-        50% 90%;
-
-    border-radius:
-        60% 60% 45% 45%;
-
-    background:
-        linear-gradient(
-            145deg,
-            #fffefa,
-            #e9edf0
-        );
-
-    box-shadow:
-        0 0 15px
-        rgba(255,255,255,.18);
-}
-
-.lily-petal-1 {
-    transform:
-        translate(-50%,-90%)
-        rotate(0deg);
-}
-
-.lily-petal-2 {
-    transform:
-        translate(-50%,-90%)
-        rotate(60deg);
-}
-
-.lily-petal-3 {
-    transform:
-        translate(-50%,-90%)
-        rotate(120deg);
-}
-
-.lily-petal-4 {
-    transform:
-        translate(-50%,-90%)
-        rotate(180deg);
-}
-
-.lily-petal-5 {
-    transform:
-        translate(-50%,-90%)
-        rotate(240deg);
-}
-
-.lily-petal-6 {
-    transform:
-        translate(-50%,-90%)
-        rotate(300deg);
-}
-
-.lily-center {
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-
-    width: 28px;
-    height: 28px;
-
-    transform:
-        translate(-50%,-50%);
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            #f7d76b,
-            #c79a35
-        );
-
-    box-shadow:
-        0 0 12px
-        rgba(255,215,100,.55);
-}
-
-
-/* =========================================================
-   LILY GROWING
-   ========================================================= */
-
-#lilyPlant.growing .lily-stem,
-.celebration-lily .lily-stem {
-
-    transform:
-        translateX(-50%)
-        scaleY(1);
-}
-
-#lilyPlant.growing .lily-leaf-left,
-.celebration-lily .lily-leaf-left {
-
-    transform:
-        rotate(18deg)
-        scale(1);
-}
-
-#lilyPlant.growing .lily-leaf-right,
-.celebration-lily .lily-leaf-right {
-
-    transform:
-        scaleX(-1)
-        rotate(18deg)
-        scale(1);
-}
-
-
-/* =========================================================
-   LILY BUDDING
-   ========================================================= */
-
-#lilyPlant.budding .lily-bud {
-
+to {
     opacity: 1;
 
     transform:
-        translateX(-50%)
         scale(1);
-}
 
+    filter:
+        blur(0);
+}
+```
+
+}
 
 /* =========================================================
-   LILY BLOOMED
-   ========================================================= */
+INTRO
+========================================================= */
 
-#lilyPlant.bloomed .lily-bud {
+#intro {
+text-align: center;
 
-    opacity: 0;
+```
+background:
+    radial-gradient(
+        circle at 50% 38%,
+        rgba(91,145,105,.28),
+        transparent 34%
+    ),
+    radial-gradient(
+        circle at 80% 20%,
+        rgba(120,150,180,.08),
+        transparent 28%
+    ),
+    linear-gradient(
+        to bottom,
+        #050d0b,
+        #0b2016 58%,
+        #06110b
+    );
+```
 
-    transform:
-        translateX(-50%)
-        scale(.5);
 }
 
-#lilyPlant.bloomed .lily-flower {
+#intro::before {
+content: "";
 
+```
+position: absolute;
+inset: 0;
+
+background:
+    radial-gradient(
+        circle at 15% 20%,
+        rgba(255,255,255,.45) 0 1px,
+        transparent 2px
+    ),
+    radial-gradient(
+        circle at 80% 30%,
+        rgba(255,255,255,.35) 0 1px,
+        transparent 2px
+    ),
+    radial-gradient(
+        circle at 60% 15%,
+        rgba(255,255,255,.45) 0 1px,
+        transparent 2px
+    ),
+    radial-gradient(
+        circle at 30% 70%,
+        rgba(255,255,255,.25) 0 1px,
+        transparent 2px
+    );
+
+background-size:
+    220px 220px;
+
+opacity: .7;
+
+pointer-events: none;
+```
+
+}
+
+.intro-content {
+position: relative;
+z-index: 5;
+
+```
+text-align: center;
+
+padding: 30px;
+```
+
+}
+
+.intro-icon {
+font-size: 70px;
+
+```
+margin-bottom: 20px;
+
+filter:
+    drop-shadow(
+        0 0 18px
+        rgba(180,255,190,.35)
+    );
+
+animation:
+    introPlant
+    3s
+    ease-in-out
+    infinite;
+```
+
+}
+
+@keyframes introPlant {
+
+```
+0%,100% {
+    transform:
+        translateY(0)
+        rotate(-2deg);
+}
+
+50% {
+    transform:
+        translateY(-7px)
+        rotate(2deg);
+}
+```
+
+}
+
+#intro h1 {
+font-size:
+clamp(45px,6vw,82px);
+
+```
+font-weight: 300;
+
+letter-spacing: 4px;
+
+text-align: center;
+```
+
+}
+
+#intro p {
+margin-top: 18px;
+
+```
+font-size: 20px;
+
+opacity: .8;
+
+text-align: center;
+```
+
+}
+
+#intro button {
+margin-top: 25px;
+}
+
+/* =========================================================
+GARDEN INTRO
+========================================================= */
+
+#garden {
+text-align: center;
+
+```
+background:
+    radial-gradient(
+        circle at 50% 38%,
+        rgba(80,140,95,.25),
+        transparent 35%
+    ),
+    linear-gradient(
+        to bottom,
+        #050d0b,
+        #0b2116 50%,
+        #102c1a 72%,
+        #06110a
+    );
+```
+
+}
+
+#garden::before {
+content: "";
+
+```
+position: absolute;
+
+width: 125px;
+height: 125px;
+
+top: 8%;
+right: 10%;
+
+border-radius: 50%;
+
+background:
+    #f4f1d5;
+
+box-shadow:
+    0 0 25px rgba(255,255,220,.55),
+    0 0 75px rgba(255,255,220,.16);
+
+opacity: .92;
+```
+
+}
+
+#garden::after {
+content: "";
+
+```
+position: absolute;
+
+width: 140%;
+height: 42%;
+
+left: -20%;
+bottom: -20%;
+
+border-radius:
+    50% 50% 0 0;
+
+background:
+    linear-gradient(
+        to bottom,
+        #0b2415,
+        #07160d 50%,
+        #040d08
+    );
+
+box-shadow:
+    inset 0 25px 50px
+    rgba(55,110,65,.25),
+
+    0 -10px 50px
+    rgba(0,0,0,.35);
+```
+
+}
+
+.garden-content {
+position: relative;
+z-index: 5;
+
+```
+text-align: center;
+
+padding: 30px;
+```
+
+}
+
+#garden h2 {
+font-size:
+clamp(38px,5vw,64px);
+
+```
+font-weight: 300;
+
+letter-spacing: 3px;
+
+text-shadow:
+    0 5px 25px rgba(0,0,0,.5);
+```
+
+}
+
+#garden p {
+font-size: 19px;
+
+```
+line-height: 1.7;
+
+opacity: .8;
+
+margin:
+    16px 0 28px;
+```
+
+}
+
+/* =========================================================
+FLOWER HUNT — NIGHT SKY
+========================================================= */
+
+#flowerHunt {
+isolation: isolate;
+
+```
+background:
+    radial-gradient(
+        circle at 50% 32%,
+        rgba(91,155,105,.20),
+        transparent 27%
+    ),
+    radial-gradient(
+        circle at 82% 14%,
+        rgba(130,155,190,.08),
+        transparent 25%
+    ),
+    linear-gradient(
+        to bottom,
+        #030a0f 0%,
+        #06131a 25%,
+        #082016 58%,
+        #07140d 100%
+    );
+
+box-shadow:
+    inset 0 0 180px
+    rgba(0,0,0,.7);
+```
+
+}
+
+/* =========================================================
+SUBTLE NIGHTTIME DEPTH
+========================================================= */
+
+#flowerHunt {
+box-shadow:
+inset 0 0 180px rgba(0,0,0,.7),
+inset 0 70px 120px rgba(20,40,65,.12),
+inset 0 -80px 130px rgba(0,0,0,.28);
+}
+
+/* =========================================================
+MOON
+========================================================= */
+
+#flowerHunt::before {
+content: "";
+
+```
+position: absolute;
+
+width: 115px;
+height: 115px;
+
+top: 7%;
+right: 9%;
+
+border-radius: 50%;
+
+background:
+    #f5f1d6;
+
+box-shadow:
+    0 0 30px rgba(255,255,220,.5),
+    0 0 80px rgba(255,255,220,.15),
+    0 0 140px rgba(190,205,230,.07);
+
+opacity: .9;
+
+z-index: 1;
+```
+
+}
+
+/* =========================================================
+STARS
+========================================================= */
+
+#flowerHunt::after {
+content: "";
+
+```
+position: absolute;
+
+left: 0;
+right: 0;
+
+bottom: -17%;
+
+height: 43%;
+
+border-radius:
+    50% 50% 0 0;
+
+background:
+    radial-gradient(
+        ellipse at 12% 18%,
+        rgba(67,130,74,.25),
+        transparent 32%
+    ),
+    radial-gradient(
+        ellipse at 38% 5%,
+        rgba(50,115,63,.2),
+        transparent 30%
+    ),
+    radial-gradient(
+        ellipse at 68% 12%,
+        rgba(67,130,74,.25),
+        transparent 32%
+    ),
+    radial-gradient(
+        ellipse at 92% 8%,
+        rgba(50,115,63,.2),
+        transparent 30%
+    ),
+    linear-gradient(
+        to bottom,
+        #0b2415,
+        #07160d 50%,
+        #040d08
+    );
+
+box-shadow:
+    inset 0 20px 45px
+    rgba(60,125,70,.2),
+
+    0 -15px 55px
+    rgba(0,0,0,.4);
+
+z-index: 2;
+```
+
+}
+
+/* =========================================================
+BACKGROUND STARS
+========================================================= */
+
+#flowerHunt .mission-ui::before {
+content:
+"✦     ·      ✧          ·       ✦        ·      ✧";
+
+```
+position: fixed;
+
+inset: 0;
+
+width: 100vw;
+height: 55vh;
+
+color:
+    rgba(225,255,205,.38);
+
+font-size: 14px;
+
+letter-spacing: 35px;
+
+line-height: 90px;
+
+opacity: .6;
+
+pointer-events: none;
+
+animation:
+    starDrift
+    8s
+    ease-in-out
+    infinite alternate;
+
+z-index: -1;
+```
+
+}
+
+@keyframes starDrift {
+
+```
+from {
+    transform:
+        translateY(0);
+
+    opacity: .25;
+}
+
+to {
+    transform:
+        translateY(-12px);
+
+    opacity: .55;
+}
+```
+
+}
+
+/* =========================================================
+GROUND
+========================================================= */
+
+#flowerHunt .ground {
+position: absolute;
+
+```
+left: 0;
+right: 0;
+
+bottom: 0;
+
+height: 28%;
+
+z-index: 4;
+
+pointer-events: none;
+
+background:
+    repeating-linear-gradient(
+        82deg,
+        transparent 0 13px,
+        rgba(74,135,77,.18) 14px 16px,
+        transparent 17px 28px
+    );
+
+opacity: .55;
+
+mask-image:
+    linear-gradient(
+        to top,
+        black,
+        transparent
+    );
+
+-webkit-mask-image:
+    linear-gradient(
+        to top,
+        black,
+        transparent
+    );
+```
+
+}
+
+/* ---------------------------------------------------------
+Extra natural grass
+--------------------------------------------------------- */
+
+#flowerHunt .ground::before {
+content: "";
+
+```
+position: absolute;
+
+left: 0;
+right: 0;
+bottom: 0;
+
+height: 75%;
+
+background:
+    repeating-linear-gradient(
+        76deg,
+        transparent 0 24px,
+        rgba(105,165,91,.16) 25px 27px,
+        transparent 28px 48px
+    );
+
+opacity: .65;
+
+transform:
+    skewX(-3deg);
+
+mask-image:
+    linear-gradient(
+        to top,
+        black 0%,
+        rgba(0,0,0,.8) 45%,
+        transparent 100%
+    );
+
+-webkit-mask-image:
+    linear-gradient(
+        to top,
+        black 0%,
+        rgba(0,0,0,.8) 45%,
+        transparent 100%
+    );
+```
+
+}
+
+/* ---------------------------------------------------------
+Tiny ground particles / dew
+--------------------------------------------------------- */
+
+#flowerHunt .ground::after {
+content:
+"·   ·       ·      ·   ·        ·       ·    ·";
+
+```
+position: absolute;
+
+left: 4%;
+right: 4%;
+bottom: 13%;
+
+color:
+    rgba(190,230,170,.22);
+
+font-size: 11px;
+
+letter-spacing: 18px;
+
+opacity: .7;
+
+animation:
+    groundSparkle
+    5s
+    ease-in-out
+    infinite alternate;
+```
+
+}
+
+@keyframes groundSparkle {
+
+```
+from {
+    opacity: .25;
+    transform: translateY(0);
+}
+
+to {
+    opacity: .65;
+    transform: translateY(-5px);
+}
+```
+
+}
+
+/* =========================================================
+MISSION UI
+========================================================= */
+
+#flowerHunt .mission-ui {
+position: absolute;
+
+```
+top: 8%;
+left: 50%;
+
+transform:
+    translateX(-50%);
+
+z-index: 60;
+
+width: 600px;
+max-width: 90%;
+
+text-align: center;
+
+transition:
+    opacity 1s ease,
+    transform 1s ease;
+```
+
+}
+
+#flowerHunt .mission-ui h2 {
+font-size:
+clamp(38px,4vw,58px);
+
+```
+font-weight: 300;
+
+letter-spacing: 2px;
+
+text-shadow:
+    0 4px 25px rgba(0,0,0,.5);
+```
+
+}
+
+#flowerHunt #progress {
+display: inline-block;
+
+```
+margin-top: 15px;
+
+padding:
+    9px 20px;
+
+border-radius: 30px;
+
+background:
+    rgba(255,255,255,.07);
+
+border:
+    1px solid rgba(255,255,255,.12);
+
+backdrop-filter:
+    blur(8px);
+
+font-size: 15px;
+
+letter-spacing: .5px;
+
+box-shadow:
+    0 8px 25px
+    rgba(0,0,0,.2);
+```
+
+}
+
+#foundCount {
+display: inline-block;
+
+```
+min-width: 32px;
+
+padding:
+    4px 10px;
+
+margin-left: 5px;
+
+border-radius: 20px;
+
+background:
+    rgba(255,255,255,.1);
+```
+
+}
+
+/* =========================================================
+SUBTLE BUTTERFLIES
+========================================================= */
+
+#flowerHunt .mission-ui::after {
+content: "🦋";
+
+```
+position: fixed;
+
+left: 14%;
+top: 54%;
+
+font-size: 18px;
+
+opacity: .34;
+
+filter:
+    blur(.15px)
+    drop-shadow(
+        0 0 7px
+        rgba(180,220,190,.25)
+    );
+
+pointer-events: none;
+
+animation:
+    butterflyFloat
+    12s
+    ease-in-out
+    infinite;
+
+z-index: 6;
+```
+
+}
+
+@keyframes butterflyFloat {
+
+```
+0%,100% {
+    transform:
+        translate(0,0)
+        rotate(-5deg);
+}
+
+25% {
+    transform:
+        translate(55px,-30px)
+        rotate(7deg);
+}
+
+50% {
+    transform:
+        translate(120px,10px)
+        rotate(-4deg);
+}
+
+75% {
+    transform:
+        translate(75px,55px)
+        rotate(6deg);
+}
+```
+
+}
+
+/* =========================================================
+FIREFLIES
+========================================================= */
+
+#flowerHunt .firefly {
+position: absolute;
+
+```
+width: 5px;
+height: 5px;
+
+border-radius: 50%;
+
+background:
+    #eaffb0;
+
+box-shadow:
+    0 0 8px #eaffb0,
+    0 0 18px
+    rgba(220,255,150,.6);
+
+z-index: 7;
+
+animation:
+    fireflyMove
+    5s
+    ease-in-out
+    infinite;
+```
+
+}
+
+.firefly-1 {
+left: 12%;
+top: 38%;
+}
+
+.firefly-2 {
+left: 24%;
+top: 22%;
+animation-delay: .8s !important;
+}
+
+.firefly-3 {
+left: 38%;
+top: 42%;
+animation-delay: 1.4s !important;
+}
+
+.firefly-4 {
+left: 54%;
+top: 24%;
+animation-delay: 2s !important;
+}
+
+.firefly-5 {
+left: 70%;
+top: 45%;
+animation-delay: .4s !important;
+}
+
+.firefly-6 {
+left: 83%;
+top: 32%;
+animation-delay: 1.2s !important;
+}
+
+.firefly-7 {
+left: 60%;
+top: 58%;
+animation-delay: 2.4s !important;
+}
+
+.firefly-8 {
+left: 31%;
+top: 58%;
+animation-delay: 1.8s !important;
+}
+
+.firefly-9 {
+left: 91%;
+top: 62%;
+animation-delay: .9s !important;
+}
+
+@keyframes fireflyMove {
+
+```
+0% {
+    transform:
+        translate(0,0);
+
+    opacity: .2;
+}
+
+25% {
     opacity: 1;
-
-    transform:
-        translateX(-50%)
-        scale(1);
-
-    filter:
-        drop-shadow(
-            0 0 18px
-            rgba(255,255,255,.3)
-        );
 }
 
+50% {
+    transform:
+        translate(30px,-40px);
+
+    opacity: .7;
+}
+
+75% {
+    opacity: 1;
+}
+
+100% {
+    transform:
+        translate(-20px,-70px);
+
+    opacity: .1;
+}
+```
+
+}
 
 /* =========================================================
-   BIRTHDAY
-   ========================================================= */
+FLOWER BUTTONS
+========================================================= */
 
-#birthday {
+#flowerHunt .flower {
+position: absolute;
 
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(255,235,180,.15),
-            transparent 35%
-        ),
-        linear-gradient(
-            135deg,
-            #07150f,
-            #183a25,
-            #07130d
-        );
+```
+z-index: 50;
 
-    text-align: center;
+width: 100px;
+height: 155px;
+
+padding: 0;
+
+border: none;
+
+background: transparent;
+
+box-shadow: none;
+
+border-radius: 0;
+
+backdrop-filter: none;
+
+overflow: visible;
+
+cursor: pointer;
+
+transform-origin:
+    50% 100%;
+
+transition:
+    filter .3s ease;
+```
+
 }
-
-.birthday-content {
-    position: relative;
-
-    z-index: 5;
-
-    text-align: center;
-}
-
-.cake {
-    font-size:
-        clamp(70px,9vw,120px);
-
-    margin-bottom: 15px;
-
-    animation:
-        cakeEntrance
-        1.2s
-        cubic-bezier(.2,.8,.2,1);
-}
-
-@keyframes cakeEntrance {
-
-    from {
-        opacity: 0;
-
-        transform:
-            translateY(30px)
-            scale(.7);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
-    }
-}
-
-#birthday h1 {
-
-    font-size:
-        clamp(55px,8vw,110px);
-
-    font-weight: 300;
-
-    letter-spacing: 8px;
-
-    text-align: center;
-
-    animation:
-        birthdayGlow
-        2s
-        ease-in-out
-        infinite alternate;
-}
-
-#birthday p {
-
-    margin-top: 15px;
-
-    font-size: 20px;
-
-    opacity: .85;
-}
-
-#birthday button {
-
-    margin-top: 28px;
-}
-
-@keyframes birthdayGlow {
-
-    from {
-        text-shadow:
-            0 0 10px
-            rgba(255,255,255,.2);
-    }
-
-    to {
-        text-shadow:
-            0 0 25px
-            rgba(255,255,220,.7),
-
-            0 0 60px
-            rgba(255,255,220,.25);
-    }
-}
-
 
 /* =========================================================
-   LETTER
-   ========================================================= */
+INDIVIDUAL FLOWER POSITIONS
+===========================
 
-#letter {
+Positioned from the bottom so the stem meets the ground.
+They remain uneven to keep the garden natural.
+========================================================= */
 
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(255,255,255,.08),
-            transparent 40%
-        ),
-        #08160f;
-
-    text-align: center;
+.flower-1 {
+left: 17%;
+bottom: 20%;
 }
 
-.letter-content {
-
-    width:
-        min(700px,85%);
-
-    max-height:
-        88vh;
-
-    overflow-y:
-        auto;
-
-    padding:
-        55px;
-
-    background:
-        rgba(255,255,255,.07);
-
-    border:
-        1px solid
-        rgba(255,255,255,.15);
-
-    border-radius:
-        25px;
-
-    backdrop-filter:
-        blur(15px);
-
-    box-shadow:
-        0 30px 80px
-        rgba(0,0,0,.35);
-
-    scrollbar-width:
-        thin;
+.flower-2 {
+left: 39%;
+bottom: 11%;
 }
 
-.letter-content h2 {
-
-    font-size:
-        36px;
-
-    font-weight:
-        400;
-
-    margin-bottom:
-        25px;
+.flower-3 {
+left: 67%;
+bottom: 22%;
 }
 
-.letter-content p {
-
-    line-height:
-        1.8;
-
-    font-size:
-        18px;
-
-    opacity:
-        .9;
-
-    margin-bottom:
-        18px;
+.flower-4 {
+left: 79%;
+bottom: 10%;
 }
 
-.signature {
-
-    margin-top:
-        25px;
-
-    margin-bottom:
-        25px;
-
-    font-size:
-        18px;
-
-    opacity:
-        .85;
+.flower-5 {
+left: 25%;
+bottom: 14%;
 }
-
 
 /* =========================================================
-   CONFETTI
-   ========================================================= */
-
-.confetti {
-
-    position: fixed;
-
-    top: -25px;
-
-    width: 8px;
-    height: 14px;
-
-    z-index: 900;
-
-    pointer-events: none;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,.98),
-            rgba(255,220,150,.85)
-        );
-
-    box-shadow:
-        0 0 6px
-        rgba(255,255,255,.3);
-
-    animation:
-        confettiFall
-        var(--confetti-duration)
-        ease-in
-        var(--confetti-delay)
-        forwards;
-}
-
-@keyframes confettiFall {
-
-    0% {
-
-        opacity: 0;
-
-        transform:
-            translateY(-30px)
-            translateX(0)
-            rotate(
-                var(--confetti-rotation)
-            );
-    }
-
-    10% {
-        opacity: 1;
-    }
-
-    100% {
-
-        opacity: 0;
-
-        transform:
-            translateY(110vh)
-            translateX(var(--confetti-x))
-            rotate(
-                calc(
-                    var(--confetti-rotation)
-                    + 720deg
-                )
-            );
-    }
-}
-
-
-/* =========================================================
-   FINAL CELEBRATION
-   ========================================================= */
-
-#flowerHunt.celebration-mode {
-
-    background:
-        radial-gradient(
-            circle at 50% 45%,
-            rgba(120,190,120,.25),
-            transparent 32%
-        ),
-        radial-gradient(
-            circle at 50% 20%,
-            rgba(150,170,210,.08),
-            transparent 30%
-        ),
-        linear-gradient(
-            to bottom,
-            #030a10,
-            #071a17 40%,
-            #092017 68%,
-            #051009
-        );
-}
-
-
-/* Mission UI becomes subtle */
-
-#flowerHunt .mission-ui.celebration-hidden {
-
-    opacity: .18;
-
-    transform:
-        translateX(-50%)
-        translateY(-15px)
-        scale(.9);
-}
-
-
-/* =========================================================
-   CELEBRATION LILY
-   ========================================================= */
-
-.celebration-lily {
-
-    position: absolute;
-
-    left: 50%;
-    bottom: 5%;
-
-    width: 300px;
-    height: 345px;
-
-    z-index: 40;
-
-    pointer-events: none;
-
-    transform:
-        translateX(-50%)
-        scale(.9);
-
-    transform-origin:
-        bottom center;
-
-    filter:
-        drop-shadow(
-            0 0 20px
-            rgba(255,255,255,.3)
-        )
-        drop-shadow(
-            0 0 50px
-            rgba(180,255,195,.18)
-        );
-
-    animation:
-        celebrationLilyDance
-        3.4s
-        ease-in-out
-        infinite;
-}
-
-
-/*
-   The cloned lily must have the same final
-   visual state as the lily that was grown.
-*/
-
-.celebration-lily .lily-bud {
-
-    opacity: 0 !important;
-
-    transform:
-        translateX(-50%)
-        scale(.5) !important;
-}
-
-.celebration-lily .lily-flower {
-
-    opacity: 1 !important;
-
-    transform:
-        translateX(-50%)
-        scale(1) !important;
-
-    filter:
-        drop-shadow(
-            0 0 18px
-            rgba(255,255,255,.35)
-        );
-}
-
-.celebration-lily .lily-stem {
-
-    transform:
-        translateX(-50%)
-        scaleY(1) !important;
-}
-
-.celebration-lily .lily-leaf-left {
-
-    transform:
-        rotate(18deg)
-        scale(1) !important;
-}
-
-.celebration-lily .lily-leaf-right {
-
-    transform:
-        scaleX(-1)
-        rotate(18deg)
-        scale(1) !important;
-}
-
-
-@keyframes celebrationLilyDance {
-
-    0%,100% {
-
-        transform:
-            translateX(-50%)
-            translateY(0)
-            rotate(-2deg)
-            scale(.9);
-    }
-
-    25% {
-
-        transform:
-            translateX(-50%)
-            translateY(-5px)
-            rotate(2deg)
-            scale(.92);
-    }
-
-    50% {
-
-        transform:
-            translateX(-50%)
-            translateY(-10px)
-            rotate(3deg)
-            scale(.94);
-    }
-
-    75% {
-
-        transform:
-            translateX(-50%)
-            translateY(-5px)
-            rotate(-2deg)
-            scale(.92);
-    }
-}
-
-
-/* Glow beneath celebration lily */
-
-.celebration-lily::after {
-
-    content: "";
-
-    position: absolute;
-
-    left: 50%;
-    bottom: 0;
-
-    width: 250px;
-    height: 90px;
-
-    transform:
-        translateX(-50%);
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            ellipse,
-            rgba(190,255,205,.2),
-            transparent 70%
-        );
-
-    filter:
-        blur(12px);
-
-    z-index: -1;
-}
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 700px) {
-
-    #garden h2 {
-        font-size: 35px;
-    }
-
-    #flowerHunt .mission-ui h2 {
-        font-size: 34px;
-    }
-
-    #flowerHunt .flower {
-
-        width: 85px;
-        height: 135px;
-    }
-
-    #flowerHunt .stem {
-        height: 80px;
-    }
-
-    #flowerHunt .leaf {
-        width: 35px;
-        height: 15px;
-    }
-
-    .flower-1 {
-        left: 9%;
-        top: 43%;
-    }
-
-    .flower-2 {
-        left: 37%;
-        top: 66%;
-    }
-
-    .flower-3 {
-        left: 68%;
-        top: 43%;
-    }
-
-    .flower-4 {
-        left: 73%;
-        top: 67%;
-    }
-
-    .flower-5 {
-        left: 20%;
-        top: 72%;
-    }
-
-    .lily-garden {
-        width: 340px;
-        height: 320px;
-    }
-
-    #lilyPlant,
-    .celebration-lily {
-
-        width: 240px;
-        height: 300px;
-    }
-
-    .celebration-lily {
-
-        bottom: 7%;
-
-        transform:
-            translateX(-50%)
-            scale(.72);
-    }
-
-    @keyframes celebrationLilyDance {
-
-        0%,100% {
-
-            transform:
-                translateX(-50%)
-                translateY(0)
-                rotate(-2deg)
-                scale(.72);
-        }
-
-        50% {
-
-            transform:
-                translateX(-50%)
-                translateY(-7px)
-                rotate(3deg)
-                scale(.75);
-        }
-    }
-
-    #birthday h1 {
-        font-size: 45px;
-
-        letter-spacing: 4px;
-    }
-
-    .letter-content {
-
-        width: 90%;
-
-        padding:
-            30px 24px;
-    }
-
-}
-
-
-/* =========================================================
-   REDUCED MOTION
-   ========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-
-        animation-duration:
-            .01ms !important;
-
-        animation-iteration-count:
-            1 !important;
-
-        scroll-behavior:
-            auto !important;
-
-        transition-duration:
-            .01ms !important;
-    }
-
-}
+FLOWER HO
