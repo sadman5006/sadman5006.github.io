@@ -1559,3 +1559,613 @@ button {
         scroll-behavior: auto !important;
     }
 }
+/* =========================================================
+   LILY STORY
+   ========================================================= */
+
+#lilyScene {
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at 50% 55%,
+            rgba(54, 112, 76, 0.18),
+            transparent 38%
+        ),
+        linear-gradient(
+            to bottom,
+            #001813,
+            #00261d,
+            #00150f
+        );
+}
+
+.lily-story {
+    position: relative;
+
+    z-index: 10;
+
+    width: min(90%, 850px);
+
+    min-height: 80vh;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* =========================================================
+   LILY TEXT
+   ========================================================= */
+
+#lilyIntro {
+    font-size: clamp(24px, 3vw, 36px);
+
+    font-weight: 300;
+
+    color: rgba(255, 255, 255, 0.92);
+
+    margin-bottom: 10px;
+
+    transition:
+        opacity 0.8s ease;
+}
+
+#lilyText {
+    font-size: 17px;
+
+    color: rgba(255, 255, 255, 0.6);
+
+    margin-bottom: 15px;
+
+    transition:
+        opacity 0.8s ease;
+}
+
+
+/* =========================================================
+   LILY GARDEN
+   ========================================================= */
+
+.lily-garden {
+    position: relative;
+
+    width: 420px;
+    height: 360px;
+
+    margin: 5px auto 5px;
+}
+
+
+/* Small patch of soil/grass */
+
+.lily-ground {
+    position: absolute;
+
+    left: 50%;
+    bottom: 35px;
+
+    width: 210px;
+    height: 45px;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(42, 113, 67, 0.55),
+            rgba(15, 58, 37, 0.15) 70%,
+            transparent 100%
+        );
+
+    filter:
+        blur(1px);
+}
+
+
+/* =========================================================
+   THE PLANT
+   ========================================================= */
+
+#lilyPlant {
+    position: absolute;
+
+    left: 50%;
+    bottom: 55px;
+
+    width: 250px;
+    height: 270px;
+
+    transform:
+        translateX(-50%);
+
+    transform-origin: bottom center;
+
+    transition:
+        transform 1.5s ease;
+
+}
+
+
+/* =========================================================
+   MAIN STEM
+   ========================================================= */
+
+.lily-stem {
+    position: absolute;
+
+    left: 50%;
+    bottom: 0;
+
+    width: 9px;
+    height: 165px;
+
+    transform:
+        translateX(-50%)
+        scaleY(0.18);
+
+    transform-origin: bottom center;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            to right,
+            #176f40,
+            #48b96e,
+            #176b3d
+        );
+
+    transition:
+        transform 2.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+
+/* =========================================================
+   LEAVES
+   ========================================================= */
+
+.lily-leaf {
+    position: absolute;
+
+    bottom: 55px;
+
+    width: 105px;
+    height: 34px;
+
+    border-radius:
+        100% 0 100% 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #43ad68,
+            #14663a
+        );
+
+    opacity: 0.15;
+
+    transition:
+        opacity 1.5s ease,
+        transform 1.5s ease;
+}
+
+.lily-leaf-left {
+    left: 15px;
+
+    transform:
+        rotate(18deg)
+        scale(0.45);
+
+    transform-origin: right center;
+}
+
+.lily-leaf-right {
+    right: 15px;
+
+    transform:
+        scaleX(-1)
+        rotate(18deg)
+        scale(0.45);
+
+    transform-origin: right center;
+}
+
+
+/* =========================================================
+   HORIZONTAL SHOOT
+   ========================================================= */
+
+.lily-shoot {
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 155px;
+
+    width: 0;
+    height: 7px;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            to right,
+            #287c4b,
+            #4ab96d
+        );
+
+    transform-origin: left center;
+
+    transition:
+        width 2.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+
+/* =========================================================
+   BUD
+   ========================================================= */
+
+.lily-bud {
+    position: absolute;
+
+    left: calc(50% + 85px);
+    bottom: 150px;
+
+    width: 42px;
+    height: 70px;
+
+    transform:
+        translateY(30px)
+        scale(0);
+
+    transform-origin: bottom center;
+
+    transition:
+        transform 1.5s ease;
+
+    z-index: 5;
+}
+
+.bud-petal {
+    position: absolute;
+
+    left: 50%;
+    bottom: 0;
+
+    width: 28px;
+    height: 58px;
+
+    transform-origin: bottom center;
+
+    border-radius:
+        60% 60% 45% 45%;
+
+    background:
+        linear-gradient(
+            to top,
+            #dfe8dc,
+            #ffffff
+        );
+
+    box-shadow:
+        0 0 12px rgba(255, 255, 255, 0.12);
+}
+
+.bud-petal-1 {
+    transform:
+        translateX(-50%)
+        rotate(-18deg);
+}
+
+.bud-petal-2 {
+    transform:
+        translateX(-50%)
+        rotate(0deg);
+}
+
+.bud-petal-3 {
+    transform:
+        translateX(-50%)
+        rotate(18deg);
+}
+
+
+/* =========================================================
+   OPEN LILY
+   ========================================================= */
+
+.lily-flower {
+    position: absolute;
+
+    left: calc(50% + 85px);
+    bottom: 190px;
+
+    width: 150px;
+    height: 150px;
+
+    transform:
+        translate(-50%, 30px)
+        scale(0);
+
+    transform-origin: center bottom;
+
+    opacity: 0;
+
+    transition:
+        transform 2.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+        opacity 1s ease;
+
+    z-index: 8;
+}
+
+
+/* =========================================================
+   LILY PETALS
+   ========================================================= */
+
+.lily-petal {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 72px;
+    height: 110px;
+
+    transform-origin: 50% 90%;
+
+    border-radius:
+        70% 70% 45% 45%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff,
+            #e9eee7
+        );
+
+    box-shadow:
+        0 0 18px rgba(255, 255, 255, 0.18);
+}
+
+.lily-petal-1 {
+    transform:
+        translate(-50%, -85%)
+        rotate(0deg);
+}
+
+.lily-petal-2 {
+    transform:
+        translate(-50%, -85%)
+        rotate(60deg);
+}
+
+.lily-petal-3 {
+    transform:
+        translate(-50%, -85%)
+        rotate(120deg);
+}
+
+.lily-petal-4 {
+    transform:
+        translate(-50%, -85%)
+        rotate(180deg);
+}
+
+.lily-petal-5 {
+    transform:
+        translate(-50%, -85%)
+        rotate(240deg);
+}
+
+.lily-petal-6 {
+    transform:
+        translate(-50%, -85%)
+        rotate(300deg);
+}
+
+
+/* =========================================================
+   LILY CENTER
+   ========================================================= */
+
+.lily-center {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 28px;
+    height: 28px;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #f8e98b,
+            #d6bd55
+        );
+
+    box-shadow:
+        0 0 12px rgba(255, 230, 120, 0.35);
+
+    z-index: 10;
+}
+
+
+/* =========================================================
+   GROWING STATE
+   ========================================================= */
+
+#lilyPlant.growing .lily-stem {
+    transform:
+        translateX(-50%)
+        scaleY(1);
+}
+
+#lilyPlant.growing .lily-leaf {
+    opacity: 1;
+}
+
+#lilyPlant.growing .lily-leaf-left {
+    transform:
+        rotate(18deg)
+        scale(1);
+}
+
+#lilyPlant.growing .lily-leaf-right {
+    transform:
+        scaleX(-1)
+        rotate(18deg)
+        scale(1);
+}
+
+#lilyPlant.growing .lily-shoot {
+    width: 125px;
+}
+
+
+/* =========================================================
+   BUD APPEARS
+   ========================================================= */
+
+#lilyPlant.budding .lily-bud {
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* =========================================================
+   FLOWER OPENS
+   ========================================================= */
+
+#lilyPlant.bloomed .lily-bud {
+    opacity: 0;
+    transform:
+        translateY(-20px)
+        scale(0);
+}
+
+#lilyPlant.bloomed .lily-flower {
+    opacity: 1;
+
+    transform:
+        translate(-50%, 0)
+        scale(1);
+}
+
+#lilyPlant.bloomed {
+    transform:
+        translateX(-50%)
+        scale(1.45);
+}
+
+
+/* =========================================================
+   BLOOM GLOW
+   ========================================================= */
+
+#lilyPlant.bloomed::after {
+    content: "";
+
+    position: absolute;
+
+    left: calc(50% + 85px);
+    top: 20px;
+
+    width: 170px;
+    height: 170px;
+
+    transform: translate(-50%, 0);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.18),
+            transparent 65%
+        );
+
+    filter:
+        blur(10px);
+
+    pointer-events: none;
+
+    animation:
+        lilyGlow 3s ease-in-out infinite;
+}
+
+@keyframes lilyGlow {
+
+    0%,
+    100% {
+        opacity: 0.4;
+        transform:
+            translate(-50%, 0)
+            scale(0.9);
+    }
+
+    50% {
+        opacity: 0.9;
+        transform:
+            translate(-50%, 0)
+            scale(1.15);
+    }
+}
+
+
+/* =========================================================
+   LILY BUTTON
+   ========================================================= */
+
+#bloomLily {
+    padding: 13px 27px;
+
+    border-radius: 25px;
+
+    color: white;
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.15);
+
+    font-size: 16px;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        opacity 0.4s ease;
+}
+
+#bloomLily:hover {
+    transform:
+        translateY(-3px);
+
+    background:
+        rgba(255, 255, 255, 0.14);
+}
+
+
+/* Hide button once the growth starts */
+
+#lilyScene.lily-growing #bloomLily {
+    opacity: 0;
+    pointer-events: none;
+}
