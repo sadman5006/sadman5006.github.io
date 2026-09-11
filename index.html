@@ -7,14 +7,15 @@
 
     <title>A Little Birthday Garden</title>
 
-    <link rel="stylesheet" href="style.css?v=2">
+    <link rel="stylesheet" href="style.css?v=3">
 </head>
 
 <body>
 
-    <!-- =========================================
-         SCENE 1 — INTRO
-    ========================================= -->
+
+    <!-- =====================================================
+         INTRO
+         ===================================================== -->
 
     <section id="intro" class="scene active">
 
@@ -35,9 +36,9 @@
     </section>
 
 
-    <!-- =========================================
-         SCENE 2 — GARDEN
-    ========================================= -->
+    <!-- =====================================================
+         GARDEN INTRODUCTION
+         ===================================================== -->
 
     <section id="garden" class="scene">
 
@@ -59,13 +60,14 @@
     </section>
 
 
-    <!-- =========================================
-         SCENE 3 — FLOWER HUNT
-    ========================================= -->
+    <!-- =====================================================
+         FLOWER HUNT
+         ===================================================== -->
 
     <section id="flowerHunt" class="scene">
 
-        <!-- Ambient fireflies -->
+
+        <!-- Fireflies -->
 
         <span class="firefly firefly-1"></span>
         <span class="firefly firefly-2"></span>
@@ -73,27 +75,47 @@
         <span class="firefly firefly-4"></span>
         <span class="firefly firefly-5"></span>
         <span class="firefly firefly-6"></span>
+        <span class="firefly firefly-7"></span>
+        <span class="firefly firefly-8"></span>
+        <span class="firefly firefly-9"></span>
+
+
+        <!-- Garden ground -->
+
+        <div class="ground"></div>
 
 
         <!-- Mission information -->
 
         <div class="mission-ui">
 
-            <h2>Find the flowers 🌷</h2>
+            <h2>
+                Find the flowers 🌷
+            </h2>
 
             <div id="progress">
+
                 Flowers found:
-                <span id="foundCount">0</span> / 5
+
+                <span id="foundCount">
+                    0
+                </span>
+
+                / 5
+
             </div>
 
         </div>
 
 
-        <!-- =========================================
+        <!-- =================================================
              FLOWER 1
-        ========================================= -->
+             ================================================= -->
 
-        <button class="flower flower-1" data-flower="1">
+        <button
+            class="flower flower-1"
+            data-flower="1"
+        >
 
             <span class="flower-head flower-pink">
 
@@ -115,11 +137,14 @@
         </button>
 
 
-        <!-- =========================================
+        <!-- =================================================
              FLOWER 2
-        ========================================= -->
+             ================================================= -->
 
-        <button class="flower flower-2" data-flower="2">
+        <button
+            class="flower flower-2"
+            data-flower="2"
+        >
 
             <span class="flower-head flower-yellow">
 
@@ -142,11 +167,14 @@
         </button>
 
 
-        <!-- =========================================
+        <!-- =================================================
              FLOWER 3
-        ========================================= -->
+             ================================================= -->
 
-        <button class="flower flower-3" data-flower="3">
+        <button
+            class="flower flower-3"
+            data-flower="3"
+        >
 
             <span class="flower-head flower-white">
 
@@ -168,11 +196,14 @@
         </button>
 
 
-        <!-- =========================================
+        <!-- =================================================
              FLOWER 4
-        ========================================= -->
+             ================================================= -->
 
-        <button class="flower flower-4" data-flower="4">
+        <button
+            class="flower flower-4"
+            data-flower="4"
+        >
 
             <span class="flower-head flower-coral">
 
@@ -195,11 +226,14 @@
         </button>
 
 
-        <!-- =========================================
+        <!-- =================================================
              FLOWER 5
-        ========================================= -->
+             ================================================= -->
 
-        <button class="flower flower-5" data-flower="5">
+        <button
+            class="flower flower-5"
+            data-flower="5"
+        >
 
             <span class="flower-head flower-red">
 
@@ -220,12 +254,13 @@
 
         </button>
 
+
     </section>
 
 
-    <!-- =========================================
+    <!-- =====================================================
          FLOWER MESSAGE POPUP
-    ========================================= -->
+         ===================================================== -->
 
     <div id="flowerMessage" class="popup hidden">
 
@@ -248,9 +283,9 @@
     </div>
 
 
-    <!-- =========================================
-         SCENE 4 — LILY
-    ========================================= -->
+    <!-- =====================================================
+         LILY SCENE
+         ===================================================== -->
 
     <section id="lilyScene" class="scene">
 
@@ -277,9 +312,9 @@
     </section>
 
 
-    <!-- =========================================
-         SCENE 5 — BIRTHDAY
-    ========================================= -->
+    <!-- =====================================================
+         BIRTHDAY REVEAL
+         ===================================================== -->
 
     <section id="birthday" class="scene">
 
@@ -289,7 +324,9 @@
                 🎂
             </div>
 
-            <h1>HAPPY BIRTHDAY!</h1>
+            <h1>
+                HAPPY BIRTHDAY!
+            </h1>
 
             <p>
                 Mission Complete. 🌷
@@ -304,15 +341,17 @@
     </section>
 
 
-    <!-- =========================================
-         SCENE 6 — LETTER
-    ========================================= -->
+    <!-- =====================================================
+         LETTER
+         ===================================================== -->
 
     <section id="letter" class="scene">
 
         <div class="letter-content">
 
-            <h2>Hey,</h2>
+            <h2>
+                Hey,
+            </h2>
 
             <p>
                 I could've just wished you Happy Birthday normally,
@@ -354,11 +393,11 @@
     </section>
 
 
-    <!-- =========================================
+    <!-- =====================================================
          JAVASCRIPT
-    ========================================= -->
+         ===================================================== -->
 
-    <script src="script.js?v=2"></script>
+    <script src="script.js?v=3"></script>
 
 </body>
 
