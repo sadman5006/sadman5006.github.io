@@ -1046,24 +1046,33 @@ if (finish) {
    BACKGROUND MUSIC
    ===================================================== */
 
-const bgMusic =
-    document.getElementById("bgMusic");
+const bgMusic = document.getElementById("bgMusic");
 
 if (bgMusic) {
 
     bgMusic.volume = 0.25;
 
-    if (enterGarden) {
+    function startMusic() {
 
-        enterGarden.addEventListener(
-            "click",
-            () => {
-
-                bgMusic.play().catch(() => {});
-
-            }
-        );
+        bgMusic.play()
+            .then(() => {
+                console.log("Music started");
+            })
+            .catch(error => {
+                console.log("Music could not start:", error);
+            });
 
     }
+
+    /*
+     * Start music when the user first interacts
+     * with the website.
+     */
+
+    document.addEventListener(
+        "click",
+        startMusic,
+        { once: true }
+    );
 
 }
