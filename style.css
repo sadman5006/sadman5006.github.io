@@ -497,40 +497,151 @@ button:active {
     }
 }
 /* =========================================
-   ALIGNMENT FIX
+   FINAL LAYOUT FIX
 ========================================= */
 
-/* Keep scene content centered vertically */
-.scene.active {
-    flex-direction: column;
+/* Keep every scene's normal content centered */
+.scene {
+    text-align: center;
 }
 
-/* Keep flowers positioned independently */
+/* Center ALL normal buttons */
+.scene button:not(.flower) {
+    display: block;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* =========================================
+   FLOWER HUNT
+========================================= */
+
+/*
+   IMPORTANT:
+   Flowers are positioned relative to the whole screen.
+   Each flower gets its own exact location.
+*/
+
 #flowerHunt .flower {
-    position: absolute;
+    position: absolute !important;
+    z-index: 50 !important;
+
+    width: auto;
+    height: auto;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+
+    backdrop-filter: none !important;
+
+    font-size: 58px;
+
+    cursor: pointer;
 }
 
-/* Keep normal content above the garden background */
-#garden h2,
-#garden p,
-#garden button,
-#flowerHunt h2,
-#flowerHunt p {
-    position: relative;
+/* Flower 1 */
+#flowerHunt .flower[data-flower="1"] {
+    left: 18%;
+    top: 30%;
+}
+
+/* Flower 2 */
+#flowerHunt .flower[data-flower="2"] {
+    left: 42%;
+    top: 65%;
+}
+
+/* Flower 3 */
+#flowerHunt .flower[data-flower="3"] {
+    left: 68%;
+    top: 32%;
+}
+
+/* Flower 4 */
+#flowerHunt .flower[data-flower="4"] {
+    left: 78%;
+    top: 68%;
+}
+
+/* Flower 5 */
+#flowerHunt .flower[data-flower="5"] {
+    left: 25%;
+    top: 72%;
+}
+
+/* Flower hover */
+#flowerHunt .flower:hover {
+    transform: scale(1.25) translateY(-8px) !important;
+
+    filter:
+        drop-shadow(0 0 8px rgba(255,255,255,.8))
+        drop-shadow(0 0 25px rgba(255,220,180,.5));
+}
+
+/* =========================================
+   FLOWER HUNT TEXT
+========================================= */
+
+#flowerHunt h2 {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 100%;
+
     z-index: 20;
 }
 
-/* Make flower positions independent of the text */
-#flowerHunt .flower {
-    z-index: 30;
+#flowerHunt p {
+    position: absolute;
+    top: 23%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    z-index: 20;
+
+    white-space: nowrap;
 }
 
-/* Make the flower hunt area fill the screen */
-#flowerHunt {
-    position: fixed;
+/* =========================================
+   INTRO CENTERING
+========================================= */
+
+#intro {
+    text-align: center;
 }
 
-/* Don't let flower hover affect the layout */
-#flowerHunt .flower:hover {
-    margin-top: 0;
+#intro h1,
+#intro p,
+#intro button {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+#intro button {
+    margin-top: 25px;
+}
+
+/* =========================================
+   OTHER SCENES
+========================================= */
+
+#garden,
+#lilyScene,
+#birthday,
+#letter {
+    text-align: center;
+}
+
+#garden button,
+#lilyScene button,
+#birthday button,
+#letter button {
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
