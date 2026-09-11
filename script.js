@@ -1,93 +1,66 @@
-// =========================================================
-// SCENE CONTROL
-// =========================================================
+/* =========================================================
+   SCENE SYSTEM
+   ========================================================= */
 
 const scenes = document.querySelectorAll(".scene");
 
-
-function showScene(sceneId) {
-
+function showScene(id) {
     scenes.forEach(scene => {
         scene.classList.remove("active");
     });
 
-    const targetScene = document.getElementById(sceneId);
+    const target = document.getElementById(id);
 
-    if (targetScene) {
-        targetScene.classList.add("active");
+    if (target) {
+        target.classList.add("active");
     }
 }
 
 
-// =========================================================
-// INTRO → GARDEN
-// =========================================================
+/* =========================================================
+   INTRO → GARDEN
+   ========================================================= */
 
-const enterGarden =
-    document.getElementById("enterGarden");
+const enterGarden = document.getElementById("enterGarden");
 
 enterGarden.addEventListener("click", () => {
-
     showScene("garden");
-
 });
 
 
-// =========================================================
-// GARDEN → FLOWER HUNT
-// =========================================================
+/* =========================================================
+   GARDEN → FLOWER HUNT
+   ========================================================= */
 
-const startMission =
-    document.getElementById("startMission");
+const startMission = document.getElementById("startMission");
 
 startMission.addEventListener("click", () => {
-
     showScene("flowerHunt");
-
 });
 
 
-// =========================================================
-// FLOWER HUNT
-// =========================================================
-
-let flowersFound = 0;
-
-let clickedFlowers = [];
-
+/* =========================================================
+   FLOWER MESSAGES
+   ========================================================= */
 
 const flowerMessages = {
-
-    1:
-        "For more little things that make you happy. 🌷",
-
-    2:
-        "For more random laughs and good conversations. 🌻",
-
-    3:
-        "For more moments worth remembering. 🌼",
-
-    4:
-        "For more good food, good sleep, and fewer unnecessary headaches. 😂",
-
-    5:
-        "For whatever you're hoping this year will bring. 🌸"
-
+    1: "A little flower to start things off. 🌷",
+    2: "You found another one. Keep going. ✨",
+    3: "Halfway there... the garden is getting brighter. 🌸",
+    4: "Almost there. One more flower is waiting. 🌼",
+    5: "You found them all. But... something is still waiting."
 };
 
 
-const flowers =
-    document.querySelectorAll(".flower");
+/* =========================================================
+   FLOWER ELEMENTS
+   ========================================================= */
 
-const flowerMessage =
-    document.getElementById("flowerMessage");
+const flowers = document.querySelectorAll(".flower");
 
-const flowerNumber =
-    document.getElementById("flowerNumber");
-
-const flowerText =
-    document.getElementById("flowerText");
-
+const flowerMessage = document.getElementById("flowerMessage");
+const flowerNumber = document.getElementById("flowerNumber");
+const flowerText = document.getElementById("flowerText");
 const closeFlowerMessage =
     document.getElementById("closeFlowerMessage");
 
@@ -95,146 +68,129 @@ const foundCount =
     document.getElementById("foundCount");
 
 
-// =========================================================
-// SPARKLES
-// =========================================================
-
-function createSparkles(flower) {
-
-    for (let i = 0; i < 7; i++) {
-
-        const sparkle =
-            document.createElement("span");
-
-        sparkle.className = "sparkle";
-
-        sparkle.textContent = "✦";
+let flowersFound = 0;
+let currentFlower = null;
 
 
-        const angle =
-            (Math.PI * 2 * i) / 7;
-
-        const distance =
-            35 + Math.random() * 25;
-
-
-        sparkle.style.setProperty(
-            "--sparkle-x",
-            `${Math.cos(angle) * distance}px`
-        );
-
-        sparkle.style.setProperty(
-            "--sparkle-y",
-            `${Math.sin(angle) * distance}px`
-        );
-
-
-        sparkle.style.left = "50%";
-        sparkle.style.top = "30%";
-
-
-        flower.appendChild(sparkle);
-
-
-        setTimeout(() => {
-            sparkle.remove();
-        }, 900);
-
-    }
-
-}
-
-
-// =========================================================
-// FLOWER CLICKING
-// =========================================================
+/* =========================================================
+   FLOWER CLICK
+   ========================================================= */
 
 flowers.forEach(flower => {
 
     flower.addEventListener("click", () => {
 
         const number =
-            flower.dataset.flower;
+            Number(flower.dataset.flower);
+
+        currentFlower = flower;
 
 
-        if (clickedFlowers.includes(number)) {
-            return;
+        /* Don't count the same flower twice */
+
+        if (!flower.classList.contains("found")) {
+
+            flower.classList.add("found");
+            flower.classList.add("blooming");
+
+            flowersFound++;
+
+            foundCount.textContent =
+                flowersFound;
+
+            createSparkles(flower);
+
+            setTimeout(() => {
+                flower.classList.remove("blooming");
+            }, 800);
         }
 
 
-        clickedFlowers.push(number);
-
-        flowersFound++;
-
-
-        foundCount.textContent =
-            flowersFound;
-
-
-        flower.classList.add("blooming");
-
-
-        createSparkles(flower);
-
-
-        setTimeout(() => {
-
-            flower.classList.remove("blooming");
-
-            flower.classList.add("found");
-
-        }, 750);
-
+        /* Show message */
 
         flowerNumber.textContent =
             `Flower #${number}`;
 
         flowerText.textContent =
-            flowerMessages[number];
+            flowerMessages[number] ||
+            "A little flower just for you. 🌷";
 
-
-        setTimeout(() => {
-
-            flowerMessage.classList.remove("hidden");
-
-        }, 350);
-
+        flowerMessage.classList.remove("hidden");
     });
-
 });
 
 
-// =========================================================
-// CLOSE FLOWER MESSAGE
-// =========================================================
+/* =========================================================
+   CLOSE FLOWER MESSAGE
+   ========================================================= */
 
 closeFlowerMessage.addEventListener("click", () => {
 
     flowerMessage.classList.add("hidden");
 
 
+    /*
+       Only move on after ALL FIVE flowers
+       have been discovered.
+    */
+
     if (flowersFound === 5) {
 
         setTimeout(() => {
-
-            showScene("lilyScene");
-
-        }, 600);
-
+            startLilyScene();
+        }, 700);
     }
-
 });
 
 
-// =========================================================
-// LILY STORY
-// =========================================================
+/* =========================================================
+   SPARKLES
+   ========================================================= */
 
-const bloomLily =
-    document.getElementById("bloomLily");
+function createSparkles(element) {
 
-const lilyScene =
-    document.getElementById("lilyScene");
+    const rect =
+        element.getBoundingClientRect();
+
+    for (let i = 0; i < 8; i++) {
+
+        const sparkle =
+            document.createElement("span");
+
+        sparkle.className = "sparkle";
+
+        sparkle.textContent =
+            Math.random() > 0.5 ? "✦" : "·";
+
+        sparkle.style.left =
+            `${rect.left + rect.width / 2}px`;
+
+        sparkle.style.top =
+            `${rect.top + 35}px`;
+
+        sparkle.style.setProperty(
+            "--sparkle-x",
+            `${(Math.random() - 0.5) * 100}px`
+        );
+
+        sparkle.style.setProperty(
+            "--sparkle-y",
+            `${(Math.random() - 0.5) * 100}px`
+        );
+
+        document.body.appendChild(sparkle);
+
+
+        setTimeout(() => {
+            sparkle.remove();
+        }, 1000);
+    }
+}
+
+
+/* =========================================================
+   LILY SCENE
+   ========================================================= */
 
 const lilyPlant =
     document.getElementById("lilyPlant");
@@ -245,107 +201,119 @@ const lilyIntro =
 const lilyText =
     document.getElementById("lilyText");
 
+const bloomLily =
+    document.getElementById("bloomLily");
 
-let lilyStarted = false;
 
+function startLilyScene() {
+
+    showScene("lilyScene");
+
+    /*
+       Reset everything in case the scene
+       is visited again.
+    */
+
+    lilyPlant.classList.remove(
+        "growing",
+        "budding",
+        "bloomed"
+    );
+
+    lilyIntro.textContent =
+        "Wait...";
+
+    lilyText.textContent =
+        "There's still one plant that hasn't bloomed.";
+
+    bloomLily.textContent =
+        "Watch it grow";
+
+    bloomLily.style.opacity = "1";
+    bloomLily.style.pointerEvents = "auto";
+
+
+    /*
+       Let the scene appear first.
+    */
+
+    setTimeout(() => {
+
+        lilyIntro.style.opacity = "1";
+        lilyText.style.opacity = "1";
+
+    }, 400);
+}
+
+
+/* =========================================================
+   LILY GROWTH
+   ========================================================= */
 
 bloomLily.addEventListener("click", () => {
 
-    if (lilyStarted) {
-        return;
-    }
+    bloomLily.disabled = true;
 
-    lilyStarted = true;
-
-
-    // Hide button
-    lilyScene.classList.add("lily-growing");
+    bloomLily.style.opacity = "0";
+    bloomLily.style.pointerEvents = "none";
 
 
-    // -----------------------------------------------------
-    // PHASE 1
-    // The plant begins growing
-    // -----------------------------------------------------
-
-    lilyIntro.textContent =
-        "It didn't look like much at first.";
-
-    lilyText.textContent =
-        "But maybe it was just taking its time.";
-
+    /*
+       STEP 1
+       Stem grows upward
+    */
 
     lilyPlant.classList.add("growing");
 
 
-    // -----------------------------------------------------
-    // PHASE 2
-    // Horizontal shoot appears
-    // -----------------------------------------------------
-
     setTimeout(() => {
 
-        lilyIntro.textContent =
-            "Then something started to change...";
-
-        lilyText.textContent =
-            "A little shoot reached out from the plant.";
-
-    }, 2200);
-
-
-    // -----------------------------------------------------
-    // PHASE 3
-    // Bud appears
-    // -----------------------------------------------------
-
-    setTimeout(() => {
+        /*
+           STEP 2
+           Bud appears at the top
+        */
 
         lilyPlant.classList.add("budding");
+
+    }, 2300);
+
+
+    setTimeout(() => {
+
+        /*
+           STEP 3
+           The bud opens into the lily
+        */
+
+        lilyPlant.classList.add("bloomed");
+
 
         lilyIntro.textContent =
             "And then...";
 
         lilyText.textContent =
-            "Something was finally beginning to bloom.";
-
-    }, 4500);
-
-
-    // -----------------------------------------------------
-    // PHASE 4
-    // Lily opens
-    // -----------------------------------------------------
-
-    setTimeout(() => {
-
-        lilyPlant.classList.add("bloomed");
-
-        lilyIntro.textContent =
             "Some things take a little longer to bloom.";
 
-        lilyText.textContent =
-            "And sometimes, the wait makes them even more special.";
 
-    }, 6500);
+    }, 4200);
 
 
-    // -----------------------------------------------------
-    // PHASE 5
-    // Birthday reveal
-    // -----------------------------------------------------
+    /*
+       Give the lily time to stay on screen
+       before moving to the birthday scene.
+    */
 
     setTimeout(() => {
 
         showScene("birthday");
 
-    }, 9500);
-
+    }, 7600);
 });
 
 
-// =========================================================
-// BIRTHDAY → LETTER
-// =========================================================
+/* =========================================================
+   BIRTHDAY → LETTER
+   ========================================================= */
 
 const openLetter =
     document.getElementById("openLetter");
@@ -357,15 +325,15 @@ openLetter.addEventListener("click", () => {
 });
 
 
-// =========================================================
-// LETTER → GARDEN
-// =========================================================
+/* =========================================================
+   LETTER → FINISHED GARDEN
+   ========================================================= */
 
 const finish =
     document.getElementById("finish");
 
 finish.addEventListener("click", () => {
 
-    showScene("garden");
+    showScene("flowerHunt");
 
 });
