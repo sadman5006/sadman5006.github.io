@@ -1052,27 +1052,16 @@ if (bgMusic) {
 
     bgMusic.volume = 0.25;
 
-    function startMusic() {
+    document.addEventListener("click", function startMusic() {
 
         bgMusic.play()
             .then(() => {
-                console.log("Music started");
+                console.log("🎵 Music started!");
             })
-            .catch(error => {
-                console.log("Music could not start:", error);
+            .catch((error) => {
+                console.error("❌ Music failed:", error);
             });
 
-    }
-
-    /*
-     * Start music when the user first interacts
-     * with the website.
-     */
-
-    document.addEventListener(
-        "click",
-        startMusic,
-        { once: true }
-    );
+    }, { once: true });
 
 }
